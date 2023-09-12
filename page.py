@@ -18,31 +18,35 @@ def index():
 @app.route('/search', methods=['GET', 'POST'])
 def search_mirna():
     if flask.request.method == 'POST':
-        data = flask.request.form
+        # data = flask.request.form
+        data = flask.request.get_json(force=True)
         query_clear = re.sub(whites_pattern, '', data['query']).strip(",.;|-")
-        query_list = re.split(r',|;', query_clear)
+        query_list = set(re.split(r',|;', query_clear))
         result = defaultdict(list)
         for query in query_list:
             try:
                 db_rec = db[query]
-                print(db_rec)
+                # print(db_rec)
             except:
-                result['bad'].append(query)
+                result['bad'].append([query])
                 continue
             if isinstance(db_rec, list):
                 for key in db.aliases[query]:
                     record = db[key]
                     if record['CMC/non-CMC'].startswith("CMC"):
-                        result['CMC'].append(query)
+                        result['CMC'].append([f"{key} <- {query}"])
                     else:
-                        result['nCMC'].append(query)
+                        result['nCMC'].append([f"{key} <- {query}"])
                 continue
             if db_rec['CMC/non-CMC'].startswith("CMC"):
-                result['CMC'].append(query)
+                result['CMC'].append([query])
             else:
-                result['nCMC'].append(query)
+                result['nCMC'].append([query])
+                
+        return flask.jsonify(result)
+    else:
+        return "Empty"
 
-    return flask.jsonify(result)
 
 if __name__ == '__main__':
     app.run(debug=True)
