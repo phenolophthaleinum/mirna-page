@@ -48,5 +48,11 @@ def search_mirna():
         return "Empty"
 
 
+@app.route('/record/<id>')
+def record_page(id):
+    return flask.render_template('record.html',
+                                 record_id=id)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

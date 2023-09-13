@@ -36,11 +36,25 @@ sForm.addEventListener('submit', (e)=>{
             for(var [key, value] of Object.entries(response)){
                 tables[key] = new DataTable(`#${key}-table`, {
                     columns: [
-                        {title: 'ID'}
+                        {title: 'ID', data: 0},
+                        // {data: null, defaultContent: "<button>Click!</button>"}
                     ],
                     // columns: response['bad'].map((e)=> {return {title: 'ID', data: e}}),
                     data: value
                 });
+                if (key != 'bad') {
+                    var rows = document.getElementById(`${key}-table`).getElementsByTagName('tr');
+                    console.log(rows);
+                    for (var row of rows) {
+                        console.log(row)
+                        row.addEventListener("click", (e) => {
+                            console.log(e.target.innerText)
+                            record_id = e.target.innerText.split("<")[0];
+                            // var data = table.row(this).data();
+                            window.open('/record/' + record_id, '_blank');
+                        });
+                    }
+                }
             }
             // if (response['bad']){
             //     try {
@@ -99,6 +113,12 @@ sForm.addEventListener('submit', (e)=>{
         }
     });
 })
+
+// $('#CMC-table tbody').on('click', 'tr', function () {
+//     var data = table.row(this).data();
+//     window.open('/record/' + data[0], '_blank');
+// });
+
 // function performSearch() {
 //     var query = document.getElementById("search-input").value;
 //     console.log(JSON.stringify({ query: query }))
