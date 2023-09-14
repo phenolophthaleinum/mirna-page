@@ -29,12 +29,16 @@ sForm.addEventListener('submit', (e)=>{
                     value.destroy();
                     tables[key] = null;
                     document.getElementById(`${key}-table`).innerHTML = "";
+                    document.getElementById(`${key}-header`).style.display = 'none';
                 } catch (error) {
                     console.log(error);
                 }
             }
             for(var [key, value] of Object.entries(response)){
+                document.getElementById(`${key}-header`).style.display = 'block';
                 tables[key] = new DataTable(`#${key}-table`, {
+                    responsive: true,
+                    fixedHeader: true,
                     columns: [
                         {title: 'ID', data: 0},
                         // {data: null, defaultContent: "<button>Click!</button>"}
@@ -43,7 +47,7 @@ sForm.addEventListener('submit', (e)=>{
                     data: value
                 });
                 if (key != 'bad') {
-                    var rows = document.getElementById(`${key}-table`).getElementsByTagName('tr');
+                    var rows = document.getElementById(`${key}-table`).querySelectorAll("tbody > tr");
                     console.log(rows);
                     for (var row of rows) {
                         console.log(row)
