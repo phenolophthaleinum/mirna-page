@@ -1,11 +1,13 @@
 import flask
 import re
+import os
 from table_parser import read_db
 from collections import defaultdict
 from utils import AliasedDict
 
 
 app = flask.Flask(__name__, template_folder='.')
+app.config['UPLOAD_FOLDER']='raw_data'
 
 whites_pattern = re.compile(r'\s+')
 db = read_db("mirna_table.pkl")
@@ -52,6 +54,13 @@ def search_mirna():
 def record_page(id):
     return flask.render_template('record.html',
                                  record_id=id)
+
+
+@app.route('/raw_data/<path:filename>', methods=['GET', 'POST'])
+def download(filename):
+    full_path = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
+    return flask.send_from_directory(full_path, filename)
+
 
 
 if __name__ == '__main__':

@@ -24,17 +24,28 @@ sForm.addEventListener('submit', (e)=>{
             console.log(response);
             // var tmp = response['CMC'].map(e => [e]);
             // console.log(tmp)
+            // document.getElementById("search-result-container").style.display = "none";
+            document.getElementById("search-result-container").style.clipPath = 'inset(0% -10% 100% -10%)';
             for(var [key, value] of Object.entries(tables)){
                 try {
                     value.destroy();
                     tables[key] = null;
                     document.getElementById(`${key}-table`).innerHTML = "";
                     document.getElementById(`${key}-header`).style.display = 'none';
+                    var toRemove = document.getElementById(`${key}-wrapper`).parentElement;
+                    toRemove.replaceWith(...toRemove.childNodes);
                 } catch (error) {
                     console.log(error);
                 }
             }
             for(var [key, value] of Object.entries(response)){
+
+                var toWrap = document.getElementById(`${key}-wrapper`);
+                var wrapperCol = document.createElement('div');
+                wrapperCol.classList.add('col');
+                toWrap.parentNode.insertBefore(wrapperCol, toWrap)
+                wrapperCol.appendChild(toWrap);
+
                 document.getElementById(`${key}-header`).style.display = 'block';
                 tables[key] = new DataTable(`#${key}-table`, {
                     responsive: true,
@@ -60,7 +71,8 @@ sForm.addEventListener('submit', (e)=>{
                     }
                 }
             }
-            // if (response['bad']){
+            // document.getElementById("search-result-container").style.display = "block";
+            document.getElementById("search-result-container").style.clipPath = 'inset(0% -10% -10% -10%)';
             //     try {
             //         badTable.destroy();
             //     } catch (error) {

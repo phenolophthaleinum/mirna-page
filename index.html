@@ -321,7 +321,8 @@
         </div> -->
         <div class="container special-padding">
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+                    tabindex="0">
                     <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
                         <div class="container-fluid">
                             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
@@ -334,43 +335,61 @@
                                     </form>
                                 </div>
                                 <div class="d-grid col-lg-1 mx-auto gap-2">
-                                    <button id="post-search-button" type="submit" class="btn btn-primary btn-sm" form="search-form">
+                                    <button id="post-search-button" type="submit" class="btn btn-primary btn-sm"
+                                        form="search-form">
                                         <i class="bi bi-search btn"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="table-responsive">
+                    <!-- <div class="cover"> -->
+                        <div id="search-result-container" class="p-4 mb-4 bg-body-tertiary rounded-3 shadow clippy"
+                            style="clip-path: inset(0% -10% 100% -10%);">
+                            <div class="container-fluid">
+                                <div class="row justify-content-evenly">
+                                    <!-- <div class="col"> -->
+                                    <div class="table-responsive" id="CMC-wrapper">
                                         <h2 id="CMC-header" style="display: none;">CMC</h2>
-                                        <table id="CMC-table" class="display compact table" style="width: 100%;"></table>
+                                        <table id="CMC-table" class="display compact table" style="width: 100%;">
+                                        </table>
                                     </div>
-                                </div>
-                                <div class="col">
+                                    <!-- </div> -->
+                                    <!-- <div class="col"> -->
                                     <div class="table-responsive" id="nCMC-wrapper">
                                         <h2 id="nCMC-header" style="display: none;">non-CMC</h2>
-                                        <table id="nCMC-table" class="display compact table" style="width: 100%;"></table>
+                                        <table id="nCMC-table" class="display compact table" style="width: 100%;">
+                                        </table>
                                     </div>
-                                </div>
-                                <div class="col">
+                                    <!-- </div> -->
+                                    <!-- <div class="col"> -->
                                     <div class="table-responsive" id="bad-wrapper">
                                         <h2 id="bad-header" style="display: none;">Unknown</h2>
-                                        <table id="bad-table" class="display compact table" style="width: 100%;"></table>
+                                        <table id="bad-table" class="display compact table" style="width: 100%;">
+                                        </table>
                                     </div>
+                                    <!-- </div> -->
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
                     <!-- <div class="d-flex flex-wrap"> -->
                 </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">...</div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
-                <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
-              </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                    tabindex="0">
+                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
+                        <div class="container-fluid">
+                            <h2>Download database</h2>
+                            <p class="lead">All tables in .xlsx files.</p>
+                            <a class="btn btn-primary btn-lg" href="{{ url_for('download', filename='raw_data.zip') }}">
+                                Download <i class="bi bi-download"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+                    tabindex="0">...</div>
+            </div>
         </div>
     </main>
 
