@@ -1,4 +1,4 @@
-var resElem = document.getElementById("ajax-res");
+var resElem = document.getElementById("search-result-container");
 var sForm = document.getElementById("search-form");
 // var badTable = null;
 // var cmcTable = null;
@@ -8,9 +8,74 @@ var tables = {
     'CMC': null,
     'nCMC': null
 }
+
+let navigationEntry = performance.getEntriesByType("navigation")[0];
+
+if (sessionStorage.getItem("autosave") && navigationEntry.type == "back_forward") {
+    console.log("true");
+    saved_response = JSON.parse(sessionStorage.getItem('autosave'));
+    // resElem = sessionStorage.getItem('autosave');
+    for(var [key, value] of Object.entries(saved_response)){
+
+        var toWrap = document.getElementById(`${key}-wrapper`);
+        var wrapperCol = document.createElement('div');
+        wrapperCol.classList.add('col');
+        toWrap.parentNode.insertBefore(wrapperCol, toWrap)
+        wrapperCol.appendChild(toWrap);
+
+        document.getElementById(`${key}-header`).style.display = 'block';
+        tables[key] = new DataTable(`#${key}-table`, {
+            responsive: true,
+            fixedHeader: true,
+            // stateSave: true,
+            // stateSaveCallback: function(settings, data) {
+            //     localStorage.setItem('DataTables_' + settings.sInstance, JSON.stringify(data));
+            //   },
+            // stateLoadCallback: function(settings) {
+            //     console.log(localStorage.getItem('DataTables_' + settings.sInstance))
+            // return JSON.parse(localStorage.getItem('DataTables_' + settings.sInstance));
+            // },
+            columns: [
+                {title: 'ID', data: 0},
+                // {data: null, defaultContent: "<button>Click!</button>"}
+            ],
+            // columns: response['bad'].map((e)=> {return {title: 'ID', data: e}}),
+            data: value
+        });
+        if (key != 'bad') {
+            // var rows = document.getElementById(`${key}-table`).querySelectorAll("tbody > tr");
+            var tableElem = document.getElementById(`${key}-table`);
+
+            tableElem.addEventListener("click", (e) => {
+                var row = e.target.closest("tbody > tr");
+                if (row) {
+                    record_id = e.target.innerText.split("<")[0];
+                    window.open('/record/' + record_id, "_self");
+                }
+            });
+
+            // console.log(rows);
+            // for (var row of rows) {
+            //     console.log(row)
+            //     row.addEventListener("click", (e) => {
+            //         console.log(e.target.innerText)
+            //         record_id = e.target.innerText.split("<")[0];
+            //         // var data = table.row(this).data();
+            //         window.open('/record/' + record_id, "_self");
+            //     });
+            // }
+        }
+    }
+    document.getElementById("search-result-container").style.clipPath = 'inset(0% -10% -10% -10%)';
+}
+else {
+    sessionStorage.removeItem('autosave');
+}
+
 // MIRAS; MIR21, MIR505, MIR1247, miR-101
 sForm.addEventListener('submit', (e)=>{
     e.preventDefault();
+    // history.replaceState({}, "");
     var query = document.getElementById("search-input").value;
     console.log(JSON.stringify({ query: query }))
     $.ajax({
@@ -50,6 +115,14 @@ sForm.addEventListener('submit', (e)=>{
                 tables[key] = new DataTable(`#${key}-table`, {
                     responsive: true,
                     fixedHeader: true,
+                    // stateSave: true,
+                    // stateSaveCallback: function(settings, data) {
+                    //     localStorage.setItem('DataTables_' + settings.sInstance, JSON.stringify(data));
+                    //   },
+                    // stateLoadCallback: function(settings) {
+                    //     console.log(localStorage.getItem('DataTables_' + settings.sInstance))
+                    // return JSON.parse(localStorage.getItem('DataTables_' + settings.sInstance));
+                    // },
                     columns: [
                         {title: 'ID', data: 0},
                         // {data: null, defaultContent: "<button>Click!</button>"}
@@ -58,19 +131,32 @@ sForm.addEventListener('submit', (e)=>{
                     data: value
                 });
                 if (key != 'bad') {
-                    var rows = document.getElementById(`${key}-table`).querySelectorAll("tbody > tr");
-                    console.log(rows);
-                    for (var row of rows) {
-                        console.log(row)
-                        row.addEventListener("click", (e) => {
-                            console.log(e.target.innerText)
+                    // var rows = document.getElementById(`${key}-table`).querySelectorAll("tbody > tr");
+                    // console.log(rows);
+                    // for (var row of rows) {
+                    //     console.log(row)
+                    //     row.addEventListener("click", (e) => {
+                    //         console.log(e.target.innerText)
+                    //         record_id = e.target.innerText.split("<")[0];
+                    //         // var data = table.row(this).data();
+                    //         window.open('/record/' + record_id, "_self");
+                    //     });
+                    // }
+                    var tableElem = document.getElementById(`${key}-table`);
+
+                    tableElem.addEventListener("click", (e) => {
+                        var row = e.target.closest("tbody > tr");
+                        if (row) {
                             record_id = e.target.innerText.split("<")[0];
-                            // var data = table.row(this).data();
-                            window.open('/record/' + record_id, '_blank');
-                        });
-                    }
+                            window.open('/record/' + record_id, "_self");
+                        }
+                    });
                 }
             }
+            sessionStorage.setItem('autosave', JSON.stringify(response));
+            // var state = JSON.stringify(response);
+            // history.pushState(state, "")
+            // console.log(resElem);
             // document.getElementById("search-result-container").style.display = "block";
             document.getElementById("search-result-container").style.clipPath = 'inset(0% -10% -10% -10%)';
             //     try {
@@ -167,3 +253,20 @@ sForm.addEventListener('submit', (e)=>{
 //     //     }
 //     // });
 // }
+
+// window.addEventListener("popstate", function(e) {
+//     if (e.state) {
+//         var state = e.state;
+//         console.log(JSON.parse(state));
+//         // Restore DataTable from state
+//     }
+// });
+// window.addEventListener('popstate', function (event) {
+//     // Your code to handle navigation (back/forward) here
+//     console.log('Navigation event triggered');
+// });
+// window.addEventListener("beforeunload", function(event) {
+//     sessionStorage.removeItem('autosave');
+// });
+
+console.log(navigationEntry.type);
