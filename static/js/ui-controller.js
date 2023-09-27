@@ -40,31 +40,51 @@ if (sessionStorage.getItem("autosave") && navigationEntry.type == "back_forward"
                 // {data: null, defaultContent: "<button>Click!</button>"}
             ],
             // columns: response['bad'].map((e)=> {return {title: 'ID', data: e}}),
-            data: value
-        });
-        if (key != 'bad') {
-            // var rows = document.getElementById(`${key}-table`).querySelectorAll("tbody > tr");
-            var tableElem = document.getElementById(`${key}-table`);
-
-            tableElem.addEventListener("click", (e) => {
-                var row = e.target.closest("tbody > tr");
-                if (row) {
-                    record_id = e.target.innerText.split("<")[0];
-                    window.open('/record/' + record_id, "_self");
+            data: value,
+            createdRow: function(row, data, dataIndex) {
+                // Only add the anchor element if the key is not "bad"
+                if (key != 'bad') {
+                    // Create a new anchor element
+                    var a = document.createElement('a');
+    
+                    // Set the href attribute to the desired URL
+                    a.href = '/record/' + data[0].split("<")[0]; // assuming data[0] is the record ID
+                    a.textContent = data[0];
+    
+                    // Add the full-row-link class
+                    a.classList.add('full-row-link');
+    
+                    // Append the anchor element to each cell in the row
+                    for (var i = 0; i < row.cells.length; i++) {
+                        row.cells[i].textContent = '';
+                        row.cells[i].appendChild(a.cloneNode(true));
+                    }
                 }
-            });
+            }
+        });
+        // if (key != 'bad') {
+        //     // var rows = document.getElementById(`${key}-table`).querySelectorAll("tbody > tr");
+        //     var tableElem = document.getElementById(`${key}-table`);
 
-            // console.log(rows);
-            // for (var row of rows) {
-            //     console.log(row)
-            //     row.addEventListener("click", (e) => {
-            //         console.log(e.target.innerText)
-            //         record_id = e.target.innerText.split("<")[0];
-            //         // var data = table.row(this).data();
-            //         window.open('/record/' + record_id, "_self");
-            //     });
-            // }
-        }
+        //     tableElem.addEventListener("click", (e) => {
+        //         var row = e.target.closest("tbody > tr");
+        //         if (row) {
+        //             record_id = e.target.innerText.split("<")[0];
+        //             window.open('/record/' + record_id, "_self");
+        //         }
+        //     });
+
+        //     // console.log(rows);
+        //     // for (var row of rows) {
+        //     //     console.log(row)
+        //     //     row.addEventListener("click", (e) => {
+        //     //         console.log(e.target.innerText)
+        //     //         record_id = e.target.innerText.split("<")[0];
+        //     //         // var data = table.row(this).data();
+        //     //         window.open('/record/' + record_id, "_self");
+        //     //     });
+        //     // }
+        // }
     }
     document.getElementById("search-result-container").style.clipPath = 'inset(0% -10% -10% -10%)';
 }
@@ -128,30 +148,50 @@ sForm.addEventListener('submit', (e)=>{
                         // {data: null, defaultContent: "<button>Click!</button>"}
                     ],
                     // columns: response['bad'].map((e)=> {return {title: 'ID', data: e}}),
-                    data: value
-                });
-                if (key != 'bad') {
-                    // var rows = document.getElementById(`${key}-table`).querySelectorAll("tbody > tr");
-                    // console.log(rows);
-                    // for (var row of rows) {
-                    //     console.log(row)
-                    //     row.addEventListener("click", (e) => {
-                    //         console.log(e.target.innerText)
-                    //         record_id = e.target.innerText.split("<")[0];
-                    //         // var data = table.row(this).data();
-                    //         window.open('/record/' + record_id, "_self");
-                    //     });
-                    // }
-                    var tableElem = document.getElementById(`${key}-table`);
+                    data: value,
+                    createdRow: function(row, data, dataIndex) {
+                        // Only add the anchor element if the key is not "bad"
+                        if (key != 'bad') {
+                            // Create a new anchor element
+                            var a = document.createElement('a');
+            
+                            // Set the href attribute to the desired URL
+                            a.href = '/record/' + data[0].split("<")[0]; // assuming data[0] is the record ID
+                            a.textContent = data[0];
 
-                    tableElem.addEventListener("click", (e) => {
-                        var row = e.target.closest("tbody > tr");
-                        if (row) {
-                            record_id = e.target.innerText.split("<")[0];
-                            window.open('/record/' + record_id, "_self");
+                            // Add the full-row-link class
+                            a.classList.add('full-row-link');
+
+                            // Append the anchor element to each cell in the row
+                            for (var i = 0; i < row.cells.length; i++) {
+                                row.cells[i].textContent = '';
+                                row.cells[i].appendChild(a.cloneNode(true));
+                            }
                         }
-                    });
-                }
+                    }
+                });
+                // if (key != 'bad') {
+                //     // var rows = document.getElementById(`${key}-table`).querySelectorAll("tbody > tr");
+                //     // console.log(rows);
+                //     // for (var row of rows) {
+                //     //     console.log(row)
+                //     //     row.addEventListener("click", (e) => {
+                //     //         console.log(e.target.innerText)
+                //     //         record_id = e.target.innerText.split("<")[0];
+                //     //         // var data = table.row(this).data();
+                //     //         window.open('/record/' + record_id, "_self");
+                //     //     });
+                //     // }
+                //     var tableElem = document.getElementById(`${key}-table`);
+
+                //     tableElem.addEventListener("click", (e) => {
+                //         var row = e.target.closest("tbody > tr");
+                //         if (row) {
+                //             record_id = e.target.innerText.split("<")[0];
+                //             window.open('/record/' + record_id, "_self");
+                //         }
+                //     });
+                // }
             }
             sessionStorage.setItem('autosave', JSON.stringify(response));
             // var state = JSON.stringify(response);
