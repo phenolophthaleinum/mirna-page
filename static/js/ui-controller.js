@@ -23,7 +23,7 @@ window.onload = function() {
 
 // check navigation events and preserve table
 let navigationEntry = performance.getEntriesByType("navigation")[0];
-if (sessionStorage.getItem("autosave") && navigationEntry.type == "back_forward") {
+if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward" || location.hash == '#search_results')) {
     console.log("true");
     saved_response = JSON.parse(sessionStorage.getItem('autosave'));
     // resElem = sessionStorage.getItem('autosave');
@@ -206,6 +206,7 @@ sForm.addEventListener('submit', (e)=>{
                 // }
             }
             sessionStorage.setItem('autosave', JSON.stringify(response));
+            location.hash = '#search_results';
             // var state = JSON.stringify(response);
             // history.pushState(state, "")
             // console.log(resElem);
