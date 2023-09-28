@@ -9,8 +9,20 @@ var tables = {
     'nCMC': null
 }
 
-let navigationEntry = performance.getEntriesByType("navigation")[0];
+// check for url params
+window.onload = function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var tab = urlParams.get('tab');
+    if (tab) {
+        var button = document.getElementById(tab);
+        if (button) {
+            button.click();
+        }
+    }
+};
 
+// check navigation events and preserve table
+let navigationEntry = performance.getEntriesByType("navigation")[0];
 if (sessionStorage.getItem("autosave") && navigationEntry.type == "back_forward") {
     console.log("true");
     saved_response = JSON.parse(sessionStorage.getItem('autosave'));

@@ -194,19 +194,28 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                            <!-- <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                aria-selected="true">Search</button>
+                                aria-selected="true">Search</button> -->
+                                <a class="nav-link" href="/" role="button">New search</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                            <!-- <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                aria-selected="false">Download</button>
+                                aria-selected="false">Download</button> -->
+                                <a class="nav-link" href="/?tab=pills-profile-tab" role="button">Download</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                            <!-- <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                aria-selected="false">Contact</button>
+                                aria-selected="false">Contact</button> -->
+                            <a class="nav-link" href="/?tab=pills-contact-tab" role="button">Contact</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <!-- <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true">Search</button> -->
+                                <a class="nav-link active" href="#" role="button">Record</a>
                         </li>
                     </ul>
                     <!-- <ul class="navbar-nav">
@@ -278,7 +287,13 @@
                 <!-- <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"> -->
                     <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
                         <div class="container-fluid">
-                            <h2>{{record_id}}</h2>
+                            <div class="d-flex justify-content-between">
+                                <h2>{{record_id}}</h2>
+                                <div>
+                                    <i class="bi bi-arrow-left"></i>            
+                                    <p class="lead">Back to search results</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- <div class="d-flex flex-wrap"> -->
