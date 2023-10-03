@@ -24,28 +24,30 @@ def search_mirna():
         data = flask.request.get_json(force=True)
         query_clear = re.sub(whites_pattern, '', data['query']).strip(",.;|-")
         query_list = set(re.split(r',|;', query_clear))
-        result = defaultdict(list)
+        result = defaultdict(set)
         for query in query_list:
             try:
                 db_rec = db[query]
                 # print(db_rec)
             except:
-                result['bad'].append([query])
+                result['bad'].add(query)
                 continue
             if isinstance(db_rec, list):
                 for key in db.aliases[query]:
                     record = db[key]
                     if record['CMC/non-CMC'].startswith("CMC"):
-                        result['CMC'].append([f"{key} <- {query}"])
+                        result['CMC'].add(key)
                     else:
-                        result['nCMC'].append([f"{key} <- {query}"])
+                        result['nCMC'].add(key)
                 continue
             if db_rec['CMC/non-CMC'].startswith("CMC"):
-                result['CMC'].append([query])
+                result['CMC'].add(query)
             else:
-                result['nCMC'].append([query])
-                
-        return flask.jsonify(result)
+                result['nCMC'].add(query)
+        
+        final_result =  {key: [[elem] for elem in value] for key, value in result.items()}
+
+        return flask.jsonify(final_result)
     else:
         return "Empty"
 

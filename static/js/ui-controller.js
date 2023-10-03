@@ -134,8 +134,8 @@ sForm.addEventListener('submit', (e)=>{
                 } catch (error) {
                     console.log(error);
                 }
-            }
-            for(var [key, value] of Object.entries(response)){
+            // }
+            // for(var [key, value] of Object.entries(response)){
 
                 var toWrap = document.getElementById(`${key}-wrapper`);
                 var wrapperCol = document.createElement('div');
@@ -160,7 +160,8 @@ sForm.addEventListener('submit', (e)=>{
                         // {data: null, defaultContent: "<button>Click!</button>"}
                     ],
                     // columns: response['bad'].map((e)=> {return {title: 'ID', data: e}}),
-                    data: value,
+                    // data: value,
+                    data: response[key],
                     createdRow: function(row, data, dataIndex) {
                         // Only add the anchor element if the key is not "bad"
                         if (key != 'bad') {
