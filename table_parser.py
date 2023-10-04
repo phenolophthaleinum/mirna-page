@@ -57,9 +57,10 @@ def parse():
 
     # save to dill
     with open("mirna_table.pkl", 'wb') as f:
+        dill.dump(adb, f)
     #     f.write(dill.dumps(adb))
     # return dill.dumps(adb)
-        dill.dump((dict(adb), adb.aliases), f)
+        # dill.dump((dict(adb), adb.aliases), f)
     # with open("mirna_table.json", 'w') as f:
     #     json.dump(adb, f)
 
@@ -76,3 +77,9 @@ def read_db(filename: str):
         return adict
     #     db = f.read()
     #     return dill.loads(db)
+
+def std_read(filename: str):
+    with open(filename, 'rb') as f:
+        adict = dill.load(f)
+        print(adict.aliases)
+        return adict

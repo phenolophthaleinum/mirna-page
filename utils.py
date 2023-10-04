@@ -20,6 +20,20 @@ class AliasedDict(dict):
     
     def show_aliases(self, key):
         return [alias for alias, value_of_key in self.aliases.items() if value_of_key == key]
+    
+    def __getstate__(self):
+        return {"aliases": self.aliases, "data": dict(self)}
+        # dict_inst = super().__getstate__()
+        # dict_inst['aliases'] = self.aliases
+        # return dict_inst
+
+    def __setstate__(self, state):
+        self.aliases = state["aliases"]
+        # self.clear()
+        # super().update(state["data"])
+        self.update(state["data"])
+        # super().__setstate__(state)
+        # self.aliases = state['aliases']
 
     def __getitem__(self, key):
         item = self.aliases.get(key, key)
@@ -42,17 +56,6 @@ class AliasedDict(dict):
         #     return [super().__getitem__(self.aliases.get(key, key)) for key in itemlist]
         # return super().__getitem__(self.aliases.get(key, key))
     def __setitem__(self, key, value):
+        if not hasattr(self, 'aliases'):
+            self.aliases = {}
         return super().__setitem__(self.aliases.get(key, key), value)
-    
-    def __getstate__(self):
-        return {"aliases": self.aliases, "data": dict(self)}
-        # dict_inst = super().__getstate__()
-        # dict_inst['aliases'] = self.aliases
-        # return dict_inst
-
-    def __setstate__(self, state):
-        self.aliases = state["aliases"]
-        self.clear()
-        self.update(state["data"])
-        # super().__setstate__(state)
-        # self.aliases = state['aliases']
