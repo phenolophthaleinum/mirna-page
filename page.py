@@ -23,7 +23,7 @@ def search_mirna():
         # data = flask.request.form
         data = flask.request.get_json(force=True)
         query_clear = re.sub(whites_pattern, '', data['query']).strip(",.;|-")
-        query_list = set(re.split(r',|;', query_clear))
+        query_list = set(re.split(r',|;', query_clear.lower()))
         result = defaultdict(set)
         for query in query_list:
             try:
@@ -36,14 +36,14 @@ def search_mirna():
                 for key in db.aliases[query]:
                     record = db[key]
                     if record['CMC/non-CMC'].startswith("CMC"):
-                        result['CMC'].add(key)
+                        result['CMC'].add(key.upper())
                     else:
-                        result['nCMC'].add(key)
+                        result['nCMC'].add(key.upper())
                 continue
             if db_rec['CMC/non-CMC'].startswith("CMC"):
-                result['CMC'].add(query)
+                result['CMC'].add(query.upper())
             else:
-                result['nCMC'].add(query)
+                result['nCMC'].add(query.upper())
         
         final_result =  {key: [[elem] for elem in value] for key, value in result.items()}
 
