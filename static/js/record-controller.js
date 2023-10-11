@@ -7,7 +7,9 @@ var grid = document.querySelector('#iso-grid');
 var iso = new Isotope( grid, {
   itemSelector: '.grid-item',
   masonry: {
-    columnWidth: 80
+    columnWidth: 80,
+    gutter: 5,
+    fitWidth: true
   }
 });
 

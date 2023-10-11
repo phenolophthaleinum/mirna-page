@@ -3,22 +3,25 @@ import dill
 # import pickle
 from utils import AliasedDict
 import json
+import pprint as p
 
 dill.settings['recurse'] = True
 
 def parse():
     # df = pd.read_excel("./table_s4.xlsx", index_col=0, skiprows=[0])
-    df = pd.read_excel("./table_s4.xlsx", skiprows=[0])
-    alias_df = pd.read_excel("./table_s9.xlsx", skiprows=[0])
+    # df = pd.read_excel("./table_s4.xlsx", skiprows=[0])
+    # alias_df = pd.read_excel("./table_s9.xlsx", skiprows=[0])
+    df = pd.read_excel("./classification_table.xlsx", skiprows=[0])
+    alias_df = pd.read_excel("./characteristics_table.xlsx", skiprows=[0])
 
     df.rename(columns={'background miRNA genes': "miRNA gene ID (HUGO)"}, inplace=True)
     overlap_cols = df.columns.intersection(alias_df.columns)[1:]
-    print(overlap_cols[1:])
+    # print(overlap_cols[1:])
     alias_df = alias_df.drop(columns=overlap_cols)
     df.set_index('miRNA gene ID (HUGO)', inplace=True)
     df = df.merge(alias_df, left_index=True, right_on='miRNA gene ID (HUGO)', how='left')
 
-    print(df.columns)
+    # print(df.columns)
     df.set_index('miRNA gene ID (HUGO)', inplace=True)
 
     # df.rename(columns={'background miRNA genes': "miRNA gene ID (HUGO)"}, inplace=True)
@@ -41,7 +44,7 @@ def parse():
 
     # initialise aliased dict
     adb = AliasedDict(db)
-    print(adb)
+    p.pprint(adb)
     # assign aliases
     for key in adb:
         mask = alias_df['miRNA gene ID (HUGO)'].values == key

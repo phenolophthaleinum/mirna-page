@@ -55,7 +55,8 @@ def search_mirna():
 @app.route('/record/<id>')
 def record_page(id):
     return flask.render_template('record.html',
-                                 record_id=id)
+                                 record_id=id,
+                                 record_data=db[id.lower()])
 
 
 @app.route('/raw_data/<path:filename>', methods=['GET', 'POST'])

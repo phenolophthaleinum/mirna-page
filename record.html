@@ -306,7 +306,16 @@
                             </div>
                             <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
                                 <div class="container-fluid">
-                                    <h3>Differentially expressed in TCGA</h3>
+                                    <h3><b>miRBase ID: </b> {{record_data['miRNA precursor/locus ID (miRBase)']}}</h3>
+                                    <h3><b>MirGeneDB ID:</b> {{record_data['miRNA precursor/locus ID (MirGeneDB)']}}</h3>
+                                    <h3><b>miRNA ID:</b> {{record_data['miRNA ID (miRBase)']}}</h3>
+                                    <h3><b>Predominant strand:</b> {{record_data['predominantly expressed miRNA (miRNA-strand balance)']}}</h3>
+                                    <h3><b>CMC Score:</b> {{record_data['CMC score']}}</h3>
+                                </div>
+                            </div>
+                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
+                                <div class="container-fluid">
+                                    <h2>Differentially expressed in TCGA</h2>
                                     <div id="iso-grid">
                                         <div class="grid-item">
                                           <div class="grid-item-content">

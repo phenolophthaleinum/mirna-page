@@ -14,7 +14,7 @@ tbody tr:hover > td{
     font-size: 110%;
 }
 
-h2 {
+h2, h3 {
     transition: 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
@@ -45,8 +45,13 @@ table tr td .full-row-link {
     border: none;
 }
 
+#iso-grid {
+  margin: 0 auto;
+}
+
 .grid-item {
     float: left;
+    margin-bottom: 5px;
   }
   
   /* item is invisible, but used for layout */
