@@ -81,5 +81,5 @@ def read_db(filename: str):
 def std_read(filename: str):
     with open(filename, 'rb') as f:
         adict = dill.load(f)
-        print(adict.aliases)
+        # print(adict.aliases)
         return adict

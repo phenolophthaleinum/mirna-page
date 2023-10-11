@@ -27,7 +27,7 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
     console.log("true");
     saved_response = JSON.parse(sessionStorage.getItem('autosave'));
     // resElem = sessionStorage.getItem('autosave');
-    for(var [key, value] of Object.entries(saved_response)){
+    for(var [key, value] of Object.entries(tables)){
 
         var toWrap = document.getElementById(`${key}-wrapper`);
         var wrapperCol = document.createElement('div');
@@ -52,7 +52,8 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
                 // {data: null, defaultContent: "<button>Click!</button>"}
             ],
             // columns: response['bad'].map((e)=> {return {title: 'ID', data: e}}),
-            data: value,
+            // data: value,
+            data: saved_response[key],
             createdRow: function(row, data, dataIndex) {
                 // Only add the anchor element if the key is not "bad"
                 if (key != 'bad') {

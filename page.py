@@ -1,7 +1,7 @@
 import flask
 import re
 import os
-from table_parser import read_db
+from table_parser import read_db, std_read
 from collections import defaultdict
 from utils import AliasedDict
 
@@ -10,7 +10,7 @@ app = flask.Flask(__name__, template_folder='.')
 app.config['UPLOAD_FOLDER']='raw_data'
 
 whites_pattern = re.compile(r'\s+')
-db = read_db("mirna_table.pkl")
+db = std_read("mirna_table.pkl")
 
 @app.route('/')
 def index():
