@@ -148,6 +148,10 @@ sForm.addEventListener('submit', (e)=>{
                 tables[key] = new DataTable(`#${key}-table`, {
                     responsive: true,
                     fixedHeader: true,
+                    language: {
+                        // infoEmpty: "No records found"
+                        zeroRecords: "No matching records found"
+                    },
                     // stateSave: true,
                     // stateSaveCallback: function(settings, data) {
                     //     localStorage.setItem('DataTables_' + settings.sInstance, JSON.stringify(data));
