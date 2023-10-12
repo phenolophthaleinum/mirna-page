@@ -54,9 +54,20 @@ def search_mirna():
 
 @app.route('/record/<id>')
 def record_page(id):
+    cmc_criterions = [
+        'miRCancer POINTS [criterion I]',
+        'dbDEMC POINTS [criterion II]',
+        'oncomiRDB POINTS [criterion III]',
+        'consistency of associations [criterion IV]',
+        'cancer hallmarks POINTS [criterion V]',
+        'KEGG "MicroRNAs in cancer" POINTS [criterion VI]',
+        'cancer drivers POINTS [criterion VII]'
+    ]
+    print(type(db['mir101-1']['cancer drivers POINTS [criterion VII]']))
     return flask.render_template('record.html',
                                  record_id=id,
-                                 record_data=db[id.lower()])
+                                 record_data=db[id.lower()],
+                                 cmc_criterions=cmc_criterions)
 
 
 @app.route('/raw_data/<path:filename>', methods=['GET', 'POST'])

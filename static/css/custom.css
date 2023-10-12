@@ -45,7 +45,7 @@ table tr td .full-row-link {
     border: none;
 }
 
-#iso-grid {
+.iso-grid {
   margin: 0 auto;
 }
 
@@ -98,6 +98,38 @@ table tr td .full-row-link {
     opacity: 0;
   }
 
-  .grid-item-content > p {
+  .grid-item-content * {
     pointer-events: none;
+  }
+
+  .grid-item-content.criterion-I {
+    background-color: #cceeff;
+  }
+
+  .grid-item-content.criterion-II {
+    background-color: #ffccff;
+  }
+
+  .grid-item-content.criterion-III {
+    background-color: #92d050;
+  }
+
+  .grid-item-content.criterion-IV {
+    background-color: #ff9933;
+  }
+
+  .grid-item-content.criterion-V {
+    background-color: #9999ff;
+  }
+
+  .grid-item-content.criterion-VI {
+    background-color: #ffe699;
+  }
+
+  .grid-item-content.criterion-VII {
+    background-color: #ff5050;
+  }
+
+  .grid-item-content.criterion-nan {
+    background-color: #ffffff;
   }

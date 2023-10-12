@@ -23,6 +23,7 @@ def parse():
 
     # print(df.columns)
     df.set_index('miRNA gene ID (HUGO)', inplace=True)
+    df[df.filter(like='criterion').columns] = df.filter(like='criterion').fillna(0)
 
     # df.rename(columns={'background miRNA genes': "miRNA gene ID (HUGO)"}, inplace=True)
     # overlap_cols = df.columns.intersection(alias_df.columns)[1:]
