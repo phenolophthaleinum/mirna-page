@@ -18,14 +18,20 @@ grids.forEach((grid) => {
   grid.addEventListener( 'click', function( event ) {
     var target = event.target;
     // only click on itemContent
-    console.log(target)
-    gsap.set(target.children[0], {
+    // var childs = target.children[0];
+    // var last = childs.children.length - 1;
+    console.log(target);
+    var expandable = target.querySelector('.expandable');
+    // console.log(childs.children)
+    console.log(expandable);
+    gsap.set(expandable, {
       css: {
           zIndex: -2
       }
     });
-    gsap.to(target.children[0], {
+    gsap.to(expandable, {
       opacity: 0,
+      scale: 0.5,
       duration: 0.3,
       ease: "power2.inOut"
     });
@@ -36,13 +42,14 @@ grids.forEach((grid) => {
     itemElem.classList.toggle('is-expanded');
 
     if (itemElem.classList.contains("is-expanded")){
-      gsap.set(target.children[0], {
+      gsap.set(expandable, {
           css: {
               zIndex: 2
           }
       });
-      gsap.to(target.children[0], {
+      gsap.to(expandable, {
           opacity: 1,
+          scale: 1,
           duration: 0.3,
           ease: "power2.inOut"
       });
