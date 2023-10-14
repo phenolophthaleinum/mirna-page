@@ -65,7 +65,7 @@ table tr td .full-row-link {
 .grid-item-content {
   width: 80px;
   height: 80px;
-  background: #0D8;
+  background: #ffffff;
   border: 2px solid #333;
   border-color: rgba(13, 110, 253, 0.7);
   border-radius: 10px;
@@ -136,4 +136,12 @@ table tr td .full-row-link {
 
 .grid-item-content.criterion-nan {
   background-color: #ffffff;
+}
+
+.grid-item-content.up {
+  background-color: #00b050;
+}
+
+.grid-item-content.down {
+  background-color: #ff0000;
 }

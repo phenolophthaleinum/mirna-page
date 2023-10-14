@@ -63,11 +63,14 @@ def record_page(id):
         'KEGG "MicroRNAs in cancer" POINTS [criterion VI]',
         'cancer drivers POINTS [criterion VII]'
     ]
+    diff_expr = [col for col in db[id.lower()].keys() if col.startswith('differentially expressed in TCGA')]
     print(type(db['mir101-1']['cancer drivers POINTS [criterion VII]']))
+    print(db['mir101-1'].keys())
     return flask.render_template('record.html',
                                  record_id=id,
                                  record_data=db[id.lower()],
-                                 cmc_criterions=cmc_criterions)
+                                 cmc_criterions=cmc_criterions,
+                                 diff_expr=diff_expr)
 
 
 @app.route('/raw_data/<path:filename>', methods=['GET', 'POST'])

@@ -214,7 +214,7 @@
                             <!-- <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
                                 aria-selected="false">Contact</button> -->
-                            <a class="nav-link" href="/?tab=pills-contact-tab" role="button">Contact</a>
+                            <a class="nav-link" href="/?tab=pills-authors-tab" role="button">Authors</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" href="/?tab=pills-refs-tab" role="button">References</a>
@@ -349,13 +349,26 @@
                                 <div class="container-fluid">
                                     <h2>Differentially expressed in TCGA</h2>
                                     <div class="iso-grid">
+                                        {% for key in diff_expr %}
+                                        {% set expr = key.split("-")[-1].split(" ")[0] %}
+                                        {% set expr_value = record_data[key] | string %}
+                                        {% set expr_full = key.split('(')[-1].strip(")")  %}
+                                        <!-- {% set criterion_full = key.split("[")[0].strip() %} -->
                                         <div class="grid-item">
-                                          <div class="grid-item-content">
-                                            1
-                                            <p style="opacity: 0;">Expandxxxxxxxxxxo</p>
-                                          </div>
+                                            <div class="grid-item-content {{expr_value.lower()}} row">
+                                                <div class="col">
+                                                    <div class="d-flex flex-column mt-1 align-items-center">                                                        
+                                                        <h3>{{expr}}</h3>
+                                                        <h3 class="lead">{{record_data[key]}}</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
+                                                    <h3 class="lead" style="overflow-wrap: anywhere;">{{expr_full}}</h3>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="grid-item">
+                                        {% endfor %}
+                                        <!-- <div class="grid-item">
                                           <div class="grid-item-content">
                                             2
                                             <p style="opacity: 0;">Expandxxxxxxxxxxo</p>
@@ -426,8 +439,8 @@
                                         </div>
                                         <div class="grid-item">
                                           <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                      </div>
+                                        </div> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>

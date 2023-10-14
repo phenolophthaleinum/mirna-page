@@ -10,7 +10,7 @@ grids.forEach((grid) => {
     itemSelector: '.grid-item',
     masonry: {
       columnWidth: 80,
-      gutter: 5,
+      gutter: 8,
       fitWidth: true
     }
   });
