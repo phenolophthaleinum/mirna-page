@@ -323,17 +323,21 @@
                                         {% set criterion_full = key.split("[")[0].strip() %}
                                             <div class="grid-item">
                                                 {% if record_data[key] != 0 %}
-                                                <div class="grid-item-content criterion-{{criterion}} row">
+                                                <div class="grid-item-content criterion-{{criterion}} row grid-container">
                                                 {% else %}
-                                                <div class="grid-item-content criterion-nan row">
+                                                <div class="grid-item-content criterion-nan row grid-container">
                                                 {% endif %}
-                                                    <div class="col">
-                                                        <div class="d-flex flex-column mt-1 align-items-center">                                                        
+                                                    <!-- <div class="col"> -->
+                                                        <!-- <div class="d-flex flex-column mt-1 align-items-center flex-grow-1">                                                         -->
+                                                        <div class="content-column">                                                        
                                                             <h3>{{criterion}}</h3>
                                                             <h3 class="lead">{{record_data[key]}}</h3>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-8 expandable" style="opacity: 0; scale: 0.5;">
+                                                    <!-- </div> -->
+                                                    <!-- <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
+                                                        <h3 class="lead">{{criterion_full}}</h3>
+                                                    </div> -->
+                                                    <div class="expandable" style="opacity: 0; scale: 0.5;">
                                                         <h3 class="lead">{{criterion_full}}</h3>
                                                     </div>
                                                     <!-- <div class="d-flex flex-column mt-1 align-items-center" style="opacity: 0;">                                                        
@@ -355,15 +359,22 @@
                                         {% set expr_full = key.split('(')[-1].strip(")")  %}
                                         <!-- {% set criterion_full = key.split("[")[0].strip() %} -->
                                         <div class="grid-item">
-                                            <div class="grid-item-content {{expr_value.lower()}} row">
-                                                <div class="col">
-                                                    <div class="d-flex flex-column mt-1 align-items-center">                                                        
+                                            <div class="grid-item-content {{expr_value.lower()}} row grid-container">
+                                                <!-- <div class="col"> -->
+                                                    <!-- <div class="d-flex flex-column mt-1 align-items-center">                                                        
+                                                        <h3>{{expr}}</h3>
+                                                        <h3 class="lead">{{record_data[key]}}</h3>
+                                                    </div> -->
+                                                    <div class="content-column">                                                        
                                                         <h3>{{expr}}</h3>
                                                         <h3 class="lead">{{record_data[key]}}</h3>
                                                     </div>
-                                                </div>
-                                                <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
+                                                <!-- </div> -->
+                                                <!-- <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
                                                     <h3 class="lead" style="overflow-wrap: anywhere;">{{expr_full}}</h3>
+                                                </div> -->
+                                                <div class="expandable" style="opacity: 0; scale: 0.5;">
+                                                    <h3 class="lead">{{expr_full}}</h3>
                                                 </div>
                                             </div>
                                         </div>

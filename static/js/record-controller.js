@@ -8,8 +8,10 @@ var grids = document.querySelectorAll('.iso-grid');
 grids.forEach((grid) => {
   var iso = new Isotope( grid, {
     itemSelector: '.grid-item',
+    stagger: 10,
+    // percentPosition: true,
     masonry: {
-      columnWidth: 80,
+      columnWidth: 20,
       gutter: 8,
       fitWidth: true
     }
@@ -24,6 +26,7 @@ grids.forEach((grid) => {
     var expandable = target.querySelector('.expandable');
     // console.log(childs.children)
     console.log(expandable);
+    target.style.gridTemplateColumns = '1fr';
     gsap.set(expandable, {
       css: {
           zIndex: -2
@@ -42,6 +45,7 @@ grids.forEach((grid) => {
     itemElem.classList.toggle('is-expanded');
 
     if (itemElem.classList.contains("is-expanded")){
+      target.style.gridTemplateColumns = '1fr 2fr';
       gsap.set(expandable, {
           css: {
               zIndex: 2
