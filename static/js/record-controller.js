@@ -4,6 +4,17 @@ document.getElementById("search-back-btn").addEventListener("click", () => {
 });
 
 var grids = document.querySelectorAll('.iso-grid');
+var big_grid = document.querySelector('.iso-grid-big')
+var big_iso = new Isotope(big_grid, {
+  itemSelector: '.grid-item',
+  stagger: 10,
+  // percentPosition: true,
+  masonry: {
+    columnWidth: 160,
+    gutter: 8,
+    fitWidth: true
+    }
+});
 // console.log(grid);
 grids.forEach((grid) => {
   var iso = new Isotope( grid, {

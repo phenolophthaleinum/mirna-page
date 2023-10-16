@@ -351,6 +351,43 @@
                             </div>
                             <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
                                 <div class="container-fluid">
+                                    <h2>Associassions with cancer hallmarks (Dhawan et al. 2018 Nat Commun)</h2>
+                                    <div class="iso-grid-big">
+                                        {% for key in hallmarks %}
+                                        {% set hallmark = key.split('(')[0].strip()%}
+                                        {% set hallmark_value = record_data[key] | string %}
+                                            <div class="grid-item">
+                                                <!-- {% if record_data[key] != 0 %} -->
+                                                <div class="grid-item-content-big {{hallmark_value.lower()}} row grid-container">
+                                                <!-- {% else %}
+                                                <div class="grid-item-content criterion-nan row grid-container">
+                                                {% endif %} -->
+                                                    <!-- <div class="col"> -->
+                                                        <!-- <div class="d-flex flex-column mt-1 align-items-center flex-grow-1">                                                         -->
+                                                        <div class="content-column">                                                        
+                                                            <h3 class="tile-fs">{{hallmark}}</h3>
+                                                            <h3 class="lead tile-fs">{{record_data[key]}}</h3>
+                                                        </div>
+                                                    <!-- </div> -->
+                                                    <!-- <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
+                                                        <h3 class="lead">{{criterion_full}}</h3>
+                                                    </div> -->
+
+                                                    <!-- <div class="expandable" style="opacity: 0; scale: 0.5;">
+                                                        <h3 class="lead">{{criterion_full}}</h3>
+                                                    </div> -->
+
+                                                    <!-- <div class="d-flex flex-column mt-1 align-items-center" style="opacity: 0;">                                                        
+                                                        <p>Expandxxxxxxxxxxo</p>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
+                                <div class="container-fluid">
                                     <h2>Differentially expressed in TCGA</h2>
                                     <div class="iso-grid">
                                         {% for key in diff_expr %}

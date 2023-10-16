@@ -64,13 +64,16 @@ def record_page(id):
         'cancer drivers POINTS [criterion VII]'
     ]
     diff_expr = [col for col in db[id.lower()].keys() if col.startswith('differentially expressed in TCGA')]
-    print(type(db['mir101-1']['cancer drivers POINTS [criterion VII]']))
-    print(db['mir101-1'].keys())
+    hallmarks = [col for col in db[id.lower()].keys() if any(substring in col.lower() for substring in ['hallmark_', 'hypoxia', 'immune', 'invasiveness', 'proliferation', 'apoptosis', 'angiogenesis'])]
+    # print(type(db['mir101-1']['cancer drivers POINTS [criterion VII]']))
+    # print(db['mir101-1'].keys())
+    print(hallmarks)
     return flask.render_template('record.html',
                                  record_id=id,
                                  record_data=db[id.lower()],
                                  cmc_criterions=cmc_criterions,
-                                 diff_expr=diff_expr)
+                                 diff_expr=diff_expr,
+                                 hallmarks=hallmarks)
 
 
 @app.route('/raw_data/<path:filename>', methods=['GET', 'POST'])
