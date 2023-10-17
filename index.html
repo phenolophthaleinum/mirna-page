@@ -261,9 +261,9 @@
                                 aria-selected="false">How to cite</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-refs-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-refs" type="button" role="tab" aria-controls="pills-refs"
-                                aria-selected="false">References</button>
+                            <button class="nav-link" id="pills-links-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-links" type="button" role="tab" aria-controls="pills-links"
+                                aria-selected="false">Links</button>
                         </li>
                     </ul>
                     <!-- <ul class="navbar-nav">
@@ -337,6 +337,32 @@
                     <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
                         <div class="container-fluid">
                             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
+                                <div class="col-lg-1">
+                                    <button class="btn-icon" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#train-hostInfo"
+                                            aria-expanded="false"
+                                            aria-controls="train-hostInfo">
+                                            <i class="bi bi-info-circle-fill btn btn-icon info-icon"></i>
+                                    </button>
+                                </div>
+                                <div class="col-lg-11">
+                                    <div class="collapse mb-3 flex-grow-1" id="train-hostInfo">
+                                        <div class="alert alert-info card card-body">
+                                            Search by: miRNA ID (e.g. MIR21), miRBase ID (e.g. hsa-mir-21), MirGeneDB ID (e.g. Hsa-Mir-21), miRNA ID (e.g. miR-21), miRNA strand (e.g. miR-21-5p) or mix. Values must be separated by comma or semicolon.
+                                            <div class="alert alert-warning d-flex align-items-center mt-3"
+                                                role="alert">
+                                                <i
+                                                    class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+                                                <div>
+                                                    Search is not case sensitive.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
                                 <div class="col-lg-11">
                                     <form class="was-validated mb-2" id="search-form">
                                         <!-- <input type="text" class="form-control" id="search-input" name="query" pattern="(.*, )+" required> -->
@@ -393,14 +419,37 @@
                             <h2>Download source tables</h2>
                             <hr class="border border-primary border-1 opacity-75 hor-ruler">
                             <!-- <p class="lead">All tables in .xlsx files.</p> -->
-                            <div class="d-grid gap-2 col-6">
+                            <div class="row">
+                                <div class="col-lg-6 d-grid gap-2">
+                                    <!-- <a class="btn-primary btn-lg d-flex bg-body-primary" href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}">
+                                        <i class="bi bi-download"></i>
+                                        <p>All characteristics of CMC miRNA genes</p>
+                                    </a> -->
+                                    <a href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}" class="text-decoration-none">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">All characteristics of CMC miRNA genes</h5>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                <i class="bi bi-download"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6 d-grid gap-2">
+                                    <a class="btn btn-primary btn-lg" href="{{ url_for('download', filename='summary_of_all_criteria_scores_and_CMC_classification.xlsx') }}">
+                                        <i class="bi bi-download"></i>
+                                        All criteria scores and CMC classification
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- <div class="d-grid gap-2 col-6">
                                 <a class="btn btn-primary btn-lg" href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}">
                                     All characteristics of CMC miRNA genes <div class="vr"></div> <i class="bi bi-download"></i>
                                 </a>
                                 <a class="btn btn-primary btn-lg" href="{{ url_for('download', filename='summary_of_all_criteria_scores_and_CMC_classification.xlsx') }}">
                                     All criteria scores and CMC classification <div class="vr"></div> <i class="bi bi-download"></i>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -431,9 +480,37 @@
                 tabindex="0">
                     ...
                 </div>
-                <div class="tab-pane fade" id="pills-refs" role="tabpanel" aria-labelledby="pills-refs-tab"
+                <div class="tab-pane fade" id="pills-links" role="tabpanel" aria-labelledby="pills-links-tab"
                 tabindex="0">
-                    ...
+                <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
+                    <div class="container-fluid">
+                        <h2>Links</h2>
+                        <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                        <h3>
+                            miRBAse <a href="https://www.mirbase.org/">https://www.mirbase.org/</a>
+                        </h3>
+                        <h3>
+                            MirGeneDB <a href="https://mirgenedb.org/">https://mirgenedb.org/</a>
+                        </h3>
+                        <h3>
+                            miRTarBase  <a href="https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2022/php/index.php">https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2022/php/index.php</a>
+                        </h3>
+                        <h3>
+                            miRCancer  <a href="http://mircancer.ecu.edu">http://mircancer.ecu.edu</a>
+                        </h3>
+                        <h3>
+                            dbDEMC  <a href="https://www.biosino.org/dbDEMC/index">https://www.biosino.org/dbDEMC/index</a>
+                        </h3>
+                        <h3>
+                            oncomiRDB  <a href="http://lifeome.net/database/oncomirdb/">http://lifeome.net/database/oncomirdb/</a>
+                        </h3>
+                        <h3>
+                            KEGG pathway map05206: ‘MicroRNAs in cancer’  <a href="https://www.genome.jp/entry/pathway+hsa05206">https://www.genome.jp/entry/pathway+hsa05206</a>
+                        </h3>
+                        <h3>
+                            The Cancer Genome Atlas (TCGA)  <a href="https://www.cancer.gov/ccg/research/genome-sequencing/tcga">https://www.cancer.gov/ccg/research/genome-sequencing/tcga</a>
+                        </h3>
+                    </div>
                 </div>
             </div>
         </div>
