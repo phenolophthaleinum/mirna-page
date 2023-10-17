@@ -157,6 +157,10 @@ table tr td .full-row-link {
   background-color: #ff0000;
 }
 
+.grid-item-content-big.updown {
+  background-color: #934D00;
+}
+
 /* .expandable {
   width: 100%;
   height: auto;
@@ -183,4 +187,14 @@ table tr td .full-row-link {
 .tile-fs {
   font-size: 1.1rem !important;
   text-align: center;
+}
+
+@media (min-width: 1200px) {
+  .content-column.h3, h3 {
+    font-size: 1.6rem;
+  }
+}
+
+.hor-ruler {
+  border-radius: 1px;
 }

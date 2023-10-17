@@ -23,7 +23,14 @@ def parse():
 
     # print(df.columns)
     df.set_index('miRNA gene ID (HUGO)', inplace=True)
+    hallmarks = [col for col in df.columns if any(substring in col.lower() for substring in ['hallmark_', 'hypoxia', 'immune', 'invasiveness', 'proliferation', 'apoptosis', 'angiogenesis'])]
+    # print(hallmarks)
     df[df.filter(like='criterion').columns] = df.filter(like='criterion').fillna(0)
+    df[df.filter(like='differentially expressed in TCGA').columns] = df.filter(like='differentially expressed in TCGA').fillna("N/D")
+    df[df.filter(like='miRNA targets').columns] = df.filter(like='miRNA targets').fillna("None")
+    df[hallmarks] = df[hallmarks].fillna("N/D")
+    df['oncogene (O)/tumor-suppressor (TS)'] = df['oncogene (O)/tumor-suppressor (TS)'].fillna("Not classified")
+    # df[df.filter(like='criterion').columns] = df.filter(like='criterion').fillna(0)
 
     # df.rename(columns={'background miRNA genes': "miRNA gene ID (HUGO)"}, inplace=True)
     # overlap_cols = df.columns.intersection(alias_df.columns)[1:]
