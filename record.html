@@ -311,14 +311,54 @@
                             </div>
                             <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
                                 <div class="container-fluid">
-                                    <h3><b>miRBase ID: </b> {{record_data['miRNA precursor/locus ID (miRBase)']}}</h3>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                              </thead>
+                                              <tbody>
+                                                <tr>
+                                                  <th scope="row">miRBase ID</th>
+                                                  <td>{{record_data['miRNA precursor/locus ID (miRBase)']}}</td>
+                                                </tr>
+                                                <tr>
+                                                  <th scope="row">MirGeneDB ID</th>
+                                                  <td>{{record_data['miRNA precursor/locus ID (MirGeneDB)']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">miRNA ID</th>
+                                                    <td>{{record_data['miRNA ID (miRBase)']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Predominant strand</th>
+                                                    <td>{{record_data['predominantly expressed miRNA (miRNA-strand balance)']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">CMC Score</th>
+                                                    <td>{{record_data['CMC score']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Oncogene (O)/ tumor suppressor (TS)</th>
+                                                    <td>{{record_data['oncogene (O)/tumor-suppressor (TS)']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Selected 5p miRNA targets (miRTarBase)</th>
+                                                    <td>{{record_data['top 5p miRNA targets (based on miRTarBase)']}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Selected 3p miRNA targets (miRTarBase)</th>
+                                                    <td>{{record_data['top 3p miRNA targets (based on miRTarBase)']}}</td>
+                                                </tr>
+                                              </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- <h3><b>miRBase ID: </b> {{record_data['miRNA precursor/locus ID (miRBase)']}}</h3>
                                     <h3><b>MirGeneDB ID:</b> {{record_data['miRNA precursor/locus ID (MirGeneDB)']}}</h3>
                                     <h3><b>miRNA ID:</b> {{record_data['miRNA ID (miRBase)']}}</h3>
                                     <h3><b>Predominant strand:</b> {{record_data['predominantly expressed miRNA (miRNA-strand balance)']}}</h3>
                                     <h3><b>CMC Score:</b> {{record_data['CMC score']}}</h3>
                                     <h3><b>Oncogene (O)/ tumor suppressor (TS):</b> {{record_data['oncogene (O)/tumor-suppressor (TS)']}}</h3>
                                     <h3><b>Selected 5p miRNA targets (miRTarBase):</b> {{record_data['top 5p miRNA targets (based on miRTarBase)']}}</h3>
-                                    <h3><b>Selected 3p miRNA targets (miRTarBase):</b> {{record_data['top 3p miRNA targets (based on miRTarBase)']}}</h3>
+                                    <h3><b>Selected 3p miRNA targets (miRTarBase):</b> {{record_data['top 3p miRNA targets (based on miRTarBase)']}}</h3> -->
                                 </div>
                             </div>
                             <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
@@ -361,6 +401,10 @@
                                 <div class="container-fluid">
                                     <h2>Associassions with cancer hallmarks <span class="lead">(Dhawan et al. 2018 Nat Commun)</span></h2>
                                     <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                                    <span class="badge rounded-pill down">Down</span>
+                                    <span class="badge rounded-pill up">Up</span>
+                                    <span class="badge rounded-pill updown">Up/Down</span>
+                                    <span class="badge rounded-pill nan" style="color: black;">No data</span>
                                     <div class="iso-grid-big pt-2">
                                         {% for key in hallmarks %}
                                         {% set hallmark = key.split('(')[0].strip()%}
@@ -376,7 +420,7 @@
                                                         <!-- <div class="d-flex flex-column mt-1 align-items-center flex-grow-1">                                                         -->
                                                         <div class="content-column">                                                        
                                                             <h3 class="tile-fs">{{hallmark}}</h3>
-                                                            <h3 class="lead tile-fs">{{record_data[key]}}</h3>
+                                                            <!-- <h3 class="lead tile-fs">{{record_data[key]}}</h3> -->
                                                         </div>
                                                     <!-- </div> -->
                                                     <!-- <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
@@ -400,6 +444,9 @@
                                 <div class="container-fluid">
                                     <h2>Differentially expressed in TCGA</h2>
                                     <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                                    <span class="badge rounded-pill down">Down</span>
+                                    <span class="badge rounded-pill up">Up</span>
+                                    <span class="badge rounded-pill nan" style="color: black;">No data</span>
                                     <div class="iso-grid pt-2">
                                         {% for key in diff_expr %}
                                         {% set expr = key.split("-")[-1].split(" ")[0] %}
@@ -415,7 +462,7 @@
                                                     </div> -->
                                                     <div class="content-column">                                                        
                                                         <h3>{{expr}}</h3>
-                                                        <h3 class="lead">{{record_data[key]}}</h3>
+                                                        <!-- <h3 class="lead">{{record_data[key]}}</h3> -->
                                                     </div>
                                                 <!-- </div> -->
                                                 <!-- <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
@@ -522,7 +569,11 @@
 
     <footer class="footer mt-auto py-3 bg-body-tertiary">
         <div class="container">
-            <span class="text-body-secondary">Place sticky footer content here.</span>
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
+                    <img src="{{ url_for('static', filename='img/ichb_wide_color_eng.svg') }}" class="img-fluid mx-auto d-block"/>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
