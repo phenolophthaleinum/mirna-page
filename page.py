@@ -23,7 +23,9 @@ def search_mirna():
         # data = flask.request.form
         data = flask.request.get_json(force=True)
         query_clear = re.sub(whites_pattern, '', data['query']).strip(",.;|-")
-        query_list = set(re.split(r',|;', query_clear.lower()))
+        query_list_temp = re.split(r',|;', query_clear.lower())
+        query_list = set([query.replace('-5p', '').replace('-3p', '') for query in query_list_temp])
+        print(query_list)
         result = defaultdict(set)
         for query in query_list:
             try:
