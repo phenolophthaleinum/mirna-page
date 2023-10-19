@@ -336,6 +336,7 @@
                                                     <th scope="row">CMC Score</th>
                                                     <td>{{record_data['CMC score']}}</td>
                                                 </tr>
+                                                {% if record_data['CMC/non-CMC'] == 'CMC' %}
                                                 <tr>
                                                     <th scope="row">Oncogene (O)/ tumor suppressor (TS)</th>
                                                     <td>{{record_data['oncogene (O)/tumor-suppressor (TS)']}}</td>
@@ -348,6 +349,7 @@
                                                     <th scope="row">Selected 3p miRNA targets (miRTarBase)</th>
                                                     <td>{{record_data['top 3p miRNA targets (based on miRTarBase)']}}</td>
                                                 </tr>
+                                                {% endif %}
                                               </tbody>
                                         </table>
                                     </div>
@@ -397,6 +399,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {% if record_data['CMC/non-CMC'] == 'CMC' %}
                             <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
                                 <div class="container-fluid">
                                     <h2>Associassions with cancer hallmarks <span class="lead">(Dhawan et al. 2018 Nat Commun)</span></h2>
@@ -549,6 +552,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     <!-- <div class="d-flex flex-wrap"> -->

@@ -56,17 +56,18 @@ def search_mirna():
 
 @app.route('/record/<id>')
 def record_page(id):
-    cmc_criterions = [
-        'miRCancer POINTS [criterion I]',
-        'dbDEMC POINTS [criterion II]',
-        'oncomiRDB POINTS [criterion III]',
-        'consistency of associations [criterion IV]',
-        'cancer hallmarks POINTS [criterion V]',
-        'KEGG "MicroRNAs in cancer" POINTS [criterion VI]',
-        'cancer drivers POINTS [criterion VII]'
-    ]
+    # cmc_criterions = [
+    #     'miRCancer POINTS [criterion I]',
+    #     'dbDEMC POINTS [criterion II]',
+    #     'oncomiRDB POINTS [criterion III]',
+    #     'consistency of associations [criterion IV]',
+    #     'cancer hallmarks POINTS [criterion V]',
+    #     'KEGG "MicroRNAs in cancer" POINTS [criterion VI]',
+    #     'cancer drivers POINTS [criterion VII]'
+    # ]
     diff_expr = [col for col in db[id.lower()].keys() if col.startswith('differentially expressed in TCGA')]
     hallmarks = [col for col in db[id.lower()].keys() if any(substring in col.lower() for substring in ['hallmark_', 'hypoxia', 'immune', 'invasiveness', 'proliferation', 'apoptosis', 'angiogenesis'])]
+    cmc_criterions = [col for col in db[id.lower()].keys() if "criterion" in col]
     # print(type(db['mir101-1']['cancer drivers POINTS [criterion VII]']))
     # print(db['mir101-1'].keys())
     print(hallmarks)
