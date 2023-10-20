@@ -56,23 +56,23 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
             data: saved_response[key],
             createdRow: function(row, data, dataIndex) {
                 // Only add the anchor element if the key is not "bad"
-                if (key != 'bad') {
-                    // Create a new anchor element
-                    var a = document.createElement('a');
-    
-                    // Set the href attribute to the desired URL
-                    a.href = '/record/' + data[0].split("<")[0]; // assuming data[0] is the record ID
-                    a.textContent = data[0];
-    
-                    // Add the full-row-link class
-                    a.classList.add('full-row-link');
-    
-                    // Append the anchor element to each cell in the row
-                    for (var i = 0; i < row.cells.length; i++) {
-                        row.cells[i].textContent = '';
-                        row.cells[i].appendChild(a.cloneNode(true));
-                    }
+                // if (key != 'bad') {
+                // Create a new anchor element
+                var a = document.createElement('a');
+
+                // Set the href attribute to the desired URL
+                a.href = '/record/' + data[0].split("<")[0]; // assuming data[0] is the record ID
+                a.textContent = data[0];
+
+                // Add the full-row-link class
+                a.classList.add('full-row-link');
+
+                // Append the anchor element to each cell in the row
+                for (var i = 0; i < row.cells.length; i++) {
+                    row.cells[i].textContent = '';
+                    row.cells[i].appendChild(a.cloneNode(true));
                 }
+                // }
             }
         });
         // if (key != 'bad') {
@@ -169,23 +169,23 @@ sForm.addEventListener('submit', (e)=>{
                     data: response[key],
                     createdRow: function(row, data, dataIndex) {
                         // Only add the anchor element if the key is not "bad"
-                        if (key != 'bad') {
-                            // Create a new anchor element
-                            var a = document.createElement('a');
-            
-                            // Set the href attribute to the desired URL
-                            a.href = '/record/' + data[0].split("<")[0]; // assuming data[0] is the record ID
-                            a.textContent = data[0];
+                        // if (key != 'bad') {
+                        // Create a new anchor element
+                        var a = document.createElement('a');
+        
+                        // Set the href attribute to the desired URL
+                        a.href = '/record/' + data[0].split("<")[0]; // assuming data[0] is the record ID
+                        a.textContent = data[0];
 
-                            // Add the full-row-link class
-                            a.classList.add('full-row-link');
+                        // Add the full-row-link class
+                        a.classList.add('full-row-link');
 
-                            // Append the anchor element to each cell in the row
-                            for (var i = 0; i < row.cells.length; i++) {
-                                row.cells[i].textContent = '';
-                                row.cells[i].appendChild(a.cloneNode(true));
-                            }
+                        // Append the anchor element to each cell in the row
+                        for (var i = 0; i < row.cells.length; i++) {
+                            row.cells[i].textContent = '';
+                            row.cells[i].appendChild(a.cloneNode(true));
                         }
+                        // }
                     }
                 });
                 // if (key != 'bad') {

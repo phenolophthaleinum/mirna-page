@@ -10,11 +10,15 @@ app = flask.Flask(__name__, template_folder='.')
 app.config['UPLOAD_FOLDER']='raw_data'
 
 whites_pattern = re.compile(r'\s+')
-db = std_read("mirna_table.pkl")
+master_db = std_read("mirna_table.pkl")
+db = master_db['data']
+db_version = master_db['version']
+
 
 @app.route('/')
 def index():
-    return flask.render_template('index.html')
+    return flask.render_template('index.html',
+                                 db_version=db_version)
 
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -32,20 +36,24 @@ def search_mirna():
                 db_rec = db[query]
                 # print(db_rec)
             except:
-                result['bad'].add(query)
+                # result['bad'].add(query)
                 continue
             if isinstance(db_rec, list):
                 for key in db.aliases[query]:
                     record = db[key]
                     if record['CMC/non-CMC'].startswith("CMC"):
                         result['CMC'].add(key.upper())
-                    else:
+                    elif record['CMC/non-CMC'].startswith("non-CMC"):
                         result['nCMC'].add(key.upper())
+                    else:
+                        result['bad'].add(key.upper())
                 continue
             if db_rec['CMC/non-CMC'].startswith("CMC"):
                 result['CMC'].add(query.upper())
-            else:
+            elif db_rec['CMC/non-CMC'].startswith("non-CMC"):
                 result['nCMC'].add(query.upper())
+            else:
+                result['bad'].add(query.upper())
         
         final_result =  {key: [[elem] for elem in value] for key, value in result.items()}
 
@@ -76,7 +84,8 @@ def record_page(id):
                                  record_data=db[id.lower()],
                                  cmc_criterions=cmc_criterions,
                                  diff_expr=diff_expr,
-                                 hallmarks=hallmarks)
+                                 hallmarks=hallmarks,
+                                 db_version=db_version)
 
 
 @app.route('/raw_data/<path:filename>', methods=['GET', 'POST'])

@@ -4,6 +4,7 @@ import dill
 from utils import AliasedDict
 import json
 import pprint as p
+import datetime
 
 dill.settings['recurse'] = True
 
@@ -31,6 +32,9 @@ def parse():
     base_df[base_df.filter(like='miRNA targets').columns] = base_df.filter(like='miRNA targets').fillna("-")
     base_df[hallmarks] = base_df[hallmarks].fillna("-")
     base_df['oncogene (O)/tumor-suppressor (TS)'] = base_df['oncogene (O)/tumor-suppressor (TS)'].fillna("Not classified")
+    base_df['CMC score'] = base_df['CMC score'].fillna(0)
+    base_df["CMC/non-CMC"] = base_df["CMC/non-CMC"].apply(str)
+    print(base_df["CMC/non-CMC"].dtype)
     # df[df.filter(like='criterion').columns] = df.filter(like='criterion').fillna(0)
 
     # df.rename(columns={'background miRNA genes': "miRNA gene ID (HUGO)"}, inplace=True)
@@ -77,10 +81,15 @@ def parse():
     # exit()
     p.pprint(adb)
     p.pprint(base_df)
+    p.pprint(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
+    master = {
+        'data': adb,
+        'version': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    }
     # save to dill
     with open("mirna_table.pkl", 'wb') as f:
-        dill.dump(adb, f)
+        dill.dump(master, f)
     #     f.write(dill.dumps(adb))
     # return dill.dumps(adb)
         # dill.dump((dict(adb), adb.aliases), f)
@@ -103,6 +112,6 @@ def read_db(filename: str):
 
 def std_read(filename: str):
     with open(filename, 'rb') as f:
-        adict = dill.load(f)
+        master = dill.load(f)
         # print(adict.aliases)
-        return adict
+        return master

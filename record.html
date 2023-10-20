@@ -22,6 +22,18 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap" rel="stylesheet">
     
     
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
@@ -188,71 +200,80 @@
     </div>
 
     <main>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="{{ url_for('static', filename='img/cmc_abbr.svg') }}" width="200" height="45"/>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <!-- <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                aria-selected="true">Search</button> -->
-                                <a class="nav-link" href="/" role="button">New search</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <!-- <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                aria-selected="false">Download</button> -->
-                                <a class="nav-link" href="/?tab=pills-profile-tab" role="button">Download</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <!-- <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                aria-selected="false">Contact</button> -->
-                            <a class="nav-link" href="/?tab=pills-authors-tab" role="button">Authors</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="/?tab=pills-cite-tab" role="button">How to cite</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="/?tab=pills-links-tab" role="button">Links</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <!-- <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                aria-selected="true">Search</button> -->
-                                <a class="nav-link active" href="#" role="button">Record</a>
-                        </li>
-                    </ul>
-                    <!-- <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown link
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul> -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-nav">
+            <div class="container-fluid mt-1" style="display: flow-root;">
+                <div class="d-flex justify-content-between align-items-baseline">
+                    <a class="navbar-brand" href="#">
+                        <img src="{{ url_for('static', filename='img/cmc_abbr.svg') }}" width="200" height="45"/>
+                        <img src="{{ url_for('static', filename='img/cmc_logo.svg') }}" width="100" height="45"/>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="container-fluid mt-3 bg-body-tertiary rounded-3 shadow-override">
+                    <div class="collapse navbar-collapse justify-content-between align-items-baseline pt-2 pb-2" id="navbarNavDropdown">
+                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <!-- <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">Search</button> -->
+                                    <a class="nav-link" href="/" role="button">New search</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <!-- <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                    aria-selected="false">Download</button> -->
+                                    <a class="nav-link" href="/?tab=pills-profile-tab" role="button">Download</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <!-- <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                                    aria-selected="false">Contact</button> -->
+                                <a class="nav-link" href="/?tab=pills-authors-tab" role="button">Authors</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="/?tab=pills-cite-tab" role="button">How to cite</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="/?tab=pills-links-tab" role="button">Links</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <!-- <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">Search</button> -->
+                                    <a class="nav-link active" href="#" role="button">Record</a>
+                            </li>
+                        </ul>
+                        <div class="flex-shrink-1" style="margin-top: 0.5rem;">
+                            <span class="badge text-bg-light">Database version: {{db_version}}</span>
+                            <!-- <p class="">Database version: 19 Oct 2023</p> -->
+                        </div>
+                        <!-- <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pricing</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Dropdown link
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul> -->
+                    </div>
                 </div>
             </div>
         </nav>
@@ -295,10 +316,10 @@
                 </div>
             </header>
         </div> -->
-        <div class="container special-padding">
+        <div class="container special-padding-top">
             <!-- <div class="tab-content" id="pills-tabContent"> -->
                 <!-- <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"> -->
-                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
+                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
                         <div class="container-fluid">
                             <div class="d-flex justify-content-between">
                                 <h2 class="display-2">{{record_id}}</h2>
@@ -309,7 +330,7 @@
                                     <p class="lead fs-6">Back to search results</p>
                                 </div>
                             </div>
-                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
+                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
                                 <div class="container-fluid">
                                     <div class="table-responsive">
                                         <table class="table">
@@ -318,15 +339,15 @@
                                               <tbody>
                                                 <tr>
                                                   <th scope="row">miRBase ID</th>
-                                                  <td>{{record_data['miRNA precursor/locus ID (miRBase)']}}</td>
+                                                  <td>{{record_data['all miRNA precursors/loci (miRBase ID)']}}</td>
                                                 </tr>
                                                 <tr>
                                                   <th scope="row">MirGeneDB ID</th>
-                                                  <td>{{record_data['miRNA precursor/locus ID (MirGeneDB)']}}</td>
+                                                  <td>{{record_data['miRNA genes annotated in MirGeneDB (MirGeneDB ID)']}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">miRNA ID</th>
-                                                    <td>{{record_data['miRNA ID (miRBase)']}}</td>
+                                                    <td>{{record_data['miRNA ID']}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">Predominant strand</th>
@@ -363,7 +384,7 @@
                                     <h3><b>Selected 3p miRNA targets (miRTarBase):</b> {{record_data['top 3p miRNA targets (based on miRTarBase)']}}</h3> -->
                                 </div>
                             </div>
-                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
+                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
                                 <div class="container-fluid">
                                     <h2>CMC criterion points</h2>
                                     <hr class="border border-primary border-1 opacity-75 hor-ruler">
@@ -400,7 +421,7 @@
                                 </div>
                             </div>
                             {% if record_data['CMC/non-CMC'] == 'CMC' %}
-                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
+                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
                                 <div class="container-fluid">
                                     <h2>Associassions with cancer hallmarks <span class="lead">(Dhawan et al. 2018 Nat Commun)</span></h2>
                                     <hr class="border border-primary border-1 opacity-75 hor-ruler">
@@ -443,7 +464,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow">
+                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
                                 <div class="container-fluid">
                                     <h2>Differentially expressed in TCGA</h2>
                                     <hr class="border border-primary border-1 opacity-75 hor-ruler">

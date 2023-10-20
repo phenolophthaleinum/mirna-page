@@ -1,3 +1,7 @@
+* {
+  font-family: 'Roboto Flex', sans-serif;
+}
+
 .special-padding {
     padding: 70px;
 }
@@ -77,7 +81,7 @@ table tr td .full-row-link {
   background: #ffffff;
   border: 2px solid #333;
   border-color: rgba(13, 110, 253, 0.7);
-  /* border-radius: 10px; */
+  border-radius: 5px;
   /* -webkit-transition: width 0.4s, height 0.4s;
       -moz-transition: width 0.4s, height 0.4s;
         -o-transition: width 0.4s, height 0.4s;
@@ -209,4 +213,30 @@ table tr td .full-row-link {
 
 .table{
   --bs-table-bg: transparent !important;
+}
+
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.special-padding-top {
+  padding-top: 2rem;
+}
+
+.shadow-override {
+  box-shadow: 0 .1rem 1.5rem rgba(0,0,0,.15)!important;
+}
+
+.nav-item {
+  border-radius: 5px;
+  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  font-weight: 700;
+}
+
+.nav-item:hover{
+  background-color: rgba(13, 110, 253, 0.1);
 }
