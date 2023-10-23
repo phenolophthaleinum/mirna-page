@@ -336,7 +336,7 @@
                                         <table class="table">
                                             <thead>
                                               </thead>
-                                              <tbody>
+                                              <tbody class="plain-table">
                                                 <tr>
                                                   <th scope="row">miRBase ID</th>
                                                   <td>{{record_data['all miRNA precursors/loci (miRBase ID)']}}</td>
@@ -428,7 +428,7 @@
                                     <span class="badge rounded-pill down">Down</span>
                                     <span class="badge rounded-pill up">Up</span>
                                     <span class="badge rounded-pill updown">Up/Down</span>
-                                    <span class="badge rounded-pill nan" style="color: black;">No data</span>
+                                    <span class="badge rounded-pill nan" style="color: black;">No associations</span>
                                     <div class="iso-grid-big pt-2">
                                         {% for key in hallmarks %}
                                         {% set hallmark = key.split('(')[0].strip()%}
@@ -470,7 +470,7 @@
                                     <hr class="border border-primary border-1 opacity-75 hor-ruler">
                                     <span class="badge rounded-pill down">Down</span>
                                     <span class="badge rounded-pill up">Up</span>
-                                    <span class="badge rounded-pill nan" style="color: black;">No data</span>
+                                    <span class="badge rounded-pill nan" style="color: black;">No associations</span>
                                     <div class="iso-grid pt-2">
                                         {% for key in diff_expr %}
                                         {% set expr = key.split("-")[-1].split(" ")[0] %}
