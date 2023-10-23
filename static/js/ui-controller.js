@@ -39,6 +39,17 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
         tables[key] = new DataTable(`#${key}-table`, {
             responsive: true,
             fixedHeader: true,
+            language: {
+                // infoEmpty: "No records found"
+                zeroRecords: `<div class="alert alert-warning d-flex align-items-center mt-3"
+                role="alert">
+                <i
+                    class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+                <div>
+                    No matching results found.
+                </div>
+            </div>`
+            },
             // stateSave: true,
             // stateSaveCallback: function(settings, data) {
             //     localStorage.setItem('DataTables_' + settings.sInstance, JSON.stringify(data));
@@ -150,7 +161,14 @@ sForm.addEventListener('submit', (e)=>{
                     fixedHeader: true,
                     language: {
                         // infoEmpty: "No records found"
-                        zeroRecords: "No matching records found"
+                        zeroRecords: `<div class="alert alert-warning d-flex align-items-center mt-3"
+                        role="alert">
+                        <i
+                            class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+                        <div>
+                            No matching results found.
+                        </div>
+                    </div>`
                     },
                     // stateSave: true,
                     // stateSaveCallback: function(settings, data) {

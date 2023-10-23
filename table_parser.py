@@ -33,6 +33,7 @@ def parse():
     base_df[hallmarks] = base_df[hallmarks].fillna("-")
     base_df['oncogene (O)/tumor-suppressor (TS)'] = base_df['oncogene (O)/tumor-suppressor (TS)'].fillna("Not classified")
     base_df['CMC score'] = base_df['CMC score'].fillna(0)
+    base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']] = base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']].fillna('-')
     base_df["CMC/non-CMC"] = base_df["CMC/non-CMC"].apply(str)
     print(base_df["CMC/non-CMC"].dtype)
     # df[df.filter(like='criterion').columns] = df.filter(like='criterion').fillna(0)

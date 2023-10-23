@@ -259,7 +259,12 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                        aria-selected="true">Search</button>
+                                        aria-selected="true">Home</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-search-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-search" type="button" role="tab" aria-controls="pills-search"
+                                        aria-selected="false">Search</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
@@ -358,7 +363,25 @@
                     tabindex="0">
                     <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
                         <div class="container-fluid">
-                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <h2 class="display-4">CMC: Cancer miRNA Census</h2>
+                                <h3 class="lead">- a curated list of cancer-associated miRNA genes</h3>
+                            </div>
+                            <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                            <div class="d-grid gap-2 col-6 mx-auto mb-4">
+                                <a class="btn btn-primary btn-lg" href="/?tab=pills-search-tab" role="button">Search</a>
+                            </div>
+                                    <!-- /?tab=pills-profile-tab -->
+                            <!-- <img src="static/img/home_dark.svg" width="1200" class="img-fluid mx-auto d-block"/> -->
+                            <img src="static/img/home_light.svg" width="1200" class="img-fluid mx-auto d-block"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-search" role="tabpanel" aria-labelledby="pills-search-tab"
+                    tabindex="0">
+                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
+                        <div class="container-fluid">
+                            <!-- <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
                                 <div class="col-lg-1">
                                     <button class="btn-icon" type="button"
                                             data-bs-toggle="collapse"
@@ -371,6 +394,34 @@
                                 <div class="col-lg-11">
                                     <div class="collapse mb-3 flex-grow-1" id="train-hostInfo">
                                         <div class="alert alert-info card card-body">
+                                            Search by: miRNA ID (e.g. MIR21), miRBase ID (e.g. hsa-mir-21), MirGeneDB ID (e.g. Hsa-Mir-21), miRNA ID (e.g. miR-21), miRNA strand (e.g. miR-21-5p) or mix. Values must be separated by comma or semicolon.
+                                            <div class="alert alert-warning d-flex align-items-center mt-3"
+                                                role="alert">
+                                                <i
+                                                    class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+                                                <div>
+                                                    Search is not case sensitive.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
+                                <div class="col-lg-12">
+                                    <div class="d-flex flex-row align-items-start alert alert-info card card-body"
+                                    style="background-color: rgba(207, 244, 252, 0);">
+                                        <!-- <div class="d-flex"> -->
+                                            <button class="btn-icon" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#train-hostInfo"
+                                            aria-expanded="false"
+                                            aria-controls="train-hostInfo">
+                                                <i class="bi bi-info-circle-fill btn btn-icon info-icon"></i>
+                                            </button>
+                                            <!-- <p>Search info</p> -->
+                                        <!-- </div> -->
+                                        <div class="collapse flex-grow-1" id="train-hostInfo">
                                             Search by: miRNA ID (e.g. MIR21), miRBase ID (e.g. hsa-mir-21), MirGeneDB ID (e.g. Hsa-Mir-21), miRNA ID (e.g. miR-21), miRNA strand (e.g. miR-21-5p) or mix. Values must be separated by comma or semicolon.
                                             <div class="alert alert-warning d-flex align-items-center mt-3"
                                                 role="alert">
@@ -441,28 +492,47 @@
                             <h2>Download source tables</h2>
                             <hr class="border border-primary border-1 opacity-75 hor-ruler">
                             <!-- <p class="lead">All tables in .xlsx files.</p> -->
-                            <div class="row">
-                                <div class="col-lg-6 d-grid gap-2">
+                            <div class="row g-3">
+                                <div class="col-lg-6">
                                     <!-- <a class="btn-primary btn-lg d-flex bg-body-primary" href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}">
                                         <i class="bi bi-download"></i>
                                         <p>All characteristics of CMC miRNA genes</p>
                                     </a> -->
-                                    <a href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}" class="text-decoration-none">
-                                        <div class="card">
+                                    <a href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}" class="text-decoration-none" style="pointer-events: all;">
+                                        <div class="card btn btn-primary" style="height: 100%;">
                                             <div class="card-body">
                                                 <h5 class="card-title">All characteristics of CMC miRNA genes</h5>
-                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <i class="bi bi-download"></i>
+                                                <p class="card-text">Supplementary Table S9. Summary of all characteristics of CMC miRNA genes.</p>
+                                                <div class="d-flex justify-content-end">
+                                                    <i class="bi bi-download"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-lg-6 d-grid gap-2">
+                                <div class="col-lg-6">
+                                    <!-- <a class="btn-primary btn-lg d-flex bg-body-primary" href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}">
+                                        <i class="bi bi-download"></i>
+                                        <p>All characteristics of CMC miRNA genes</p>
+                                    </a> -->
+                                    <a href="{{ url_for('download', filename='summary_of_all_criteria_scores_and_CMC_classification.xlsx') }}" class="text-decoration-none">
+                                        <div class="card btn btn-primary" style="height: 100%;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">All criteria scores and CMC classification</h5>
+                                                <p class="card-text">Supplementary Table S4. Summary of all criteria scores and CMC classification.</p>
+                                                <div class="d-flex justify-content-end">
+                                                    <i class="bi bi-download"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- <div class="col-lg-6 d-grid gap-2">
                                     <a class="btn btn-primary btn-lg" href="{{ url_for('download', filename='summary_of_all_criteria_scores_and_CMC_classification.xlsx') }}">
                                         <i class="bi bi-download"></i>
                                         All criteria scores and CMC classification
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                             <!-- <div class="d-grid gap-2 col-6">
                                 <a class="btn btn-primary btn-lg" href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}">
@@ -491,15 +561,50 @@
                             <h3>Piotr Kozlowski</h3>
                             <h2 class="pt-4">Contact</h2>
                             <hr class="border border-primary border-1 opacity-75 hor-ruler">
-                            <h3><b>Tel:</b> +48 618528503 ext. 1261</h3>
+                            <div class="row g-3">
+                                <div class="col-lg-4">
+                                    <div class="card" style="height: 100%;">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-start align-items-baseline">
+                                                <i class="bi bi-telephone fs-3" style="padding-right: 10px;"></i>
+                                                <h4 class="card-title">Telephone</h4>
+                                            </div>
+                                            <h5 class="card-text my-3">+48 618528503 ext. 1261</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card" style="height: 100%;">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-start align-items-baseline">
+                                                <i class="bi bi-printer fs-3" style="padding-right: 10px;"></i>
+                                                <h4 class="card-title">Fax</h4>
+                                            </div>
+                                            <h5 class="card-text my-3">+48 618520532</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card" style="height: 100%;">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-start align-items-baseline">
+                                                <i class="bi bi-envelope fs-3" style="padding-right: 10px;"></i>
+                                                <h4 class="card-title">Email</h4>
+                                            </div>
+                                            <h5 class="card-text my-3"><a href="mailto:kozlowp@ibch.poznan.pl">kozlowp@ibch.poznan.pl</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <h3><b>Tel:</b> +48 618528503 ext. 1261</h3>
                             <h3><b>Fax:</b> +48 618520532</h3>
-                            <h3><b>Email:</b> <a href="mailto:kozlowp@ibch.poznan.pl">kozlowp@ibch.poznan.pl</a></h3>
+                            <h3><b>Email:</b> <a href="mailto:kozlowp@ibch.poznan.pl">kozlowp@ibch.poznan.pl</a></h3> -->
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-cite" role="tabpanel" aria-labelledby="pills-cite-tab"
                 tabindex="0">
-                    ...
+                    <h3>To be added upon publication</h3>
                 </div>
                 <div class="tab-pane fade" id="pills-links" role="tabpanel" aria-labelledby="pills-links-tab"
                 tabindex="0">
