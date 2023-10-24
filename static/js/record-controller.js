@@ -10,7 +10,7 @@ var big_iso = new Isotope(big_grid, {
   stagger: 10,
   // percentPosition: true,
   masonry: {
-    columnWidth: 200,
+    columnWidth: 150,
     gutter: 8,
     fitWidth: true
     }

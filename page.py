@@ -36,7 +36,7 @@ def search_mirna():
                 db_rec = db[query]
                 # print(db_rec)
             except:
-                # result['bad'].add(query)
+                result['bad'].add(query)
                 continue
             if isinstance(db_rec, list):
                 for key in db.aliases[query]:

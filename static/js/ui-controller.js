@@ -39,14 +39,15 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
         tables[key] = new DataTable(`#${key}-table`, {
             responsive: true,
             fixedHeader: true,
+            "searching": false,
             language: {
                 // infoEmpty: "No records found"
-                zeroRecords: `<div class="alert alert-warning d-flex align-items-center mt-3"
+                zeroRecords: `<div class="alert alert-warning d-flex align-items-center  mt-2 alert-override"
                 role="alert">
                 <i
                     class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
                 <div>
-                    No matching results found.
+                    miRNA ID not found.
                 </div>
             </div>`
             },
@@ -65,7 +66,7 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
             // columns: response['bad'].map((e)=> {return {title: 'ID', data: e}}),
             // data: value,
             data: saved_response[key],
-            createdRow: function(row, data, dataIndex) {
+            createdRow: async function(row, data, dataIndex) {
                 // Only add the anchor element if the key is not "bad"
                 // if (key != 'bad') {
                 // Create a new anchor element
@@ -73,6 +74,24 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
 
                 // Set the href attribute to the desired URL
                 a.href = '/record/' + data[0].split("<")[0]; // assuming data[0] is the record ID
+                // a.textContent = data[0];
+                // try {
+                //     const response = await fetch(a.href);
+                //     if (!response.ok) {
+                //         throw new Error('Network response was not ok');
+                //     }
+            
+                //     // Add the full-row-link class
+                //     a.classList.add('full-row-link');
+            
+                //     // Append the anchor element to each cell in the row
+                //     for (var i = 0; i < row.cells.length; i++) {
+                //         row.cells[i].textContent = '';
+                //         row.cells[i].appendChild(a.cloneNode(true));
+                //     }
+                // } catch (error) {
+                //     console.error('There has been a problem with your fetch operation:', error);
+                // }
                 a.textContent = data[0];
 
                 // Add the full-row-link class
@@ -159,14 +178,15 @@ sForm.addEventListener('submit', (e)=>{
                 tables[key] = new DataTable(`#${key}-table`, {
                     responsive: true,
                     fixedHeader: true,
+                    "searching": false,
                     language: {
                         // infoEmpty: "No records found"
-                        zeroRecords: `<div class="alert alert-warning d-flex align-items-center mt-3"
+                        zeroRecords: `<div class="alert alert-warning d-flex align-items-center mt-2 alert-override"
                         role="alert">
                         <i
                             class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
                         <div>
-                            No matching results found.
+                            miRNA ID not found.
                         </div>
                     </div>`
                     },

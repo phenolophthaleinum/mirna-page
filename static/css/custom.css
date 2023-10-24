@@ -13,7 +13,8 @@ tbody tr > td {
 }
 
 tbody tr:hover > td{
-    background: rgb(113, 44, 249, 0.2);
+    /* background: rgb(113, 44, 249, 0.2); */
+    background: rgba(13, 110, 253, 0.3);
     transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
     font-size: 110%;
 }
@@ -59,6 +60,36 @@ table tr td .full-row-link {
     border: none;
 }
 
+.btn-icon:hover {
+  background-color: transparent;
+}
+
+.btn-icon:focus-visible {
+  outline: none;
+}
+
+.btn-override {
+  --bs-btn-padding-y: 0.075rem;
+}
+
+.mail-icon {
+  font-size: larger;
+  color: rgba(13, 110, 253, 1);
+}
+
+.info-icon {
+  font-size: large;
+  color: rgba(13, 110, 253, 1);
+}
+
+.mail-icon:hover, .info-icon:hover {
+  color: rgba(13, 110, 253, 0.3);
+}
+
+.mail-icon:active, .info-icon:active {
+  color: rgba(10, 63, 143, 0.6)!important;
+}
+
 .iso-grid {
   margin: 0 auto;
 }
@@ -77,7 +108,7 @@ table tr td .full-row-link {
 }
 
 .grid-item-content-big {
-  width: 200px;
+  width: 150px;
   /* width: 20%; */
   height: 80px;
 }
@@ -213,6 +244,7 @@ table tr td .full-row-link {
 .tile-fs {
   font-size: 1.1rem !important;
   text-align: center;
+  word-break: keep-all;
 }
 
 @media (min-width: 1200px) {
@@ -245,6 +277,10 @@ table tr td .full-row-link {
   box-shadow: 0 .1rem 1.5rem rgba(0,0,0,.15)!important;
 }
 
+.no-border {
+  border: transparent;
+}
+
 .nav-item {
   border-radius: 5px;
   transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
@@ -257,7 +293,7 @@ table tr td .full-row-link {
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
   border-radius: 8px;
-  background: rgba(13, 110, 253, 0.7);
+  background: rgba(13, 110, 253, 1);
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
@@ -276,4 +312,10 @@ table tr td .full-row-link {
 
 .dataTables_wrapper .dataTables_length select {
   border-radius: 8px;
+}
+
+.alert-override {
+  --bs-alert-padding-x: 0.4rem;
+  --bs-alert-padding-y: 0.4rem;
+  --bs-alert-margin-bottom: 0.5rem;
 }
