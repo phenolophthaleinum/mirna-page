@@ -46,14 +46,15 @@ def search_mirna():
                     elif record['CMC/non-CMC'].startswith("non-CMC"):
                         result['nCMC'].add(key.upper())
                     else:
-                        result['bad'].add(key.upper())
+                        result['nc'].add(key.upper())
                 continue
             if db_rec['CMC/non-CMC'].startswith("CMC"):
                 result['CMC'].add(query.upper())
             elif db_rec['CMC/non-CMC'].startswith("non-CMC"):
                 result['nCMC'].add(query.upper())
             else:
-                result['bad'].add(query.upper())
+                result['nc'].add(query.upper())
+        result['nc'].update(result['bad'])
         
         final_result =  {key: [[elem] for elem in value] for key, value in result.items()}
 

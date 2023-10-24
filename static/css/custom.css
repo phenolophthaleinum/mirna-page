@@ -319,3 +319,8 @@ table tr td .full-row-link {
   --bs-alert-padding-y: 0.4rem;
   --bs-alert-margin-bottom: 0.5rem;
 }
+
+.alert-bad {
+  --bs-alert-margin-bottom: 0.0rem;
+  --bs-alert-padding-y: 0.05rem;
+}

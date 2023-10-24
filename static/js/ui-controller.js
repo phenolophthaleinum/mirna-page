@@ -4,7 +4,7 @@ var sForm = document.getElementById("search-form");
 // var cmcTable = null;
 // var ncmcTable = null;
 var tables = {
-    'bad': null,
+    'nc': null,
     'CMC': null,
     'nCMC': null
 }
@@ -66,43 +66,54 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
             // columns: response['bad'].map((e)=> {return {title: 'ID', data: e}}),
             // data: value,
             data: saved_response[key],
-            createdRow: async function(row, data, dataIndex) {
-                // Only add the anchor element if the key is not "bad"
-                // if (key != 'bad') {
+            createdRow: function(row, data, dataIndex) {
                 // Create a new anchor element
                 var a = document.createElement('a');
-
+            
                 // Set the href attribute to the desired URL
                 a.href = '/record/' + data[0].split("<")[0]; // assuming data[0] is the record ID
-                // a.textContent = data[0];
-                // try {
-                //     const response = await fetch(a.href);
-                //     if (!response.ok) {
-                //         throw new Error('Network response was not ok');
-                //     }
-            
-                //     // Add the full-row-link class
-                //     a.classList.add('full-row-link');
-            
-                //     // Append the anchor element to each cell in the row
-                //     for (var i = 0; i < row.cells.length; i++) {
-                //         row.cells[i].textContent = '';
-                //         row.cells[i].appendChild(a.cloneNode(true));
-                //     }
-                // } catch (error) {
-                //     console.error('There has been a problem with your fetch operation:', error);
-                // }
                 a.textContent = data[0];
-
+            
                 // Add the full-row-link class
                 a.classList.add('full-row-link');
-
-                // Append the anchor element to each cell in the row
+            
+                // Create a new div element for the alert
+                var div = document.createElement('div');
+                div.className = 'alert alert-warning alert-override alert-bad ';
+                div.role = 'alert';
+                div.innerHTML = '<i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>ID not identified';
+            
+                // Append the anchor element or alert to each cell in the row
                 for (var i = 0; i < row.cells.length; i++) {
                     row.cells[i].textContent = '';
-                    row.cells[i].appendChild(a.cloneNode(true));
+                    if (key != 'nc') {
+                        row.cells[i].appendChild(a.cloneNode(true));
+                    } else if (!saved_response['bad'].some(sub => sub.includes(data[0]))) {
+                        // row.cells[i].textContent = data[0];
+                        row.cells[i].appendChild(a.cloneNode(true));
+                    } else if (saved_response['bad'].some(sub => sub.includes(data[0]))) {
+                         // Create a new div element for the wrapper
+                        var wrapper = document.createElement('div');
+                        wrapper.style.display = 'flex';
+                        wrapper.style.alignItems = 'baseline';
+                        wrapper.style.justifyContent = "space-between"
+
+                        // Create a new text node for the data
+                        var text = document.createTextNode(data[0]);
+
+                        // Append the text and alert to the wrapper
+                        wrapper.appendChild(text);
+                        wrapper.appendChild(div.cloneNode(true));
+
+                        // Set the cell's content to the wrapper
+                        row.cells[i].textContent = '';
+                        row.cells[i].appendChild(wrapper);
+                        // row.cells[i].textContent = data[0];
+                        // console.log(`${data[0]} was bad`)
+                        // row.cells[i].appendChild(div.cloneNode(true));
+
+                    }
                 }
-                // }
             }
         });
         // if (key != 'bad') {
@@ -206,24 +217,53 @@ sForm.addEventListener('submit', (e)=>{
                     // data: value,
                     data: response[key],
                     createdRow: function(row, data, dataIndex) {
-                        // Only add the anchor element if the key is not "bad"
-                        // if (key != 'bad') {
                         // Create a new anchor element
                         var a = document.createElement('a');
-        
+                    
                         // Set the href attribute to the desired URL
                         a.href = '/record/' + data[0].split("<")[0]; // assuming data[0] is the record ID
                         a.textContent = data[0];
-
+                    
                         // Add the full-row-link class
                         a.classList.add('full-row-link');
-
-                        // Append the anchor element to each cell in the row
+                    
+                        // Create a new div element for the alert
+                        var div = document.createElement('div');
+                        div.className = 'alert alert-warning alert-override alert-bad ';
+                        div.role = 'alert';
+                        div.innerHTML = '<i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>ID not identified';
+                    
+                        // Append the anchor element or alert to each cell in the row
                         for (var i = 0; i < row.cells.length; i++) {
                             row.cells[i].textContent = '';
-                            row.cells[i].appendChild(a.cloneNode(true));
+                            if (key != 'nc') {
+                                row.cells[i].appendChild(a.cloneNode(true));
+                            } else if (!response['bad'].some(sub => sub.includes(data[0]))) {
+                                // row.cells[i].textContent = data[0];
+                                row.cells[i].appendChild(a.cloneNode(true));
+                            } else if (response['bad'].some(sub => sub.includes(data[0]))) {
+                                 // Create a new div element for the wrapper
+                                var wrapper = document.createElement('div');
+                                wrapper.style.display = 'flex';
+                                wrapper.style.alignItems = 'baseline';
+                                wrapper.style.justifyContent = "space-between"
+
+                                // Create a new text node for the data
+                                var text = document.createTextNode(data[0]);
+
+                                // Append the text and alert to the wrapper
+                                wrapper.appendChild(text);
+                                wrapper.appendChild(div.cloneNode(true));
+
+                                // Set the cell's content to the wrapper
+                                row.cells[i].textContent = '';
+                                row.cells[i].appendChild(wrapper);
+                                // row.cells[i].textContent = data[0];
+                                // console.log(`${data[0]} was bad`)
+                                // row.cells[i].appendChild(div.cloneNode(true));
+
+                            }
                         }
-                        // }
                     }
                 });
                 // if (key != 'bad') {
