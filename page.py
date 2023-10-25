@@ -27,15 +27,20 @@ def search_mirna():
         # data = flask.request.form
         data = flask.request.get_json(force=True)
         query_clear = re.sub(whites_pattern, '', data['query']).strip(",.;|-")
-        query_list_temp = re.split(r',|;', query_clear.lower())
+        print(query_clear)
+        query_list_temp = [query for query in re.split(r',|;', query_clear.lower()) if query]
+        print(query_list_temp)
         query_list = set([query.replace('-5p', '').replace('-3p', '') for query in query_list_temp])
+        print(query_list)
         print(query_list)
         result = defaultdict(set)
         for query in query_list:
             try:
                 db_rec = db[query]
-                # print(db_rec)
+
+                print(db_rec)
             except:
+                print("in bad")
                 result['bad'].add(query)
                 continue
             if isinstance(db_rec, list):

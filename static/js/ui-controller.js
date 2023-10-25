@@ -25,6 +25,8 @@ window.onload = function() {
 let navigationEntry = performance.getEntriesByType("navigation")[0];
 if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward" || location.hash == '#search_results')) {
     console.log("true");
+    var clickEvent = new Event('click');
+    document.getElementById('pills-search-tab').dispatchEvent(clickEvent);
     saved_response = JSON.parse(sessionStorage.getItem('autosave'));
     // resElem = sessionStorage.getItem('autosave');
     for(var [key, value] of Object.entries(tables)){
@@ -42,7 +44,7 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
             "searching": false,
             language: {
                 // infoEmpty: "No records found"
-                zeroRecords: `<div class="alert alert-warning d-flex align-items-center  mt-2 alert-override"
+                zeroRecords: `<div class="alert alert-warning d-flex align-items-center  alert-override alert-bad "
                 role="alert">
                 <i
                     class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
@@ -192,7 +194,7 @@ sForm.addEventListener('submit', (e)=>{
                     "searching": false,
                     language: {
                         // infoEmpty: "No records found"
-                        zeroRecords: `<div class="alert alert-warning d-flex align-items-center mt-2 alert-override"
+                        zeroRecords: `<div class="alert alert-warning d-flex align-items-center alert-override alert-bad "
                         role="alert">
                         <i
                             class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
@@ -407,3 +409,49 @@ sForm.addEventListener('submit', (e)=>{
 // });
 
 console.log(navigationEntry.type);
+
+// var alertElement = document.querySelector('#info-anim-content');
+
+// // Initial state
+// gsap.set(alertElement, {
+//     clipPath: 'inset(0 0 100% 0)'
+// });
+
+// document.querySelector('.btn-icon').addEventListener('click', function(e) {
+//     if (!e.target.classList.contains('collapsed')) {
+//         // Collapsing up
+//         gsap.to(alertElement, {
+//             clipPath: 'inset(0 0 0% 0)',
+//             duration: 0.5,
+//             ease: "power2.inOut",
+//         });
+//     } else {
+//         // Collapsing down
+//         gsap.to(alertElement, {
+//             clipPath: 'inset(0 0 200% 0)',
+//             duration: 0.5,
+//             ease: "power2.inOut",
+//             onComplete() {
+//                 console.log('whole tween done');
+//                 gsap.to(this.targets(), { 
+//                   background: 'red'
+//                 })
+//             },
+//         });
+//     }
+// });
+
+var animatedContent = document.querySelector('#info-anim-content');
+var btnSearchInfo = document.querySelector('#btn-searchInfo');
+
+// When the collapse animation starts
+btnSearchInfo.addEventListener('show.bs.collapse', function () {
+  // Add the background color
+  animatedContent.style.backgroundColor = 'rgba(207, 244, 252, 1)';
+});
+
+// When the collapse animation ends
+btnSearchInfo.addEventListener('hidden.bs.collapse', function () {
+  // Remove the background color
+  animatedContent.style.backgroundColor = 'transparent';
+});
