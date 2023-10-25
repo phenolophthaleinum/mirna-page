@@ -314,6 +314,10 @@ table tr td .full-row-link {
   border-radius: 8px;
 }
 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: white !important;
+}
+
 .alert-override {
   --bs-alert-padding-x: 0.4rem;
   --bs-alert-padding-y: 0.4rem;

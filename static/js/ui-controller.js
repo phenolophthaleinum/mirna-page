@@ -447,7 +447,7 @@ var btnSearchInfo = document.querySelector('#btn-searchInfo');
 // When the collapse animation starts
 btnSearchInfo.addEventListener('show.bs.collapse', function () {
   // Add the background color
-  animatedContent.style.backgroundColor = 'rgba(207, 244, 252, 1)';
+  animatedContent.style.backgroundColor = 'rgba(13, 110, 253, 0.3)';
 });
 
 // When the collapse animation ends
