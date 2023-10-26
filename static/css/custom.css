@@ -328,3 +328,45 @@ table tr td .full-row-link {
   --bs-alert-margin-bottom: 0.0rem;
   --bs-alert-padding-y: 0.05rem;
 }
+/* 
+.animated-dropdown {
+  transition: all 0.5s ease;
+  transform: scaleY(0);
+  transform-origin: top;
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  display: none;
+} */
+/* 
+.show.animated-dropdown {
+  transform: scaleY(1);
+  clip-path: inset(0 0 100% 0);
+  opacity: 1;
+  display: block;
+} */
+
+/* @keyframes slideIn {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes slideOut {
+  0% { transform: scaleY(1); }
+  100% { transform: scaleY(0); }
+} */
+
+.dropdown.dropdown-menu {
+  display: block !important;
+}
+.animated-dropdown {
+  /* transform-origin: top;
+  animation-duration: 0.5s; */
+}
+/* 
+.animated-dropdown.slideIn {
+  animation-name: slideIn;
+}
+
+.animated-dropdown.slideOut {
+  animation-name: slideOut;
+} */

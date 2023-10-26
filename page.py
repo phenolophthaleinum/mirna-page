@@ -27,20 +27,20 @@ def search_mirna():
         # data = flask.request.form
         data = flask.request.get_json(force=True)
         query_clear = re.sub(whites_pattern, '', data['query']).strip(",.;|-")
-        print(query_clear)
+        # print(query_clear)
         query_list_temp = [query for query in re.split(r',|;', query_clear.lower()) if query]
-        print(query_list_temp)
+        # print(query_list_temp)
         query_list = set([query.replace('-5p', '').replace('-3p', '') for query in query_list_temp])
-        print(query_list)
-        print(query_list)
+        # print(query_list)
+        # print(query_list)
         result = defaultdict(set)
         for query in query_list:
             try:
                 db_rec = db[query]
 
-                print(db_rec)
+                # print(db_rec)
             except:
-                print("in bad")
+                # print("in bad")
                 result['bad'].add(query)
                 continue
             if isinstance(db_rec, list):
@@ -84,7 +84,7 @@ def record_page(id):
     cmc_criterions = [col for col in db[id.lower()].keys() if "criterion" in col]
     # print(type(db['mir101-1']['cancer drivers POINTS [criterion VII]']))
     # print(db['mir101-1'].keys())
-    print(hallmarks)
+    # print(hallmarks)
     return flask.render_template('record.html',
                                  record_id=id,
                                  record_data=db[id.lower()],

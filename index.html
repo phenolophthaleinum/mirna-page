@@ -297,7 +297,17 @@
                                 </li>
                             </ul>
                             <div class="flex-shrink-1" style="margin-top: 0.5rem;">
-                                <span class="badge text-bg-light">Database version: {{db_version}}</span>
+                                <!-- <span class="badge text-bg-light">Database version: {{db_version}}</span> -->
+                                <div class="dropdown" id="version-dropdown">
+                                    <div class="btn-group">
+                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Version 1.0 beta
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-lg-end animated-dropdown">
+                                            <li><h6 class="dropdown-header">Database compilation: {{db_version}}</h6></li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <!-- <p class="">Database version: 19 Oct 2023</p> -->
                             </div>
                         <!-- </div> -->
@@ -720,7 +730,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
-                    <img src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block"/>
+                    <img data-bs-theme="light" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block"/>
+                    <!-- <img data-bs-theme="dark" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block" style="mix-blend-mode: difference;"/> -->
                 </div>
             </div>
             <!-- <span class="text-body-secondary">Place sticky footer content here.</span> -->
