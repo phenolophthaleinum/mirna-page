@@ -77,16 +77,27 @@ table tr td .full-row-link {
   color: rgba(13, 110, 253, 1);
 }
 
+.link-icon {
+  font-size: 1.6rem;
+  color: rgba(13, 110, 253, 1);
+}
+
 .info-icon {
   font-size: large;
   color: rgba(13, 110, 253, 1);
 }
 
-.mail-icon:hover, .info-icon:hover {
-  color: rgba(13, 110, 253, 0.3);
+.back-icon {
+  font-size: 2rem;
+  color: rgba(13, 110, 253, 1);
 }
 
-.mail-icon:active, .info-icon:active {
+.mail-icon:hover, .info-icon:hover, .link-icon:hover, .back-icon:hover {
+  color: rgba(13, 110, 253, 0.3);
+  cursor: pointer;
+}
+
+.mail-icon:active, .info-icon:active, .link-icon:active, .back-icon:active {
   color: rgba(10, 63, 143, 0.6)!important;
 }
 

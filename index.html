@@ -478,7 +478,7 @@
                         <div id="search-result-container" class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override clippy"
                             style="clip-path: inset(0% -10% 100% -10%);">
                             <div class="container-fluid">
-                                <div class="row justify-content-evenly">
+                                <div class="row justify-content-evenly g-4">
                                     <!-- <div class="col"> -->
                                     <div class="table-responsive" id="CMC-wrapper">
                                         <h2 id="CMC-header" style="display: none;">CMC</h2>
@@ -625,17 +625,26 @@
                                     <h4 class="card-title">Piotr Kozlowski</h4>
                                     <h5 class="card-text mt-3">Department of Molecular Genetics, Institute of Bioorganic Chemistry</h5>
                                     <h5 class="card-text">Polish Academy of Sciences, Poznan, 61-704, Poland</h5>
-                                    <button class="btn-icon" style="font-size: larger;" type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapseWidthExample"
-                                            aria-expanded="false"
-                                            aria-controls="collapseWidthExample">
-                                                <i class="bi bi-envelope-fill btn btn-override btn-icon mail-icon"></i>
-                                    </button>
-                                    <div class="collapse" id="collapseWidthExample">
-                                        <div class="card card-body shadow-override no-border">
-                                            <h5 class="card-text"><a href="mailto:kozlowp@ibch.poznan.pl">kozlowp@ibch.poznan.pl</a></h5>
-                                        </div>  
+                                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
+                                        <div class="col-lg-12" style="position: relative;">
+                                            <div class="d-flex flex-row align-items-baseline card-body"
+                                                style="background-color: rgba(13, 110, 253, 0); border-color: transparent; --bs-card-spacer-y: 0rem;
+                                                --bs-card-spacer-x: 0rem;">
+                                                <button class="btn-icon" style="font-size: larger; left: -10px;
+                                                position: relative;" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#collapseWidthExample"
+                                                aria-expanded="false"
+                                                aria-controls="collapseWidthExample">
+                                                    <i class="bi bi-envelope-fill btn btn-override btn-icon mail-icon"></i>
+                                                </button>
+                                                <div class="collapse flex-grow-1" id="collapseWidthExample">
+                                                    <!-- <div class="card card-body shadow-override no-border"> -->
+                                                        <h5 class="card-text"><a href="mailto:kozlowp@ibch.poznan.pl">kozlowp@ibch.poznan.pl</a></h5>
+                                                    <!-- </div>   -->
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -697,28 +706,31 @@
                         <h2>Links</h2>
                         <hr class="border border-primary border-1 opacity-75 hor-ruler">
                         <h3>
-                            miRBAse <a href="https://www.mirbase.org/">https://www.mirbase.org/</a>
+                            miRBAse <a class="btn-icon" style="font-size: larger;" role="button" href="https://www.mirbase.org/"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
                         </h3>
                         <h3>
-                            MirGeneDB <a href="https://mirgenedb.org/">https://mirgenedb.org/</a>
+                            MirGeneDB <a class="btn-icon" style="font-size: larger;" role="button" href="https://mirgenedb.org/"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
                         </h3>
                         <h3>
-                            miRTarBase  <a href="https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2022/php/index.php">https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2022/php/index.php</a>
+                            miRTarBase  <a class="btn-icon" style="font-size: larger;" role="button" href="https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2022/php/index.php"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
                         </h3>
                         <h3>
-                            miRCancer  <a href="http://mircancer.ecu.edu">http://mircancer.ecu.edu</a>
+                            miRCancer  <a class="btn-icon" style="font-size: larger;" role="button" href="http://mircancer.ecu.edu"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
                         </h3>
                         <h3>
-                            dbDEMC  <a href="https://www.biosino.org/dbDEMC/index">https://www.biosino.org/dbDEMC/index</a>
+                            dbDEMC  <a class="btn-icon" style="font-size: larger;" role="button" href="https://www.biosino.org/dbDEMC/index"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
                         </h3>
                         <h3>
-                            oncomiRDB  <a href="http://lifeome.net/database/oncomirdb/">http://lifeome.net/database/oncomirdb/</a>
+                            oncomiRDB  <a class="btn-icon" style="font-size: larger;" role="button" href="http://lifeome.net/database/oncomirdb/"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
                         </h3>
                         <h3>
-                            KEGG pathway map05206: ‘MicroRNAs in cancer’  <a href="https://www.genome.jp/entry/pathway+hsa05206">https://www.genome.jp/entry/pathway+hsa05206</a>
+                            KEGG pathway map05206: ‘MicroRNAs in cancer’  <a class="btn-icon" style="font-size: larger;" role="button" href="https://www.genome.jp/entry/pathway+hsa05206"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
                         </h3>
                         <h3>
-                            The Cancer Genome Atlas (TCGA)  <a href="https://www.cancer.gov/ccg/research/genome-sequencing/tcga">https://www.cancer.gov/ccg/research/genome-sequencing/tcga</a>
+                            The Cancer Genome Atlas (TCGA) <a class="btn-icon" style="font-size: larger;" role="button" href="https://www.cancer.gov/ccg/research/genome-sequencing/tcga"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                        </h3>
+                        <h3>
+                            Research grant website  <a class="btn-icon" style="font-size: larger;" role="button" href="https://maestro8.ichb.pl/"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
                         </h3>
                     </div>
                 </div>
@@ -728,15 +740,19 @@
 
     <footer class="footer mt-auto py-3 bg-body-tertiary">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-between">
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
                     <img data-bs-theme="light" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block"/>
+                    <!-- <img data-bs-theme="dark" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block" style="mix-blend-mode: difference;"/> -->
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
+                    <img data-bs-theme="light" src="static/img/ncn_logo.svg" class="img-fluid mx-auto d-block" style="height: 5rem;"/>
                     <!-- <img data-bs-theme="dark" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block" style="mix-blend-mode: difference;"/> -->
                 </div>
             </div>
             <!-- <span class="text-body-secondary">Place sticky footer content here.</span> -->
         </div>
-    </footer>
+    </footer> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>

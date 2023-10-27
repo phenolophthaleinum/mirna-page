@@ -241,8 +241,8 @@ sForm.addEventListener('submit', (e)=>{
                             if (key != 'nc') {
                                 row.cells[i].appendChild(a.cloneNode(true));
                             } else if (!response['bad'].some(sub => sub.includes(data[0]))) {
-                                // row.cells[i].textContent = data[0];
-                                row.cells[i].appendChild(a.cloneNode(true));
+                                row.cells[i].textContent = data[0];
+                                // row.cells[i].appendChild(a.cloneNode(true));
                             } else if (response['bad'].some(sub => sub.includes(data[0]))) {
                                  // Create a new div element for the wrapper
                                 var wrapper = document.createElement('div');
