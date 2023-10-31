@@ -301,7 +301,7 @@
                                 <div class="dropdown" id="version-dropdown">
                                     <div class="btn-group">
                                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Version 1.0 beta
+                                            Version dev
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-lg-end animated-dropdown">
                                             <li><h6 class="dropdown-header">Database compilation: {{db_version}}</h6></li>
@@ -481,14 +481,30 @@
                                 <div class="row justify-content-evenly g-4">
                                     <!-- <div class="col"> -->
                                     <div class="table-responsive" id="CMC-wrapper">
-                                        <h2 id="CMC-header" style="display: none;">CMC</h2>
+                                        <div class="d-flex justify-content-between">
+                                            <h2 id="CMC-header" style="display: none;">CMC</h2>
+                                            <div>
+                                                <i class="bi bi-filetype-csv" style="font-size: 1.5rem;"></i>
+                                                <button class="btn-icon download-icon-btn" type="button">
+                                                        <i class="bi bi-download btn btn-override btn-icon download-icon" data-table-type="CMC"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                         <table id="CMC-table" class="display compact table" style="width: 100%; min-width: 200px;">
                                         </table>
                                     </div>
                                     <!-- </div> -->
                                     <!-- <div class="col"> -->
                                     <div class="table-responsive" id="nCMC-wrapper">
-                                        <h2 id="nCMC-header" style="display: none;">non-CMC</h2>
+                                        <div class="d-flex justify-content-between">
+                                            <h2 id="nCMC-header" style="display: none;">non-CMC</h2>
+                                            <div>
+                                                <i class="bi bi-filetype-csv" style="font-size: 1.5rem;"></i>
+                                                <button class="btn-icon download-icon-btn" type="button">
+                                                        <i class="bi bi-download btn btn-override btn-icon download-icon" data-table-type="nCMC"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                         <table id="nCMC-table" class="display compact table" style="width: 100%; min-width: 200px;">
                                         </table>
                                     </div>
@@ -519,13 +535,14 @@
                                         <i class="bi bi-download"></i>
                                         <p>All characteristics of CMC miRNA genes</p>
                                     </a> -->
-                                    <a href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}" class="text-decoration-none" style="pointer-events: all;">
+                                    <a href="{{ url_for('download', filename='list_of_CMC_miRNA_genes_with_characteristics.xlsx') }}" class="text-decoration-none" style="pointer-events: all;">
                                         <div class="card btn btn-primary" style="height: 100%;">
                                             <div class="card-body">
-                                                <h5 class="card-title">All characteristics of CMC miRNA genes</h5>
-                                                <div class="d-flex justify-content-end">
-                                                    <i class="bi bi-download" style="font-size: 1.3rem;"></i>
-                                                </div>
+                                                <h5 class="card-title">List of CMC miRNA genes with characteristics</h5>
+                                            </div>
+                                            <div class="d-flex justify-content-end">
+                                                <i class="bi bi-filetype-xlsx me-3" style="font-size: 1.5rem;"></i>
+                                                <i class="bi bi-download me-3" style="font-size: 1.5rem;"></i>
                                             </div>
                                         </div>
                                     </a>
@@ -535,13 +552,31 @@
                                         <i class="bi bi-download"></i>
                                         <p>All characteristics of CMC miRNA genes</p>
                                     </a> -->
-                                    <a href="{{ url_for('download', filename='summary_of_all_criteria_scores_and_CMC_classification.xlsx') }}" class="text-decoration-none">
+                                    <a href="{{ url_for('download', filename='list_of_background_miRNA_genes_with_criteria_scores_and_CMC_classification.xlsx') }}" class="text-decoration-none">
                                         <div class="card btn btn-primary" style="height: 100%;">
                                             <div class="card-body">
-                                                <h5 class="card-title">All criteria scores and CMC classification</h5>
-                                                <div class="d-flex justify-content-end">
-                                                    <i class="bi bi-download" style="font-size: 1.3rem;"></i>
-                                                </div>
+                                                <h5 class="card-title">List of background miRNA genes with criteria scores and CMC classification</h5>
+                                            </div>
+                                            <div class="d-flex justify-content-end">
+                                                <i class="bi bi-filetype-xlsx me-3" style="font-size: 1.5rem;"></i>
+                                                <i class="bi bi-download me-3" style="font-size: 1.5rem;"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <!-- <a class="btn-primary btn-lg d-flex bg-body-primary" href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}">
+                                        <i class="bi bi-download"></i>
+                                        <p>All characteristics of CMC miRNA genes</p>
+                                    </a> -->
+                                    <a href="{{ url_for('download', filename='list_of_CMC_miRNA_genes_classified_as_potential_tumor_suppressors_and_oncogenes_with_characteristics.xlsx') }}" class="text-decoration-none">
+                                        <div class="card btn btn-primary" style="height: 100%;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">List of CMC miRNA genes classified as potential Tumor Suppressors and Oncogenes  with characteristics</h5>
+                                            </div>
+                                            <div class="d-flex justify-content-end">
+                                                <i class="bi bi-filetype-xlsx me-3" style="font-size: 1.5rem;"></i>
+                                                <i class="bi bi-download me-3" style="font-size: 1.5rem;"></i>
                                             </div>
                                         </div>
                                     </a>

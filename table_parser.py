@@ -1,5 +1,6 @@
 import pandas as pd
 import dill
+import io
 # import pickle
 from utils import AliasedDict
 import json
@@ -35,6 +36,7 @@ def parse():
     base_df['CMC score'] = base_df['CMC score'].fillna(0)
     base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']] = base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']].fillna('-')
     base_df["CMC/non-CMC"] = base_df["CMC/non-CMC"].apply(str)
+    base_df.drop(columns=["miRNA precursor/locus ID (miRBase)", "miRNA ID (miRBase)", "miRNA precursor/locus ID (MirGeneDB)", "oncogene (O)/tumor-suppressor (TS) only for CMC"], inplace=True)
     print(base_df["CMC/non-CMC"].dtype)
     # df[df.filter(like='criterion').columns] = df.filter(like='criterion').fillna(0)
 
@@ -111,8 +113,20 @@ def read_db(filename: str):
     #     db = f.read()
     #     return dill.loads(db)
 
+
 def std_read(filename: str):
     with open(filename, 'rb') as f:
         master = dill.load(f)
         # print(adict.aliases)
         return master
+
+
+def get_table_column(data_dict):
+    # df = pd.read_excel("./raw_data/list_of_CMC_miRNA_genes_with_characteristics.xlsx", index_col=0, skiprows=[0]).loc[ids]
+    df = pd.DataFrame.from_dict(data_dict, orient='index')
+    df.reset_index(names=["miRNA gene ID (HUGO)"], inplace=True)
+    print(df)
+    table = io.BytesIO()
+    df.to_csv(table)
+    table.seek(0)
+    return table

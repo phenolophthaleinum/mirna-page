@@ -1,10 +1,19 @@
+/*!
+ * Record page controller
+ * Copyright 2023 Maciej Michalczyk
+ *
+*/
+
+// back button in record handler
 document.getElementById("search-back-btn").addEventListener("click", () => {
-    console.log("what");
+    // console.log("what");
     window.open('/' + "#search_results", "_self");
 });
 
+// isotope grids handlers (big grid without expandables and the rest with expandables)
 var grids = document.querySelectorAll('.iso-grid');
 var big_grid = document.querySelector('.iso-grid-big')
+
 var big_iso = new Isotope(big_grid, {
   itemSelector: '.grid-item',
   stagger: 10,
@@ -15,7 +24,7 @@ var big_iso = new Isotope(big_grid, {
     fitWidth: true
     }
 });
-// console.log(grid);
+
 grids.forEach((grid) => {
   var iso = new Isotope( grid, {
     itemSelector: '.grid-item',
@@ -30,13 +39,7 @@ grids.forEach((grid) => {
 
   grid.addEventListener( 'click', function( event ) {
     var target = event.target;
-    // only click on itemContent
-    // var childs = target.children[0];
-    // var last = childs.children.length - 1;
-    console.log(target);
     var expandable = target.querySelector('.expandable');
-    // console.log(childs.children)
-    console.log(expandable);
     target.style.gridTemplateColumns = '1fr';
     gsap.set(expandable, {
       css: {

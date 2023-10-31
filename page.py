@@ -1,7 +1,8 @@
 import flask
 import re
 import os
-from table_parser import read_db, std_read
+import io
+from table_parser import read_db, std_read, get_table_column
 from collections import defaultdict
 from utils import AliasedDict
 
@@ -99,6 +100,22 @@ def download(filename):
     full_path = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
     return flask.send_from_directory(full_path, filename)
 
+
+@app.route('/download_column', methods=['GET', 'POST'])
+def download_table_column():
+    if flask.request.method == 'POST':
+        data = flask.request.get_json(force=True)
+        print(data)
+        data_dict = {key : db[key.lower()] for key in data['id']}
+        table = get_table_column(data_dict)
+        # print(table.read())
+        return flask.Response(table, mimetype="text/csv", headers={"Content-disposition":
+                    f"attachment; filename={data['filename']}.csv"})
+        # return flask.send_file(
+        #     path_or_file=table,
+        #     as_attachment=True,
+        #     download_name=f"{data['filename']}.csv",
+        #     mimetype="text/csv")
 
 
 if __name__ == '__main__':

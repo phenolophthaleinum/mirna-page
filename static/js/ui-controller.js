@@ -91,8 +91,8 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
                     if (key != 'nc') {
                         row.cells[i].appendChild(a.cloneNode(true));
                     } else if (!saved_response['bad'].some(sub => sub.includes(data[0]))) {
-                        // row.cells[i].textContent = data[0];
-                        row.cells[i].appendChild(a.cloneNode(true));
+                        row.cells[i].textContent = data[0];
+                        // row.cells[i].appendChild(a.cloneNode(true));
                     } else if (saved_response['bad'].some(sub => sub.includes(data[0]))) {
                          // Create a new div element for the wrapper
                         var wrapper = document.createElement('div');
@@ -501,3 +501,44 @@ let versionDropdown = document.getElementById('version-dropdown');
 //             ease: "power1.in"
 //     });
 // });
+cmcDownloads = document.querySelectorAll('.download-icon-btn');
+cmcDownloads.forEach(element => {
+    element.addEventListener('click', (e)=>{
+        e.preventDefault();
+        let tableType = e.target.dataset.tableType;
+        console.log(e.target);
+        // history.replaceState({}, "");
+        // var query = document.getElementById("search-input").value;
+        // console.log(JSON.stringify({ query: query }))
+        $.ajax({
+            url: '/download_column',
+            type: 'POST', // Change the request type to POST
+            contentType: 'application/json',
+            // dataType: 'json',
+            // data: {query: query}, // Send the query as data in the request
+            data: JSON.stringify({ id: tables[tableType].columns().data()[0], filename: `search_${tableType}` }), // Send the query as data in the request
+            success: function(response) {
+                // console.log(response);
+                var blob = new Blob([response], {type: 'text/csv'});
+
+                // Create a blob URL
+                var url = window.URL.createObjectURL(blob);
+
+                // Create a link and set its href to the blob URL
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = `search_${tableType}`;
+
+                // Append the link to the body and programmatically click it
+                document.body.appendChild(a);
+                a.click();
+
+                // Remove the link from the body
+                document.body.removeChild(a);
+            },
+            error: function(xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+});
