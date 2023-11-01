@@ -2,18 +2,15 @@
 <html lang="en" class="h-100" data-bs-theme="auto">
 
 <head>
+    <!-- bs theming -->
     <script src="./static/js/color-modes.js"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Maciej Michalczyk">
     <title>CMC: Cancer miRNA Census</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sticky-footer-navbar/">
-
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
@@ -21,32 +18,13 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-
-    <!-- Favicons -->
-    <!-- <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico"> -->
     <link rel="icon" href="/static/img/cmc_abbr.svg">
     
     <meta name="theme-color" content="#712cf9">
@@ -128,11 +106,12 @@
     </style>
 
 
-    <!-- Custom styles for this template -->
+    <!-- Custom style -->
     <link href="./static/css/custom.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
+    <!-- paths for theme btn -->
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path
@@ -201,53 +180,9 @@
         </ul>
     </div>
 
-
-    <!-- <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Fixed navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse"> -->
-    <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul> -->
-    <!-- <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> -->
-    <!-- <ul class="nav nav-pills me-auto mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" disabled>Disabled</button>
-                        </li>
-                      </ul>
-                </div>
-            </div>
-        </nav>
-    </header> -->
-
-
     <!-- Begin page content -->
     <main>
+        <!-- navbar -->
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-nav">
             <div class="container-fluid mt-1" style="display: flow-root;">
                 <div class="d-flex justify-content-between align-items-baseline">
@@ -261,123 +196,61 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
+                <!-- navbar/menubar content -->
                 <div class="container-fluid mt-3 bg-body-tertiary rounded-3 shadow-override">
                     <div class="collapse navbar-collapse justify-content-between align-items-baseline pt-2 pb-2" id="navbarNavDropdown">
-                        <!-- <div class="d-flex justify-content-between"> -->
-                            <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                        aria-selected="true">Home</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-search-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-search" type="button" role="tab" aria-controls="pills-search"
-                                        aria-selected="false">Search</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                        aria-selected="false">Download</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-authors-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-authors" type="button" role="tab" aria-controls="pills-authors"
-                                        aria-selected="false">Authors</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-cite-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-cite" type="button" role="tab" aria-controls="pills-cite"
-                                        aria-selected="false">How to cite</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-links-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-links" type="button" role="tab" aria-controls="pills-links"
-                                        aria-selected="false">Links</button>
-                                </li>
-                            </ul>
-                            <div class="flex-shrink-1" style="margin-top: 0.5rem;">
-                                <!-- <span class="badge text-bg-light">Database version: {{db_version}}</span> -->
-                                <div class="dropdown" id="version-dropdown">
-                                    <div class="btn-group">
-                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Version 1.0 beta
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-lg-end animated-dropdown">
-                                            <li><h6 class="dropdown-header">Database compilation: {{db_version}}</h6></li>
-                                        </ul>
-                                    </div>
+                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">Home</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-search-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-search" type="button" role="tab" aria-controls="pills-search"
+                                    aria-selected="false">Search</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                    aria-selected="false">Download</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-authors-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-authors" type="button" role="tab" aria-controls="pills-authors"
+                                    aria-selected="false">Authors</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-cite-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-cite" type="button" role="tab" aria-controls="pills-cite"
+                                    aria-selected="false">How to cite</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-links-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-links" type="button" role="tab" aria-controls="pills-links"
+                                    aria-selected="false">Links</button>
+                            </li>
+                        </ul>
+                        <div class="flex-shrink-1" style="margin-top: 0.5rem;">
+                            <div class="dropdown" id="version-dropdown">
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Version {{ version }}
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-lg-end animated-dropdown">
+                                        <li><h6 class="dropdown-header">Database compilation: {{db_version}}</h6></li>
+                                    </ul>
                                 </div>
-                                <!-- <p class="">Database version: 19 Oct 2023</p> -->
                             </div>
-                        <!-- </div> -->
-                        <!-- <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Dropdown link
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                        </ul> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </nav>
-        <!-- <div class="navbar-expand-md container-fluid shadow">
-            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-                <a href="/"
-                    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                    <span class="fs-4">Simple header</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                aria-selected="true">Home</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                aria-selected="false">Profile</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                aria-selected="false">Contact</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled"
-                                aria-selected="false" disabled>Disabled</button>
-                        </li>
-                    </ul>
-                </div>
-            </header>
-        </div> -->
+        <!-- actual content here -->
         <div class="container special-padding-top">
             <div class="tab-content" id="pills-tabContent">
+                <!-- home tab -->
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
                     tabindex="0">
                     <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
@@ -396,36 +269,11 @@
                         </div>
                     </div>
                 </div>
+                <!-- search tab -->
                 <div class="tab-pane fade" id="pills-search" role="tabpanel" aria-labelledby="pills-search-tab"
                     tabindex="0">
                     <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
                         <div class="container-fluid">
-                            <!-- <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
-                                <div class="col-lg-1">
-                                    <button class="btn-icon" type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#train-hostInfo"
-                                            aria-expanded="false"
-                                            aria-controls="train-hostInfo">
-                                            <i class="bi bi-info-circle-fill btn btn-icon info-icon"></i>
-                                    </button>
-                                </div>
-                                <div class="col-lg-11">
-                                    <div class="collapse mb-3 flex-grow-1" id="train-hostInfo">
-                                        <div class="alert alert-info card card-body">
-                                            Search by: miRNA ID (e.g. MIR21), miRBase ID (e.g. hsa-mir-21), MirGeneDB ID (e.g. Hsa-Mir-21), miRNA ID (e.g. miR-21), miRNA strand (e.g. miR-21-5p) or mix. Values must be separated by comma or semicolon.
-                                            <div class="alert alert-warning d-flex align-items-center mt-3"
-                                                role="alert">
-                                                <i
-                                                    class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
-                                                <div>
-                                                    Search is not case sensitive.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 align-items-baseline mb-2">
                                 <div class="col-lg-11">
                                     <form class="was-validated mb-2" id="search-form">
@@ -442,6 +290,7 @@
                                     </button>
                                 </div>
                             </div>
+                            <!-- info special-jumbotron -->
                             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
                                 <div class="col-lg-12 mb-2" style="position: relative;">
                                     <button class="btn-icon" type="button"
@@ -474,96 +323,98 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="cover"> -->
-                        <div id="search-result-container" class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override clippy"
-                            style="clip-path: inset(0% -10% 100% -10%);">
-                            <div class="container-fluid">
-                                <div class="row justify-content-evenly g-4">
-                                    <!-- <div class="col"> -->
-                                    <div class="table-responsive" id="CMC-wrapper">
+                    <!-- search result container -->
+                    <div id="search-result-container" class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override clippy"
+                        style="clip-path: inset(0% -10% 100% -10%);">
+                        <div class="container-fluid">
+                            <div class="row justify-content-evenly g-4">
+                                <div class="table-responsive" id="CMC-wrapper">
+                                    <div class="d-flex justify-content-between">
                                         <h2 id="CMC-header" style="display: none;">CMC</h2>
-                                        <table id="CMC-table" class="display compact table" style="width: 100%; min-width: 200px;">
-                                        </table>
+                                        <div>
+                                            <i class="bi bi-filetype-csv" style="font-size: 1.5rem;"></i>
+                                            <button class="btn-icon download-icon-btn" type="button">
+                                                    <i class="bi bi-download btn btn-override btn-icon download-icon" data-table-type="CMC"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <!-- </div> -->
-                                    <!-- <div class="col"> -->
-                                    <div class="table-responsive" id="nCMC-wrapper">
+                                    <table id="CMC-table" class="display compact table" style="width: 100%; min-width: 200px;">
+                                    </table>
+                                </div>
+                                <div class="table-responsive" id="nCMC-wrapper">
+                                    <div class="d-flex justify-content-between">
                                         <h2 id="nCMC-header" style="display: none;">non-CMC</h2>
-                                        <table id="nCMC-table" class="display compact table" style="width: 100%; min-width: 200px;">
-                                        </table>
+                                        <div>
+                                            <i class="bi bi-filetype-csv" style="font-size: 1.5rem;"></i>
+                                            <button class="btn-icon download-icon-btn" type="button">
+                                                    <i class="bi bi-download btn btn-override btn-icon download-icon" data-table-type="nCMC"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <!-- </div> -->
-                                    <!-- <div class="col"> -->
-                                    <div class="table-responsive" id="nc-wrapper">
-                                        <h2 id="nc-header" style="display: none;">Not classified</h2>
-                                        <table id="nc-table" class="display compact table" style="width: 100%; min-width: 200px;">
-                                        </table>
-                                    </div>
-                                    <!-- </div> -->
+                                    <table id="nCMC-table" class="display compact table" style="width: 100%; min-width: 200px;">
+                                    </table>
+                                </div>
+                                <div class="table-responsive" id="nc-wrapper">
+                                    <h2 id="nc-header" style="display: none;">Not classified</h2>
+                                    <table id="nc-table" class="display compact table" style="width: 100%; min-width: 200px;">
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                    <!-- </div> -->
-                    <!-- <div class="d-flex flex-wrap"> -->
+                    </div>
                 </div>
+                <!-- download tab -->
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
                     tabindex="0">
                     <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
                         <div class="container-fluid">
                             <h2>Download source tables</h2>
                             <hr class="border border-primary border-1 opacity-75 hor-ruler">
-                            <!-- <p class="lead">All tables in .xlsx files.</p> -->
                             <div class="row g-3">
                                 <div class="col-lg-6">
-                                    <!-- <a class="btn-primary btn-lg d-flex bg-body-primary" href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}">
-                                        <i class="bi bi-download"></i>
-                                        <p>All characteristics of CMC miRNA genes</p>
-                                    </a> -->
-                                    <a href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}" class="text-decoration-none" style="pointer-events: all;">
+                                    <a href="{{ url_for('download', filename='list_of_CMC_miRNA_genes_with_characteristics.xlsx') }}" class="text-decoration-none" style="pointer-events: all;">
                                         <div class="card btn btn-primary" style="height: 100%;">
                                             <div class="card-body">
-                                                <h5 class="card-title">All characteristics of CMC miRNA genes</h5>
-                                                <div class="d-flex justify-content-end">
-                                                    <i class="bi bi-download" style="font-size: 1.3rem;"></i>
-                                                </div>
+                                                <h5 class="card-title">List of CMC miRNA genes with characteristics</h5>
+                                            </div>
+                                            <div class="d-flex justify-content-end">
+                                                <i class="bi bi-filetype-xlsx me-3" style="font-size: 1.5rem;"></i>
+                                                <i class="bi bi-download me-3" style="font-size: 1.5rem;"></i>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-lg-6">
-                                    <!-- <a class="btn-primary btn-lg d-flex bg-body-primary" href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}">
-                                        <i class="bi bi-download"></i>
-                                        <p>All characteristics of CMC miRNA genes</p>
-                                    </a> -->
-                                    <a href="{{ url_for('download', filename='summary_of_all_criteria_scores_and_CMC_classification.xlsx') }}" class="text-decoration-none">
+                                    <a href="{{ url_for('download', filename='list_of_background_miRNA_genes_with_criteria_scores_and_CMC_classification.xlsx') }}" class="text-decoration-none">
                                         <div class="card btn btn-primary" style="height: 100%;">
                                             <div class="card-body">
-                                                <h5 class="card-title">All criteria scores and CMC classification</h5>
-                                                <div class="d-flex justify-content-end">
-                                                    <i class="bi bi-download" style="font-size: 1.3rem;"></i>
-                                                </div>
+                                                <h5 class="card-title">List of background miRNA genes with criteria scores and CMC classification</h5>
+                                            </div>
+                                            <div class="d-flex justify-content-end">
+                                                <i class="bi bi-filetype-xlsx me-3" style="font-size: 1.5rem;"></i>
+                                                <i class="bi bi-download me-3" style="font-size: 1.5rem;"></i>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
-                                <!-- <div class="col-lg-6 d-grid gap-2">
-                                    <a class="btn btn-primary btn-lg" href="{{ url_for('download', filename='summary_of_all_criteria_scores_and_CMC_classification.xlsx') }}">
-                                        <i class="bi bi-download"></i>
-                                        All criteria scores and CMC classification
+                                <div class="col-lg-6">
+                                    <a href="{{ url_for('download', filename='list_of_CMC_miRNA_genes_classified_as_potential_tumor_suppressors_and_oncogenes_with_characteristics.xlsx') }}" class="text-decoration-none">
+                                        <div class="card btn btn-primary" style="height: 100%;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">List of CMC miRNA genes classified as potential Tumor Suppressors and Oncogenes  with characteristics</h5>
+                                            </div>
+                                            <div class="d-flex justify-content-end">
+                                                <i class="bi bi-filetype-xlsx me-3" style="font-size: 1.5rem;"></i>
+                                                <i class="bi bi-download me-3" style="font-size: 1.5rem;"></i>
+                                            </div>
+                                        </div>
                                     </a>
-                                </div> -->
+                                </div>
                             </div>
-                            <!-- <div class="d-grid gap-2 col-6">
-                                <a class="btn btn-primary btn-lg" href="{{ url_for('download', filename='summary_of_all_characteristics_of_CMC_miRNA_genes.xlsx') }}">
-                                    All characteristics of CMC miRNA genes <div class="vr"></div> <i class="bi bi-download"></i>
-                                </a>
-                                <a class="btn btn-primary btn-lg" href="{{ url_for('download', filename='summary_of_all_criteria_scores_and_CMC_classification.xlsx') }}">
-                                    All criteria scores and CMC classification <div class="vr"></div> <i class="bi bi-download"></i>
-                                </a>
-                            </div> -->
                         </div>
                     </div>
                 </div>
+                <!-- authors tab -->
                 <div class="tab-pane fade" id="pills-authors" role="tabpanel" aria-labelledby="pills-authors-tab"
                     tabindex="0">
                     <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
@@ -577,49 +428,9 @@
                             <h3>Anna Philips</h3>
                             <h3>Paulina Galka-Marciniak</h3>
                             <h3>Piotr Kozlowski</h3>
-
-                            <!-- <div class="d-flex flex-wrap align-items-center">
-                                <h3 style="line-height: 1.2;">Piotr Kozlowski</h3>
-                                <button class="btn-icon" style="font-size: larger;" type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapseWidthExample"
-                                            aria-expanded="false"
-                                            aria-controls="collapseWidthExample">
-                                                <i class="bi bi-envelope-fill btn btn-override btn-icon mail-icon"></i>
-                                </button>
-                            </div>
-                            <div>
-                                <div class="collapse" id="collapseWidthExample">
-                                    <div class="card card-body shadow-override no-border">
-                                    <h5 class="card-text"><a href="mailto:kozlowp@ibch.poznan.pl">kozlowp@ibch.poznan.pl</a></h5>
-                                    </div>
-                                </div>
-                            </div> -->
-
-
-                            <!-- </div> -->
-                            <!-- <h3>Piotr Kozlowski</h3>
-                            <div class="d-flex">
-                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                                  Toggle width collapse
-                                </button>
-                                <div style="min-height: 120px;">
-                                    <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                                      <div class="card card-body" style="width: 300px;">
-                                        This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
-                                      </div>
-                                    </div>
-                                  </div>
-                            </div> -->
-                              <!-- <div style="min-height: 120px;">
-                                <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                                  <div class="card card-body" style="width: 300px;">
-                                    This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
-                                  </div>
-                                </div>
-                              </div> -->
                             <h2 class="pt-4">Contact</h2>
                             <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                            <!-- contact card -->
                             <div class="card" style="height: 100%;">
                                 <div class="card-body">
                                     <h4 class="card-title">Piotr Kozlowski</h4>
@@ -648,57 +459,15 @@
                                     </div>
                                 </div>
                             </div>
-                                    <!-- <div class="d-flex justify-content-start align-items-baseline">
-                                        <i class="bi bi-envelope fs-3" style="padding-right: 10px;"></i>
-                                        <h5 class="card-text my-3"><a href="mailto:kozlowp@ibch.poznan.pl">kozlowp@ibch.poznan.pl</a></h5>
-                                    </div> -->
-                                <!-- </div>
-                            </div> -->
-                            <!-- <div class="row g-3">
-                                <div class="col-lg-4">
-                                    <div class="card" style="height: 100%;">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-start align-items-baseline">
-                                                <i class="bi bi-telephone fs-3" style="padding-right: 10px;"></i>
-                                                <h4 class="card-title">Telephone</h4>
-                                            </div>
-                                            <h5 class="card-text my-3">+48 618528503 ext. 1261</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="card" style="height: 100%;">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-start align-items-baseline">
-                                                <i class="bi bi-printer fs-3" style="padding-right: 10px;"></i>
-                                                <h4 class="card-title">Fax</h4>
-                                            </div>
-                                            <h5 class="card-text my-3">+48 618520532</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="card" style="height: 100%;">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-start align-items-baseline">
-                                                <i class="bi bi-envelope fs-3" style="padding-right: 10px;"></i>
-                                                <h4 class="card-title">Email</h4>
-                                            </div>
-                                            <h5 class="card-text my-3"><a href="mailto:kozlowp@ibch.poznan.pl">kozlowp@ibch.poznan.pl</a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- <h3><b>Tel:</b> +48 618528503 ext. 1261</h3>
-                            <h3><b>Fax:</b> +48 618520532</h3>
-                            <h3><b>Email:</b> <a href="mailto:kozlowp@ibch.poznan.pl">kozlowp@ibch.poznan.pl</a></h3> -->
                         </div>
                     </div>
                 </div>
+                <!-- cite tab  -->
                 <div class="tab-pane fade" id="pills-cite" role="tabpanel" aria-labelledby="pills-cite-tab"
                 tabindex="0">
                     <h3>To be added upon publication</h3>
                 </div>
+                <!-- links tab -->
                 <div class="tab-pane fade" id="pills-links" role="tabpanel" aria-labelledby="pills-links-tab"
                 tabindex="0">
                 <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override text-break">
@@ -737,7 +506,7 @@
             </div>
         </div>
     </main>
-
+    <!-- footer  -->
     <footer class="footer mt-auto py-3 bg-body-tertiary">
         <div class="container">
             <div class="row justify-content-between">
@@ -750,14 +519,12 @@
                     <!-- <img data-bs-theme="dark" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block" style="mix-blend-mode: difference;"/> -->
                 </div>
             </div>
-            <!-- <span class="text-body-secondary">Place sticky footer content here.</span> -->
         </div>
     </footer> 
+    <!-- second part of scripts + main controller -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
     <script src="/static/js/ui-controller.js"></script>
-
 </body>
-
 </html>

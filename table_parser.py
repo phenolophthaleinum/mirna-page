@@ -1,23 +1,37 @@
 import pandas as pd
 import dill
-# import pickle
+import io
 from utils import AliasedDict
-import json
 import pprint as p
 import datetime
 
 dill.settings['recurse'] = True
 
 def parse():
-    # df = pd.read_excel("./table_s4.xlsx", index_col=0, skiprows=[0])
-    # df = pd.read_excel("./table_s4.xlsx", skiprows=[0])
-    # alias_df = pd.read_excel("./table_s9.xlsx", skiprows=[0])
+    """
+    This function parses two excel files: 'classification_table_full.xlsx' and 'characteristics_table.xlsx', 
+    merges them based on the 'miRNA gene ID (HUGO)' column, and cleans the data (removing, renaming columns, 
+    checking the uniqueness of the 'miRNA gene ID (HUGO)', converts IDs to lowercase) to obtain full table with all 
+    characteristics without overlapping information.
+    Table/data is store as dictionary with aliased access to keys along with data ompilation timestamp. 
+    Both elements are stored in the master dictionary which is saved into a dill file named 'mirna_table.pkl'.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+
+    Raises:
+    AssertionError: If the 'miRNA gene ID (HUGO)' column is not unique.
+
+    """
+
     base_df = pd.read_excel("./classification_table_full.xlsx")
     feature_df = pd.read_excel("./characteristics_table.xlsx", skiprows=[0])
 
     overlap_cols = list(base_df.columns.intersection(feature_df.columns)[1:])
     overlap_cols.append("cancer drivers POINTS [criterion VII]")
-    # print(overlap_cols[1:])
     feature_df = feature_df.drop(columns=overlap_cols)
     base_df.set_index('miRNA gene ID (HUGO)', inplace=True)
     base_df = base_df.merge(feature_df, left_index=True, right_on='miRNA gene ID (HUGO)', how='left')
@@ -35,41 +49,22 @@ def parse():
     base_df['CMC score'] = base_df['CMC score'].fillna(0)
     base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']] = base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']].fillna('-')
     base_df["CMC/non-CMC"] = base_df["CMC/non-CMC"].apply(str)
+    base_df.drop(columns=["miRNA precursor/locus ID (miRBase)", "miRNA ID (miRBase)", "miRNA precursor/locus ID (MirGeneDB)", "oncogene (O)/tumor-suppressor (TS) only for CMC"], inplace=True)
     print(base_df["CMC/non-CMC"].dtype)
-    # df[df.filter(like='criterion').columns] = df.filter(like='criterion').fillna(0)
-
-    # df.rename(columns={'background miRNA genes': "miRNA gene ID (HUGO)"}, inplace=True)
-    # overlap_cols = df.columns.intersection(alias_df.columns)[1:]
-    # print(overlap_cols[1:])
-    # alias_df = alias_df.drop(columns=overlap_cols)
-    # print(alias_df.columns)
-    # df.join(alias_df.set_index('miRNA gene ID (HUGO)'), on='miRNA gene ID (HUGO)', how='inner')
-    # df.set_index("miRNA gene ID (HUGO)", inplace=True)
-    # print(df.columns)
 
     # mirna gene ID (HUGO) are actually unique
     assert len(base_df.iloc[:,0].unique()) == len(base_df.iloc[:, 0])
-    # base_df.to_excel("merge_test.xlsx")
 
     # base dict from all HUGO mirna id 
     base_df.index = base_df.index.str.lower()
-    # alias_df.iloc[:, 0:4] = alias_df.iloc[:, 0:4].apply(lambda x: x.str.lower())
-    # print(alias_df.iloc[:, 0:4])
     db = base_df.to_dict(orient='index')
 
     # initialise aliased dict
     adb = AliasedDict(db)
     # assign aliases
     for key in adb:
-        # mask = base_df['miRNA gene ID (HUGO)'].values == key
-        # mask = base_df.index == key
-        # row = base_df.loc[mask]
-        # print(row)
         try:
-            # print(str(adb[key]['miRNA genes annotated in MirGeneDB (MirGeneDB ID)']))
             alias_keys = ['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']
-            # items ,= row.loc[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']].values
-            # print(items)
             for a_key in alias_keys:
                 alias = str(adb[key][a_key]).lower()
                 if alias == 'nan':
@@ -79,7 +74,6 @@ def parse():
             continue
     
     p.pprint(adb.aliases)
-    # exit()
     p.pprint(adb)
     p.pprint(base_df)
     p.pprint(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
@@ -88,31 +82,52 @@ def parse():
         'data': adb,
         'version': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
+
     # save to dill
     with open("mirna_table.pkl", 'wb') as f:
         dill.dump(master, f)
-    #     f.write(dill.dumps(adb))
-    # return dill.dumps(adb)
-        # dill.dump((dict(adb), adb.aliases), f)
-    # with open("mirna_table.json", 'w') as f:
-    #     json.dump(adb, f)
 
 
-def read_db(filename: str):
-    # with open(filename, 'r') as f:
-    #     return json.load(f)
-    # with open(filename, 'r') as f:
-    #     return dill.loads(f)
-    with open(filename, 'rb') as f:
-        data_dict, aliases = dill.load(f)
-        adict = AliasedDict(data_dict)
-        adict.aliases = aliases
-        return adict
-    #     db = f.read()
-    #     return dill.loads(db)
+# def read_db(filename: str):
+#     with open(filename, 'rb') as f:
+#         data_dict, aliases = dill.load(f)
+#         adict = AliasedDict(data_dict)
+#         adict.aliases = aliases
+#         return adict
+
 
 def std_read(filename: str):
+    """
+    This function loads dill file with master dict which is expected to contain db data, and returns the loaded content.
+
+    Parameters:
+    filename (str): The name of the file to be read. The file should be a dill file created using the dill module.
+
+    Returns:
+    dict: The content of the file, loaded using the dill module.
+
+    """
     with open(filename, 'rb') as f:
         master = dill.load(f)
-        # print(adict.aliases)
         return master
+
+
+def get_table_column(data_dict):
+    """
+    This function takes a data table dictionary as input, and converts it into a pandas DataFrame, and then
+    saves into CSV as a BytesIO object.
+
+    Parameters:
+    data_dict (dict): The data table dictionary ('mirna_table.pkl;') to be converted into a csv.
+
+    Returns:
+    table (io.BytesIO): The BytesIO object containing the CSV representation of the DataFrame.
+    """
+    # df = pd.read_excel("./raw_data/list_of_CMC_miRNA_genes_with_characteristics.xlsx", index_col=0, skiprows=[0]).loc[ids]
+    df = pd.DataFrame.from_dict(data_dict, orient='index')
+    df.reset_index(names=["miRNA gene ID (HUGO)"], inplace=True)
+    print(df)
+    table = io.BytesIO()
+    df.to_csv(table)
+    table.seek(0)
+    return table

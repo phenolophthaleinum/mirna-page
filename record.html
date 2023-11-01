@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100" data-bs-theme="auto">
 <head>
+    <!-- bs theming -->
     <script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
 
     <meta charset="utf-8">
@@ -9,11 +10,6 @@
     <meta name="author" content="Maciej Michalczyk">
     <title>CMC: Cancer miRNA Census - {{record_id}}</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sticky-footer-navbar/">
-
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
@@ -24,14 +20,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap" rel="stylesheet">
     
     
@@ -39,13 +27,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 
-    <!-- Favicons -->
-    <!-- <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico"> -->
     <link rel="icon" href="/static/img/cmc_abbr.svg">
     <meta name="theme-color" content="#712cf9">
 
@@ -126,11 +107,12 @@
     </style>
 
 
-    <!-- Custom styles for this template -->
+    <!-- Custom style -->
     <link href="{{ url_for('static', filename='css/custom.css')}}" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
+     <!-- paths for theme btn -->
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path
@@ -199,7 +181,9 @@
         </ul>
     </div>
 
+    <!-- Begin page content -->
     <main>
+        <!-- navbar -->
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-nav">
             <div class="container-fluid mt-1" style="display: flow-root;">
                 <div class="d-flex justify-content-between align-items-baseline">
@@ -213,6 +197,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
+                <!-- navbar/menubar content -->
                 <div class="container-fluid mt-3 bg-body-tertiary rounded-3 shadow-override">
                     <div class="collapse navbar-collapse justify-content-between align-items-baseline pt-2 pb-2" id="navbarNavDropdown">
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
@@ -220,21 +205,12 @@
                                 <a class="nav-link" href="/" role="button">Home</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <!-- <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                    aria-selected="true">Search</button> -->
-                                    <a class="nav-link" href="/?tab=pills-search-tab" role="button">New search</a>
+                                <a class="nav-link" href="/?tab=pills-search-tab" role="button">New search</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <!-- <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                    aria-selected="false">Download</button> -->
-                                    <a class="nav-link" href="/?tab=pills-profile-tab" role="button">Download</a>
+                                <a class="nav-link" href="/?tab=pills-profile-tab" role="button">Download</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <!-- <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                    aria-selected="false">Contact</button> -->
                                 <a class="nav-link" href="/?tab=pills-authors-tab" role="button">Authors</a>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -244,367 +220,171 @@
                                 <a class="nav-link" href="/?tab=pills-links-tab" role="button">Links</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <!-- <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                    aria-selected="true">Search</button> -->
-                                    <a class="nav-link active" href="#" role="button">Record</a>
+                                <a class="nav-link active" href="#" role="button">Record</a>
                             </li>
                         </ul>
                         <div class="flex-shrink-1" style="margin-top: 0.5rem;">
-                            <!-- <span class="badge text-bg-light">Database version: {{db_version}}</span> -->
                             <div class="dropdown" id="version-dropdown">
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Version 1.0 beta
+                                        Version {{ version }}
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-lg-end animated-dropdown">
                                         <li><h6 class="dropdown-header">Database compilation: {{db_version}}</h6></li>
                                     </ul>
                                 </div>
                             </div>
-                            <!-- <p class="">Database version: 19 Oct 2023</p> -->
                         </div>
-                        <!-- <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Dropdown link
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                        </ul> -->
                     </div>
                 </div>
             </div>
         </nav>
-        <!-- <div class="navbar-expand-md container-fluid shadow">
-            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-                <a href="/"
-                    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                    <span class="fs-4">Simple header</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                aria-selected="true">Home</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                aria-selected="false">Profile</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                aria-selected="false">Contact</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled"
-                                aria-selected="false" disabled>Disabled</button>
-                        </li>
-                    </ul>
-                </div>
-            </header>
-        </div> -->
+        <!-- actual content here -->
         <div class="container special-padding-top">
-            <!-- <div class="tab-content" id="pills-tabContent"> -->
-                <!-- <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"> -->
-                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
-                        <div class="container-fluid">
-                            <div class="d-flex justify-content-between">
-                                <h2 class="display-2">{{record_id}}</h2>
-                                <div class="d-flex justify-content-between flex-column align-items-end">
-                                    <button class="btn-icon" id="search-back-btn" type="button">
-                                        <i id="search-back-i" class="bi bi-arrow-left btn btn-icon back-icon"></i>  
-                                    </button>                                              
-                                    <p class="lead fs-6">Back to search results</p>
-                                </div>
-                            </div>
-                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
-                                <div class="container-fluid">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                              </thead>
-                                              <tbody class="plain-table">
-                                                <tr>
-                                                  <th scope="row">miRBase ID</th>
-                                                  <td>{{record_data['all miRNA precursors/loci (miRBase ID)']}}</td>
-                                                </tr>
-                                                <tr>
-                                                  <th scope="row">MirGeneDB ID</th>
-                                                  <td>{{record_data['miRNA genes annotated in MirGeneDB (MirGeneDB ID)']}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">miRNA ID</th>
-                                                    <td>{{record_data['miRNA ID']}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Predominant strand</th>
-                                                    <td>{{record_data['predominantly expressed miRNA (miRNA-strand balance)']}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">CMC Score</th>
-                                                    <td>{{record_data['CMC score']}}</td>
-                                                </tr>
-                                                {% if record_data['CMC/non-CMC'] == 'CMC' %}
-                                                <tr>
-                                                    <th scope="row">Oncogene (O)/ tumor suppressor (TS)</th>
-                                                    <td>{{record_data['oncogene (O)/tumor-suppressor (TS)']}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Selected 5p miRNA targets (miRTarBase)</th>
-                                                    <td>{{record_data['top 5p miRNA targets (based on miRTarBase)']}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Selected 3p miRNA targets (miRTarBase)</th>
-                                                    <td>{{record_data['top 3p miRNA targets (based on miRTarBase)']}}</td>
-                                                </tr>
-                                                {% endif %}
-                                              </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- <h3><b>miRBase ID: </b> {{record_data['miRNA precursor/locus ID (miRBase)']}}</h3>
-                                    <h3><b>MirGeneDB ID:</b> {{record_data['miRNA precursor/locus ID (MirGeneDB)']}}</h3>
-                                    <h3><b>miRNA ID:</b> {{record_data['miRNA ID (miRBase)']}}</h3>
-                                    <h3><b>Predominant strand:</b> {{record_data['predominantly expressed miRNA (miRNA-strand balance)']}}</h3>
-                                    <h3><b>CMC Score:</b> {{record_data['CMC score']}}</h3>
-                                    <h3><b>Oncogene (O)/ tumor suppressor (TS):</b> {{record_data['oncogene (O)/tumor-suppressor (TS)']}}</h3>
-                                    <h3><b>Selected 5p miRNA targets (miRTarBase):</b> {{record_data['top 5p miRNA targets (based on miRTarBase)']}}</h3>
-                                    <h3><b>Selected 3p miRNA targets (miRTarBase):</b> {{record_data['top 3p miRNA targets (based on miRTarBase)']}}</h3> -->
-                                </div>
-                            </div>
-                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
-                                <div class="container-fluid">
-                                    <h2>CMC criterion points</h2>
-                                    <hr class="border border-primary border-1 opacity-75 hor-ruler">
-                                    <div class="iso-grid pt-2">
-                                        {% for key in cmc_criterions %}
-                                        {% set criterion = key.split(" ")[-1].strip("]") %}
-                                        {% set criterion_full = key.split("[")[0].strip() %}
-                                            <div class="grid-item">
-                                                {% if record_data[key] != 0 %}
-                                                <div class="grid-item-content criterion-{{criterion}} row grid-container">
-                                                {% else %}
-                                                <div class="grid-item-content row grid-container">
-                                                {% endif %}
-                                                    <!-- <div class="col"> -->
-                                                        <!-- <div class="d-flex flex-column mt-1 align-items-center flex-grow-1">                                                         -->
-                                                        <div class="content-column">                                                        
-                                                            <h3>{{criterion}}</h3>
-                                                            <h3 class="lead">{{record_data[key]}}</h3>
-                                                        </div>
-                                                    <!-- </div> -->
-                                                    <!-- <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
-                                                        <h3 class="lead">{{criterion_full}}</h3>
-                                                    </div> -->
-                                                    <div class="expandable" style="opacity: 0; scale: 0.5;">
-                                                        <h3 class="lead">{{criterion_full}}</h3>
-                                                    </div>
-                                                    <!-- <div class="d-flex flex-column mt-1 align-items-center" style="opacity: 0;">                                                        
-                                                        <p>Expandxxxxxxxxxxo</p>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                            {% if record_data['CMC/non-CMC'] == 'CMC' %}
-                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
-                                <div class="container-fluid">
-                                    <h2>Associassions with cancer hallmarks <span class="lead">(Dhawan et al. 2018 Nat Commun)</span></h2>
-                                    <hr class="border border-primary border-1 opacity-75 hor-ruler">
-                                    <span class="badge rounded-pill down">Down</span>
-                                    <span class="badge rounded-pill up">Up</span>
-                                    <span class="badge rounded-pill updown">Up/Down</span>
-                                    <span class="badge rounded-pill nan" style="color: black;">No associations</span>
-                                    <div class="iso-grid-big pt-2">
-                                        {% for key in hallmarks %}
-                                        {% set hallmark = key.split('(')[0].strip()%}
-                                        {% set hallmark_value = record_data[key] | string %}
-                                        {% set hallmark_value = hallmark_value.replace("/", "") %}
-                                            <div class="grid-item">
-                                                <!-- {% if record_data[key] != 0 %} -->
-                                                <div class="grid-item-content-big {{hallmark_value.lower()}} row grid-container">
-                                                <!-- {% else %}
-                                                <div class="grid-item-content criterion-nan row grid-container">
-                                                {% endif %} -->
-                                                    <!-- <div class="col"> -->
-                                                        <!-- <div class="d-flex flex-column mt-1 align-items-center flex-grow-1">                                                         -->
-                                                        <div class="content-column">                                                        
-                                                            <h3 class="tile-fs">{{hallmark}}</h3>
-                                                            <!-- <h3 class="lead tile-fs">{{record_data[key]}}</h3> -->
-                                                        </div>
-                                                    <!-- </div> -->
-                                                    <!-- <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
-                                                        <h3 class="lead">{{criterion_full}}</h3>
-                                                    </div> -->
-
-                                                    <!-- <div class="expandable" style="opacity: 0; scale: 0.5;">
-                                                        <h3 class="lead">{{criterion_full}}</h3>
-                                                    </div> -->
-
-                                                    <!-- <div class="d-flex flex-column mt-1 align-items-center" style="opacity: 0;">                                                        
-                                                        <p>Expandxxxxxxxxxxo</p>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
-                                <div class="container-fluid">
-                                    <h2>Differentially expressed in TCGA</h2>
-                                    <hr class="border border-primary border-1 opacity-75 hor-ruler">
-                                    <span class="badge rounded-pill down">Down</span>
-                                    <span class="badge rounded-pill up">Up</span>
-                                    <span class="badge rounded-pill nan" style="color: black;">No associations</span>
-                                    <div class="iso-grid pt-2">
-                                        {% for key in diff_expr %}
-                                        {% set expr = key.split("-")[-1].split(" ")[0] %}
-                                        {% set expr_value = record_data[key] | string %}
-                                        {% set expr_full = key.split('(')[-1].strip(")")  %}
-                                        <!-- {% set criterion_full = key.split("[")[0].strip() %} -->
-                                        <div class="grid-item">
-                                            <div class="grid-item-content {{expr_value.lower()}} row grid-container">
-                                                <!-- <div class="col"> -->
-                                                    <!-- <div class="d-flex flex-column mt-1 align-items-center">                                                        
-                                                        <h3>{{expr}}</h3>
-                                                        <h3 class="lead">{{record_data[key]}}</h3>
-                                                    </div> -->
-                                                    <div class="content-column">                                                        
-                                                        <h3>{{expr}}</h3>
-                                                        <!-- <h3 class="lead">{{record_data[key]}}</h3> -->
-                                                    </div>
-                                                <!-- </div> -->
-                                                <!-- <div class="col-6 expandable" style="opacity: 0; scale: 0.5;">
-                                                    <h3 class="lead" style="overflow-wrap: anywhere;">{{expr_full}}</h3>
-                                                </div> -->
-                                                <div class="expandable" style="opacity: 0; scale: 0.5;">
-                                                    <h3 class="lead">{{expr_full}}</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
-                                        <!-- <div class="grid-item">
-                                          <div class="grid-item-content">
-                                            2
-                                            <p style="opacity: 0;">Expandxxxxxxxxxxo</p>
-                                          </div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content">
-                                            3
-                                            <p style="opacity: 0;">Expandxxxxxxxxxxo</p>
-                                          </div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content">4
-                                            <p style="opacity: 0;">Expandxxxxxxxxxxo</p>
-                                          </div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content">5
-                                            <p style="opacity: 0;">Expandxxxxxxxxxxo</p>
-                                          </div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content">6
-                                            <p style="opacity: 0;">Expandxxxxxxxxxxo</p>
-                                          </div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content">7<p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content">8<p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content">9<p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content">10<p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div>
-                                        <div class="grid-item">
-                                          <div class="grid-item-content"><p style="opacity: 0;">Expandxxxxxxxxxxo</p></div>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-                            {% endif %}
+            <!-- main record container -->
+            <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between">
+                        <h2 class="display-2">{{record_id}}</h2>
+                        <div class="d-flex justify-content-between flex-column align-items-end">
+                            <button class="btn-icon" id="search-back-btn" type="button">
+                                <i id="search-back-i" class="bi bi-arrow-left btn btn-icon back-icon"></i>  
+                            </button>                                              
+                            <p class="lead fs-6">Back to search results</p>
                         </div>
                     </div>
-                    <!-- <div class="d-flex flex-wrap"> -->
-                <!-- </div> -->
-                <!-- <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">...</div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
-                <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div> -->
-              <!-- </div> -->
+                    <!-- table-like overview -->
+                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
+                        <div class="container-fluid">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        </thead>
+                                        <tbody class="plain-table">
+                                        <tr>
+                                            <th scope="row">miRBase ID</th>
+                                            <td>{{record_data['all miRNA precursors/loci (miRBase ID)']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">MirGeneDB ID</th>
+                                            <td>{{record_data['miRNA genes annotated in MirGeneDB (MirGeneDB ID)']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">miRNA ID</th>
+                                            <td>{{record_data['miRNA ID']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Predominant strand</th>
+                                            <td>{{record_data['predominantly expressed miRNA (miRNA-strand balance)']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">CMC Score</th>
+                                            <td>{{record_data['CMC score']}}</td>
+                                        </tr>
+                                        {% if record_data['CMC/non-CMC'] == 'CMC' %}
+                                        <tr>
+                                            <th scope="row">Oncogene (O)/ tumor suppressor (TS)</th>
+                                            <td>{{record_data['oncogene (O)/tumor-suppressor (TS)']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Selected 5p miRNA targets (miRTarBase)</th>
+                                            <td>{{record_data['top 5p miRNA targets (based on miRTarBase)']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Selected 3p miRNA targets (miRTarBase)</th>
+                                            <td>{{record_data['top 3p miRNA targets (based on miRTarBase)']}}</td>
+                                        </tr>
+                                        {% endif %}
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- isogrids -->
+                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
+                        <div class="container-fluid">
+                            <h2>CMC criterion points</h2>
+                            <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                            <div class="iso-grid pt-2">
+                                {% for key in cmc_criterions %}
+                                {% set criterion = key.split(" ")[-1].strip("]") %}
+                                {% set criterion_full = key.split("[")[0].strip() %}
+                                    <div class="grid-item">
+                                        {% if record_data[key] != 0 %}
+                                        <div class="grid-item-content criterion-{{criterion}} row grid-container">
+                                        {% else %}
+                                        <div class="grid-item-content row grid-container">
+                                        {% endif %}
+                                            <div class="content-column">                                                        
+                                                <h3>{{criterion}}</h3>
+                                                <h3 class="lead">{{record_data[key]}}</h3>
+                                            </div>
+                                            <div class="expandable" style="opacity: 0; scale: 0.5;">
+                                                <h3 class="lead">{{criterion_full}}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if record_data['CMC/non-CMC'] == 'CMC' %}
+                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
+                        <div class="container-fluid">
+                            <h2>Associassions with cancer hallmarks <span class="lead">(Dhawan et al. 2018 Nat Commun)</span></h2>
+                            <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                            <span class="badge rounded-pill down">Down</span>
+                            <span class="badge rounded-pill up">Up</span>
+                            <span class="badge rounded-pill updown">Up/Down</span>
+                            <span class="badge rounded-pill nan" style="color: black;">No associations</span>
+                            <div class="iso-grid-big pt-2">
+                                {% for key in hallmarks %}
+                                {% set hallmark = key.split('(')[0].strip()%}
+                                {% set hallmark_value = record_data[key] | string %}
+                                {% set hallmark_value = hallmark_value.replace("/", "") %}
+                                    <div class="grid-item">
+                                        <div class="grid-item-content-big {{hallmark_value.lower()}} row grid-container">
+                                            <div class="content-column">                                                        
+                                                <h3 class="tile-fs">{{hallmark}}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
+                        <div class="container-fluid">
+                            <h2>Differentially expressed in TCGA</h2>
+                            <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                            <span class="badge rounded-pill down">Down</span>
+                            <span class="badge rounded-pill up">Up</span>
+                            <span class="badge rounded-pill nan" style="color: black;">No associations</span>
+                            <div class="iso-grid pt-2">
+                                {% for key in diff_expr %}
+                                {% set expr = key.split("-")[-1].split(" ")[0] %}
+                                {% set expr_value = record_data[key] | string %}
+                                {% set expr_full = key.split('(')[-1].strip(")")  %}
+                                <div class="grid-item">
+                                    <div class="grid-item-content {{expr_value.lower()}} row grid-container">
+                                        <div class="content-column">                                                        
+                                            <h3>{{expr}}</h3>
+                                        </div>
+                                        <div class="expandable" style="opacity: 0; scale: 0.5;">
+                                            <h3 class="lead">{{expr_full}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </main>
-
-    <!-- Begin page content -->
-    <!-- <main class="flex-shrink-0">
-        <div class="container">
-            <h2>{{record_id}}</h2>
-        </div>
-    </main> -->
-
+    <!-- footer  -->
     <footer class="footer mt-auto py-3 bg-body-tertiary">
         <div class="container">
             <div class="row justify-content-between">
@@ -618,13 +398,10 @@
             </div>
         </div>
     </footer>
+    <!-- second part of scripts + record controller -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
     <script src="/static/js/record-controller.js"></script>
-    <!-- <script>
-        const record_data = {{ record_data|tojson}}
-    </script> -->
-
 </body>
 </html>
