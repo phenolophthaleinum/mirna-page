@@ -240,13 +240,14 @@ sForm.addEventListener('submit', (e)=>{
 var animatedContent = document.querySelector('#info-anim-content');
 var btnSearchInfo = document.querySelector('#btn-searchInfo');
 
-btnSearchInfo.addEventListener('show.bs.collapse', function () {
-  animatedContent.style.backgroundColor = 'rgba(13, 110, 253, 0.3)';
-});
+// tmp removed collapsible events from btnSearchInfo
+// btnSearchInfo.addEventListener('show.bs.collapse', function () {
+//   animatedContent.style.backgroundColor = 'rgba(13, 110, 253, 0.3)';
+// });
 
-btnSearchInfo.addEventListener('hidden.bs.collapse', function () {
-  animatedContent.style.backgroundColor = 'transparent';
-});
+// btnSearchInfo.addEventListener('hidden.bs.collapse', function () {
+//   animatedContent.style.backgroundColor = 'transparent';
+// });
 
 // does nothing i guess for now
 let versionDropdown = document.getElementById('version-dropdown');

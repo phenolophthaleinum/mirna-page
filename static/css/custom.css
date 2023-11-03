@@ -68,6 +68,10 @@ table tr td .full-row-link {
   background-color: transparent;
 }
 
+.btn-icon:active {
+  background-color: transparent;
+}
+
 .btn-icon:focus-visible {
   outline: none;
 }
@@ -92,9 +96,9 @@ table tr td .full-row-link {
   color: rgba(13, 110, 253, 1);
 }
 
-.info-icon {
+.info-icon, .info-icon:hover, .info-icon:active{
   font-size: large;
-  color: rgba(13, 110, 253, 1);
+  color: rgba(13, 110, 253, 1)!important;
 }
 
 .back-icon {
@@ -102,12 +106,14 @@ table tr td .full-row-link {
   color: rgba(13, 110, 253, 1);
 }
 
-.mail-icon:hover, .info-icon:hover, .link-icon:hover, .back-icon:hover, .download-icon:hover {
+/* removed info-icon related */
+.mail-icon:hover, .link-icon:hover, .back-icon:hover, .download-icon:hover {
   color: rgba(13, 110, 253, 0.3);
   cursor: pointer;
 }
 
-.mail-icon:active, .info-icon:active, .link-icon:active, .back-icon:active, .download-icon:active {
+/* removed info-icon related */
+.mail-icon:active, .link-icon:active, .back-icon:active, .download-icon:active {
   color: rgba(10, 63, 143, 0.6)!important;
 }
 
