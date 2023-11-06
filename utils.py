@@ -1,3 +1,7 @@
+'''
+Author: Maciej Michalczyk
+'''
+
 class AliasedDict(dict):
 
     def __init__(self, *args, **kwargs):

@@ -1,3 +1,7 @@
+'''
+Author: Maciej Michalczyk
+'''
+
 import flask
 import re
 import os

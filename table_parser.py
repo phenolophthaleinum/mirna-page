@@ -1,3 +1,7 @@
+'''
+Author: Maciej Michalczyk
+'''
+
 import pandas as pd
 import dill
 import io
