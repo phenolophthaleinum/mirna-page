@@ -20,6 +20,10 @@ master_db = std_read("mirna_table.pkl")
 db = master_db['data']
 db_version = master_db['version']
 
+mimetypes = {
+    'txt': 'text/plain'
+}
+
 
 @app.route('/')
 def index():
@@ -84,9 +88,19 @@ def record_page(id):
 
 @app.route('/raw_data/<path:filename>', methods=['GET', 'POST'])
 def download(filename):
-
     full_path = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
     return flask.send_from_directory(full_path, filename)
+
+
+@app.route('/open/<path:filename>', methods=['GET', 'POST'])
+def open(filename):
+    extension = filename.split(".")[-1]
+    print(extension)
+    full_path = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename)
+    # return flask.send_from_directory(full_path,
+    #                                  filename,
+    #                                  mimetype=mimetypes[extension])
+    return flask.send_file(full_path, mimetypes[extension])
 
 
 @app.route('/download_column', methods=['GET', 'POST'])

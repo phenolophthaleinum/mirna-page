@@ -187,8 +187,7 @@
             <div class="container-fluid mt-1" style="display: flow-root;">
                 <div class="d-flex justify-content-between align-items-baseline">
                     <a class="navbar-brand" href="#">
-                        <img src="static/img/cmc_abbr.svg" width="200" height="45"/>
-                        <img src="static/img/cmc_logo.svg" width="100" height="45"/>
+                        <img src="static/img/cmc_logo_final.svg" width="300" height="45"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -276,7 +275,9 @@
                         <div class="container-fluid">
                             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 align-items-baseline mb-2">
                                 <div class="col-lg-11">
-                                    <form class="needs-validation mb-2" id="search-form" >
+                                    
+                                    <!-- with removed validation -->
+                                    <form class="mb-2" id="search-form" >
                                         <!-- <input type="text" class="form-control" id="search-input" name="query" pattern="(.*, )+" required> -->
                                         <input type="text" class="form-control" id="search-input" name="query" required>
                                         <div class="invalid-feedback">Please fill out this field
@@ -313,7 +314,8 @@
                                             <!-- tmp removed collapsible -->
                                             <!-- <div class="collapse flex-grow-1" id="btn-searchInfo" style="margin-left: 50px;"> -->
                                             <div class="flex-grow-1" id="btn-searchInfo" style="margin-left: 50px;">
-                                                Search by: miRNA gene ID, (e.g. MIR21), miRBase ID, (e.g. hsa-mir-21), MirGeneDB ID, (e.g. Hsa-Mir-21), miRNA ID, (e.g. miR-21), miRNA strand, (e.g. miR-21-5p), or mix separated by comma or semicolon. Search is not case sensitive.
+                                                Search by: miRNA gene ID, (e.g. MIR21), miRBase ID, (e.g. hsa-mir-21), MirGeneDB ID, (e.g. Hsa-Mir-21), miRNA ID, (e.g. miR-21), miRNA strand, (e.g. miR-21-5p), or mixed IDs separated by comma or semicolon. Search is not case-sensitive.
+                                                <a href="{{ url_for('open', filename='search_examples.txt') }}">Examples</a>
                                                 <!-- <div class="alert alert-warning d-flex align-items-center mt-3 alert-override"
                                                     role="alert">
                                                     <i
@@ -480,32 +482,35 @@
                     <div class="container-fluid">
                         <h2>Links</h2>
                         <hr class="border border-primary border-1 opacity-75 hor-ruler">
-                        <h3>
+                        <!-- <h3>
                             miRBAse <a class="btn-icon" style="font-size: larger;" role="button" href="https://www.mirbase.org/"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                        </h3> -->
+                        <h3>
+                            <a class="link-opacity-50-hover" href="https://www.mirbase.org/">miRBAse</a>
                         </h3>
                         <h3>
-                            MirGeneDB <a class="btn-icon" style="font-size: larger;" role="button" href="https://mirgenedb.org/"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                            <a class="link-opacity-50-hover" href="https://mirgenedb.org/">MirGeneDB</a>
                         </h3>
                         <h3>
-                            miRTarBase  <a class="btn-icon" style="font-size: larger;" role="button" href="https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2022/php/index.php"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                            <a class="link-opacity-50-hover" href="https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2022/php/index.php">miRTarBase</a>
                         </h3>
                         <h3>
-                            miRCancer  <a class="btn-icon" style="font-size: larger;" role="button" href="http://mircancer.ecu.edu"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                            <a class="link-opacity-50-hover" href="http://mircancer.ecu.edu">miRCancer</a>
                         </h3>
                         <h3>
-                            dbDEMC  <a class="btn-icon" style="font-size: larger;" role="button" href="https://www.biosino.org/dbDEMC/index"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                            <a class="link-opacity-50-hover" href="https://www.biosino.org/dbDEMC/index">dbDEMC</a>
                         </h3>
                         <h3>
-                            oncomiRDB  <a class="btn-icon" style="font-size: larger;" role="button" href="http://lifeome.net/database/oncomirdb/"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                            <a class="link-opacity-50-hover" href="http://lifeome.net/database/oncomirdb/">oncomiRDB</a>
                         </h3>
                         <h3>
-                            KEGG pathway map05206: ‘MicroRNAs in cancer’  <a class="btn-icon" style="font-size: larger;" role="button" href="https://www.genome.jp/entry/pathway+hsa05206"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                            <a class="link-opacity-50-hover" href="https://www.genome.jp/entry/pathway+hsa05206">KEGG pathway map05206: ‘MicroRNAs in cancer’</a>
                         </h3>
                         <h3>
-                            The Cancer Genome Atlas (TCGA) <a class="btn-icon" style="font-size: larger;" role="button" href="https://www.cancer.gov/ccg/research/genome-sequencing/tcga"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                            <a class="link-opacity-50-hover" href="https://www.cancer.gov/ccg/research/genome-sequencing/tcga">The Cancer Genome Atlas (TCGA)</a>
                         </h3>
                         <h3>
-                            Research grant website  <a class="btn-icon" style="font-size: larger;" role="button" href="https://maestro8.ichb.pl/"><i class="bi bi-link-45deg btn btn-override btn-icon link-icon"></i></a>
+                            <a class="link-opacity-50-hover" href="https://portal.ichb.pl/homepage/">Institute of Bioorganic Chemistry PAS</a>
                         </h3>
                     </div>
                 </div>
@@ -515,9 +520,9 @@
     <!-- footer  -->
     <footer class="footer mt-auto py-3 bg-body-tertiary">
         <div class="container">
-            <div class="row justify-content-between">
+            <div class="row justify-content-between align-items-center">
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
-                    <img data-bs-theme="light" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block"/>
+                    <a role="button" href="https://portal.ichb.pl/homepage/"><img data-bs-theme="light" src="/static/img/ichb_wide_color_eng_adjusted.svg" class="img-fluid mx-auto d-block"/></a>
                     <!-- <img data-bs-theme="dark" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block" style="mix-blend-mode: difference;"/> -->
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">

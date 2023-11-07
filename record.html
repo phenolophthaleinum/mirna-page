@@ -188,8 +188,7 @@
             <div class="container-fluid mt-1" style="display: flow-root;">
                 <div class="d-flex justify-content-between align-items-baseline">
                     <a class="navbar-brand" href="#">
-                        <img src="{{ url_for('static', filename='img/cmc_abbr.svg') }}" width="200" height="45"/>
-                        <img src="{{ url_for('static', filename='img/cmc_logo.svg') }}" width="100" height="45"/>
+                        <img src="{{ url_for('static', filename='img/cmc_logo_final.svg') }}" width="300" height="45"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -387,9 +386,9 @@
     <!-- footer  -->
     <footer class="footer mt-auto py-3 bg-body-tertiary">
         <div class="container">
-            <div class="row justify-content-between">
+            <div class="row justify-content-between align-items-center">
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
-                    <img src="{{ url_for('static', filename='img/ichb_wide_color_eng.svg') }}" class="img-fluid mx-auto d-block"/>
+                    <a role="button" href="https://portal.ichb.pl/homepage/"><img src="{{ url_for('static', filename='img/ichb_wide_color_eng_adjusted.svg') }}" class="img-fluid mx-auto d-block"/></a>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
                     <img data-bs-theme="light" src="{{ url_for('static', filename='img/ncn_logo.svg') }}" class="img-fluid mx-auto d-block" style="height: 5rem;"/>

@@ -136,6 +136,7 @@ def get_table_column(data_dict):
         "CRISPR/Cas9 KO screen  of pro/anti-fitness-associated miRNAs (HeLa - cervical cancer cell line) Kurata&Lin, RNA, 2018", 
         "CRISPR/Cas9 KO screen  of pro/anti-fitness-associated miRNAs (NCI-N87 - gastric cancer cell line) Kurata&Lin, RNA, 2018"], inplace=True)
     # print(df)
+    df.rename(columns={"all miRNA precursors/loci (miRBase ID)": "miRBase ID"}, inplace=True)
     table = io.BytesIO()
     df.to_csv(table)
     table.seek(0)
