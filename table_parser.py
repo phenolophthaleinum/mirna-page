@@ -33,12 +33,15 @@ def parse():
 
     base_df = pd.read_excel("./classification_table_full.xlsx")
     feature_df = pd.read_excel("./characteristics_table.xlsx", skiprows=[0])
+    add_aliases_df = pd.read_csv("./additional_aliases.csv", sep=";")
 
     overlap_cols = list(base_df.columns.intersection(feature_df.columns)[1:])
     overlap_cols.append("cancer drivers POINTS [criterion VII]")
     feature_df = feature_df.drop(columns=overlap_cols)
     base_df.set_index('miRNA gene ID (HUGO)', inplace=True)
     base_df = base_df.merge(feature_df, left_index=True, right_on='miRNA gene ID (HUGO)', how='left')
+    base_df.set_index('miRNA gene ID (HUGO)', inplace=True)
+    base_df = base_df.merge(add_aliases_df, left_index=True, right_on='miRNA gene ID (HUGO)', how='left')
 
 
     # print(df.columns)
@@ -51,7 +54,7 @@ def parse():
     base_df[hallmarks] = base_df[hallmarks].fillna("-")
     base_df['oncogene (O)/tumor-suppressor (TS)'] = base_df['oncogene (O)/tumor-suppressor (TS)'].fillna("Not classified")
     base_df['CMC score'] = base_df['CMC score'].fillna(0)
-    base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']] = base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']].fillna('-')
+    base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)', 'additional_alias']] = base_df[['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)', 'additional_alias']].fillna('-')
     base_df["CMC/non-CMC"] = base_df["CMC/non-CMC"].apply(str)
     base_df.drop(columns=["miRNA precursor/locus ID (miRBase)", "miRNA ID (miRBase)", "miRNA precursor/locus ID (MirGeneDB)", "oncogene (O)/tumor-suppressor (TS) only for CMC"], inplace=True)
     print(base_df["CMC/non-CMC"].dtype)
@@ -68,7 +71,7 @@ def parse():
     # assign aliases
     for key in adb:
         try:
-            alias_keys = ['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)']
+            alias_keys = ['all miRNA precursors/loci (miRBase ID)', 'miRNA ID', 'miRNA genes annotated in MirGeneDB (MirGeneDB ID)', 'additional_alias']
             for a_key in alias_keys:
                 alias = str(adb[key][a_key]).lower()
                 if alias == 'nan':
