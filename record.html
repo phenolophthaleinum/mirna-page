@@ -187,7 +187,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-nav">
             <div class="container-fluid mt-1" style="display: flow-root;">
                 <div class="d-flex justify-content-between align-items-baseline">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/">
                         <img src="{{ url_for('static', filename='img/cmc_logo_final.svg') }}" width="300" height="45"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -262,15 +262,15 @@
                                         <tbody class="plain-table">
                                         <tr>
                                             <th scope="row">miRBase ID</th>
-                                            <td>{{record_data['all miRNA precursors/loci (miRBase ID)']}}</td>
+                                            <td>{{record_data['miRNA precursor/locus ID (miRBase)']}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">MirGeneDB ID</th>
-                                            <td>{{record_data['miRNA genes annotated in MirGeneDB (MirGeneDB ID)']}}</td>
+                                            <td>{{record_data['miRNA precursor/locus ID (MirGeneDB)']}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">miRNA ID</th>
-                                            <td>{{record_data['miRNA ID']}}</td>
+                                            <td>{{record_data['miRNA ID (miRBase)']}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Predominant strand</th>
@@ -338,7 +338,7 @@
                             <span class="badge rounded-pill nan" style="color: black;">No associations</span>
                             <div class="iso-grid-big pt-2">
                                 {% for key in hallmarks %}
-                                {% set hallmark = key.split('(')[0].strip()%}
+                                {% set hallmark = key.split('(')[0].split('hallmark')[-1].strip()%}
                                 {% set hallmark_value = record_data[key] | string %}
                                 {% set hallmark_value = hallmark_value.replace("/", "") %}
                                     <div class="grid-item">

@@ -74,7 +74,7 @@ def search_mirna():
 @app.route('/record/<id>')
 def record_page(id):
     diff_expr = [col for col in db[id.lower()].keys() if col.startswith('differentially expressed in TCGA')]
-    hallmarks = [col for col in db[id.lower()].keys() if any(substring in col.lower() for substring in ['hallmark_', 'hypoxia', 'immune', 'invasiveness', 'proliferation', 'apoptosis', 'angiogenesis'])]
+    hallmarks = [col for col in db[id.lower()].keys() if any(substring in col.lower() for substring in ['with hallmark', 'hypoxia', 'immune', 'invasiveness', 'proliferation', 'apoptosis', 'angiogenesis'])]
     cmc_criterions = [col for col in db[id.lower()].keys() if "criterion" in col]
     return flask.render_template('record.html',
                                  record_id=id,
