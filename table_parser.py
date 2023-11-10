@@ -135,13 +135,13 @@ def get_table_column(data_dict):
     # df = pd.read_excel("./raw_data/list_of_CMC_miRNA_genes_with_characteristics.xlsx", index_col=0, skiprows=[0]).loc[ids]
     df = pd.DataFrame.from_dict(data_dict, orient='index')
     df.reset_index(names=["miRNA gene ID (HUGO)"], inplace=True)
-    df.drop(columns=[
-        "miRNAS as cancer therapeutic targets in clinical trials Kim&Croce, Exp Mol Med, 2023", 
-        "CRISPR/Cas9 KO screen  of microRNAs  affecting cell growth (MV4-11 - myeloid leukemia cell line) Wallace et al., PLOS one, 2016", 
-        "CRISPR/Cas9 KO screen  of pro/anti-fitness-associated miRNAs (HeLa - cervical cancer cell line) Kurata&Lin, RNA, 2018", 
-        "CRISPR/Cas9 KO screen  of pro/anti-fitness-associated miRNAs (NCI-N87 - gastric cancer cell line) Kurata&Lin, RNA, 2018"], inplace=True)
-    # print(df)
-    df.rename(columns={"all miRNA precursors/loci (miRBase ID)": "miRBase ID"}, inplace=True)
+    # df.drop(columns=[
+    #     "miRNAS as cancer therapeutic targets in clinical trials Kim&Croce, Exp Mol Med, 2023", 
+    #     "CRISPR/Cas9 KO screen  of microRNAs  affecting cell growth (MV4-11 - myeloid leukemia cell line) Wallace et al., PLOS one, 2016", 
+    #     "CRISPR/Cas9 KO screen  of pro/anti-fitness-associated miRNAs (HeLa - cervical cancer cell line) Kurata&Lin, RNA, 2018", 
+    #     "CRISPR/Cas9 KO screen  of pro/anti-fitness-associated miRNAs (NCI-N87 - gastric cancer cell line) Kurata&Lin, RNA, 2018"], inplace=True)
+    # # print(df)
+    # df.rename(columns={"all miRNA precursors/loci (miRBase ID)": "miRBase ID"}, inplace=True)
     table = io.BytesIO()
     df.to_csv(table)
     table.seek(0)
