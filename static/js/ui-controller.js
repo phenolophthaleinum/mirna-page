@@ -51,15 +51,20 @@ if (sessionStorage.getItem("autosave") && (navigationEntry.type == "back_forward
             fixedHeader: true,
             "searching": false,
             language: {
-                zeroRecords: `<div class="alert alert-warning d-flex align-items-center  alert-override alert-bad "
-                role="alert">
-                <i
-                    class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
-                <div>
-                    miRNA ID not found.
-                </div>
-            </div>`
+                zeroRecords: " "
             },
+            // maybe temporary remove of alert if nothing was found
+            // language: {
+            //     zeroRecords: 
+            //     `<div class="alert alert-warning d-flex align-items-center  alert-override alert-bad "
+            //     role="alert">
+            //     <i
+            //         class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+            //     <div>
+            //         miRNA ID not found.
+            //     </div>
+            // </div>`
+            // },
             columns: [
                 {title: 'ID', data: 0},
             ],
@@ -160,15 +165,19 @@ sForm.addEventListener('submit', (e)=>{
                     fixedHeader: true,
                     "searching": false,
                     language: {
-                        zeroRecords: `<div class="alert alert-warning d-flex align-items-center alert-override alert-bad "
-                        role="alert">
-                        <i
-                            class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
-                        <div>
-                            miRNA ID not found.
-                        </div>
-                    </div>`
+                        zeroRecords: " "
                     },
+                    // maybe temporary remove of alert if nothing was found
+                    // language: {
+                    //     zeroRecords: `<div class="alert alert-warning d-flex align-items-center alert-override alert-bad "
+                    //     role="alert">
+                    //     <i
+                    //         class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+                    //     <div>
+                    //         miRNA ID not found.
+                    //     </div>
+                    // </div>`
+                    // },
                     columns: [
                         {title: 'ID', data: 0},
                     ],
