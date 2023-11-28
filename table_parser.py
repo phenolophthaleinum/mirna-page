@@ -35,7 +35,11 @@ def parse():
     base_df = pd.read_excel("./list_of_background_miRNA_genes_with_criteria_scores_and_CMC_classification_mod.xlsx", skiprows=[0])
     feature_df = pd.read_excel("./list_of_CMC_miRNA_genes_with_characteristics.xlsx", skiprows=[0])
     add_aliases_df = pd.read_csv("./additional_aliases.csv", sep=";")
+    nc_records_df = pd.read_excel("./classification_table_full.xlsx")
+    lacking_data = nc_records_df[["miRNA gene ID (HUGO)", "all miRNA precursors/loci (miRBase ID)", "miRNA ID", "miRNA genes annotated in MirGeneDB (MirGeneDB ID)", "predominantly expressed miRNA (miRNA-strand balance)"]]
+    print(lacking_data.columns)
 
+    # merge tables with actual data and add additional aliases
     overlap_cols = list(base_df.columns.intersection(feature_df.columns)[1:])
     # overlap_cols.append("cancer drivers POINTS [criterion VII]")
     feature_df = feature_df.drop(columns=overlap_cols)
@@ -44,7 +48,28 @@ def parse():
     base_df.set_index('miRNA gene ID (HUGO)', inplace=True)
     base_df = base_df.merge(add_aliases_df, left_index=True, right_on='miRNA gene ID (HUGO)', how='left')
 
+    # nc records add
+    nc_records_df = nc_records_df[nc_records_df['CMC/non-CMC'].isna()]
+    overlap_cols = [elem for elem in base_df.columns.intersection(nc_records_df.columns) if elem != 'miRNA gene ID (HUGO)']
+    print(overlap_cols)
+    nc_records_df = nc_records_df.drop(columns=overlap_cols)
+    print(nc_records_df)
+    base_df.set_index('miRNA gene ID (HUGO)', inplace=True)
+    # base_df = base_df.merge(nc_records_df, left_index=True, right_on='miRNA gene ID (HUGO)', how='left')
+    base_df = base_df.merge(nc_records_df, on='miRNA gene ID (HUGO)', how='outer')
+    print(base_df.columns)
 
+    # add legacy aliases
+    lacking_data = lacking_data.rename(columns={"all miRNA precursors/loci (miRBase ID)": "miRNA precursor/locus ID (miRBase)", "miRNA ID": "miRNA ID (miRBase)", "miRNA genes annotated in MirGeneDB (MirGeneDB ID)": "miRNA precursor/locus ID (MirGeneDB)"})
+    print(lacking_data.columns)
+    base_df.set_index('miRNA gene ID (HUGO)', inplace=True)
+    lacking_data.set_index('miRNA gene ID (HUGO)', inplace=True)
+    # base_df = base_df.merge(lacking_data, left_index=True, right_on='miRNA gene ID (HUGO)', how='left')
+    base_df.update(lacking_data)
+    base_df.reset_index(inplace=True)
+    print(base_df[base_df['miRNA gene ID (HUGO)'] == "MIR136"])
+    # exit()
+    # clean data
     # print(df.columns)
     base_df.set_index('miRNA gene ID (HUGO)', inplace=True)
     hallmarks = [col for col in base_df.columns if any(substring in col.lower() for substring in ['hallmark_', 'hypoxia', 'immune', 'invasiveness', 'proliferation', 'apoptosis', 'angiogenesis'])]
@@ -56,6 +81,7 @@ def parse():
     base_df['oncogene (O)/tumor-suppressor (TS)'] = base_df['oncogene (O)/tumor-suppressor (TS)'].fillna("Not classified")
     base_df['CMC score'] = base_df['CMC score'].fillna(0)
     base_df['predominantly expressed miRNA (miRNA-strand balance)'] = base_df['predominantly expressed miRNA (miRNA-strand balance)'].fillna('-')
+    base_df['predominantly expressed miRNA (miRNA-strand balance)'] = base_df['predominantly expressed miRNA (miRNA-strand balance)'].replace('undetermined', '-')
     base_df[['miRNA precursor/locus ID (miRBase)', 'miRNA ID (miRBase)', 'miRNA precursor/locus ID (MirGeneDB)', 'additional_alias']] = base_df[['miRNA precursor/locus ID (miRBase)', 'miRNA ID (miRBase)', 'miRNA precursor/locus ID (MirGeneDB)', 'additional_alias']].fillna('-')
     base_df["CMC/non-CMC"] = base_df["CMC/non-CMC"].apply(str)
     # base_df.drop(columns=["miRNA precursor/locus ID (miRBase)", "miRNA ID (miRBase)", "miRNA precursor/locus ID (MirGeneDB)", "oncogene (O)/tumor-suppressor (TS) only for CMC"], inplace=True)
@@ -67,6 +93,9 @@ def parse():
     # base dict from all HUGO mirna id 
     base_df.index = base_df.index.str.lower()
     db = base_df.to_dict(orient='index')
+    p.pprint(db)
+    print(len(db))
+    # exit()
 
     # initialise aliased dict
     adb = AliasedDict(db)

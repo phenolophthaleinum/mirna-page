@@ -228,7 +228,7 @@ table tr td .full-row-link {
   /* background-color: #c21b32; */
 }
 
-.grid-item-content-big.updown, .badge.updown {
+.grid-item-content.updown, .grid-item-content-big.updown, .badge.updown {
   /* background-color: #aaaaaa; */
   background-color: #b9c9c9;
 }
