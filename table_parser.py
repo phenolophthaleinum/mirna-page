@@ -84,7 +84,7 @@ def parse():
     base_df['predominantly expressed miRNA (miRNA-strand balance)'] = base_df['predominantly expressed miRNA (miRNA-strand balance)'].replace('undetermined', '-')
     base_df[['miRNA precursor/locus ID (miRBase)', 'miRNA ID (miRBase)', 'miRNA precursor/locus ID (MirGeneDB)', 'additional_alias']] = base_df[['miRNA precursor/locus ID (miRBase)', 'miRNA ID (miRBase)', 'miRNA precursor/locus ID (MirGeneDB)', 'additional_alias']].fillna('-')
     base_df["CMC/non-CMC"] = base_df["CMC/non-CMC"].apply(str)
-    # base_df.drop(columns=["miRNA precursor/locus ID (miRBase)", "miRNA ID (miRBase)", "miRNA precursor/locus ID (MirGeneDB)", "oncogene (O)/tumor-suppressor (TS) only for CMC"], inplace=True)
+    base_df.drop(columns=["all miRNA precursors/loci (miRBase ID)", "miRNA ID", "miRNA genes annotated in MirGeneDB (MirGeneDB ID)", "background miRNA genes", "consistency of associations [criterion IV]", "oncogene (O)/tumor-suppressor (TS) only for CMC", "miRNA gene confidence in miRBase "], inplace=True)
     print(base_df["CMC/non-CMC"].dtype)
 
     # mirna gene ID (HUGO) are actually unique
@@ -164,6 +164,7 @@ def get_table_column(data_dict):
     # df = pd.read_excel("./raw_data/list_of_CMC_miRNA_genes_with_characteristics.xlsx", index_col=0, skiprows=[0]).loc[ids]
     df = pd.DataFrame.from_dict(data_dict, orient='index')
     df.reset_index(names=["miRNA gene ID (HUGO)"], inplace=True)
+    df.drop(columns=["additional_alias"], inplace=True)
     # df.drop(columns=[
     #     "miRNAS as cancer therapeutic targets in clinical trials Kim&Croce, Exp Mol Med, 2023", 
     #     "CRISPR/Cas9 KO screen  of microRNAs  affecting cell growth (MV4-11 - myeloid leukemia cell line) Wallace et al., PLOS one, 2016", 
