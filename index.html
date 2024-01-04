@@ -9,12 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Maciej Michalczyk">
+    <!-- TODO, if needed - CSP: -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; script-src 'self' https://ajax.googleapis.com https://cdn.datatables.net https://cdnjs.cloudflare.com; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self';"> -->
     <title>CMC: Cancer miRNA Census</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- TODO: maybe optimise async better? -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"/>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js" async></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -23,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap" rel="stylesheet">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" async></script>
 
     <link rel="icon" href="/static/img/cmc_abbr.svg">
     
@@ -186,8 +189,8 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-nav">
             <div class="container-fluid mt-1" style="display: flow-root;">
                 <div class="d-flex justify-content-between align-items-baseline">
-                    <a class="navbar-brand" href="/">
-                        <img src="static/img/cmc_logo_final.svg" width="300" height="45"/>
+                    <a class="navbar-brand" href="/" aria-label="Go to home tab">
+                        <img src="static/img/cmc_logo_final.svg" width="300" height="45" alt="CMC: Cancer miRNA Census Logo"/>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -264,7 +267,7 @@
                             </div>
                                     <!-- /?tab=pills-profile-tab -->
                             <!-- <img src="static/img/home_dark.svg" width="1200" class="img-fluid mx-auto d-block"/> -->
-                            <img src="static/img/home_light_fixed.svg" width="1200" class="img-fluid mx-auto d-block"/>
+                            <img src="static/img/home_light_fixed.svg" loading="lazy" width="1200" class="img-fluid mx-auto d-block" alt="Image showing distribution of non-CMC and CMC miRNA genes depending on their CMC score."/>
                         </div>
                     </div>
                 </div>
@@ -522,14 +525,15 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
-                    <a role="button" href="https://portal.ichb.pl/homepage/"><img data-bs-theme="light" src="/static/img/ichb_wide_color_eng_adjusted.svg" class="img-fluid mx-auto d-block"/></a>
+                    <a role="button" href="https://portal.ichb.pl/homepage/" aria-label="Go to IBCH PAN home page">
+                        <img data-bs-theme="light" src="/static/img/ichb_wide_color_eng_adjusted.svg" class="img-fluid mx-auto d-block" alt="IBCH PAN logo"/></a>
                     <!-- <img data-bs-theme="dark" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block" style="mix-blend-mode: difference;"/> -->
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
+                <!-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
                     <script type="text/javascript" src="//rf.revolvermaps.com/0/0/0.js?i=5t170mz77d0&amp;d=2&amp;p=1&amp;b=5&amp;w=293&amp;g=2&amp;f=arial&amp;fs=12&amp;r=0&amp;c0=362b05&amp;c1=375363&amp;c2=000000&amp;ic0=0&amp;ic1=0" async="async"></script>
-                </div>
+                </div> -->
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-8">
-                    <img data-bs-theme="light" src="static/img/ncn_logo.svg" class="img-fluid mx-auto d-block" style="height: 5rem;"/>
+                    <img data-bs-theme="light" src="static/img/ncn_logo.svg" class="img-fluid mx-auto d-block" style="height: 5rem;" alt="NCN logo"/>
                     <!-- <img data-bs-theme="dark" src="static/img/ichb_wide_color_eng.svg" class="img-fluid mx-auto d-block" style="mix-blend-mode: difference;"/> -->
                 </div>
             </div>
