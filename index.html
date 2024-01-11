@@ -7,7 +7,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Cancer miRNA Census is a list of 165 cancer-related miRNA genes. The list is based on a CMC score,
+    built on various types of functional and genetic evidence for the role of particular miRNAs in cancer, e.g.,
+    miRNA-cancer associations reported in databases, associations of miRNAs with cancer hallmarks, or
+    signals of positive selection of genetic alterations in cancer">
     <meta name="author" content="Maciej Michalczyk">
     <!-- TODO, if needed - CSP: -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; script-src 'self' https://ajax.googleapis.com https://cdn.datatables.net https://cdnjs.cloudflare.com; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self';"> -->
@@ -28,7 +31,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" async></script>
 
-    <link rel="icon" href="/static/img/cmc_abbr.svg">
+    <link rel="icon" href="/static/img/cmc_abbr_favicon.png">
     
     <meta name="theme-color" content="#712cf9">
 
@@ -476,7 +479,40 @@
                 <!-- cite tab  -->
                 <div class="tab-pane fade" id="pills-cite" role="tabpanel" aria-labelledby="pills-cite-tab"
                 tabindex="0">
-                    <h3>To be added upon publication</h3>
+                    <div class="p-4 mb-4 bg-body-tertiary rounded-3 shadow-override">
+                        <div class="container-fluid">
+                            <h2>Citation</h2>
+                            <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                            <div class="alert alert-light" role="alert">
+                                <blockquote class="blockquote">
+                                    <p>“CMC: Cancer miRNA Census – a curated list of cancer-associated miRNA genes” Malwina Suszynska,
+                                        Magdalena Machowska, Eliza Fraszczyk, Maciej Michalczyk, Anna Philips, Paulina Galka-Marciniak, and
+                                        Piotr Kozlowski. Nucleic Acids Research 2024; doi: <a class="link-opacity-50-hover" href="https://doi.org/10.1093/nar/gkae017" target="_blank">doi.org/10.1093/nar/gkae017</a>
+                                    </p>
+                                </blockquote>
+                            </div>
+                            <h2 class="pt-4">Abstract</h2>
+                            <hr class="border border-primary border-1 opacity-75 hor-ruler">
+                            <!-- contact card -->
+                            <div class="alert alert-light" role="alert">
+                                <p>A growing body of evidence indicates an important role of miRNAs in cancer; however, there is no
+                                    definitive, convenient-to-use list of cancer-related miRNAs or miRNA genes that may serve as a
+                                    reference for analyses of miRNAs in cancer. To this end, we created a list of 165 cancer-related miRNA
+                                    genes called the Cancer miRNA Census (CMC). The list is based on a score, built on various types of
+                                    functional and genetic evidence for the role of particular miRNAs in cancer, e.g., miRNA-cancer
+                                    associations reported in databases, associations of miRNAs with cancer hallmarks, or signals of positive
+                                    selection of genetic alterations in cancer. The presence of well-recognized cancer-related miRNA genes,
+                                    such as MIR21, MIR155, MIR15A, MIR17, or MIRLET7s, at the top of the CMC ranking directly confirms
+                                    the accuracy and robustness of the list. Additionally, to verify and indicate the reliability of CMC, we
+                                    performed a validation of criteria used to build CMC, comparison of CMC with various cancer data
+                                    (publications and databases), and enrichment analyses of biological pathways and processes such as
+                                    Gene Ontology or DisGeNET. All validation steps showed a strong association of CMC with
+                                    cancer/cancer-related processes confirming its usefulness as a reference list of miRNA genes associated
+                                    with cancer.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- links tab -->
                 <div class="tab-pane fade" id="pills-links" role="tabpanel" aria-labelledby="pills-links-tab"
