@@ -13,7 +13,7 @@ from utils import AliasedDict
 app = flask.Flask(__name__, template_folder='.')
 app.config['UPLOAD_FOLDER']='raw_data'
 
-app_version = '1.0'
+app_version = '1.0 beta'
 
 whites_pattern = re.compile(r'\s+')
 master_db = std_read("mirna_table.pkl")
